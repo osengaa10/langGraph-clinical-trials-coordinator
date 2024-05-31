@@ -1,0 +1,5 @@
+env/
+.env
+studies/
+__pycache__/
+db/
