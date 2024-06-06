@@ -3,3 +3,4 @@ env/
 studies/
 __pycache__/
 db/
+.vscode/

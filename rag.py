@@ -11,17 +11,19 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.output_parsers import JsonOutputParser
 import os
 import time
-
+import llm
 # loader_csv = CSVLoader(file_path="./studies/westworld_resort_facts.csv")
 # loader_all = MergedDataLoader(loaders=[loader_csv]) #loader_web, loader_txt,]
 # docs_all = loader_all.load()
 # text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
 # texts = text_splitter.split_documents(docs_all)
 
+persist_directory = f'db'
+
 ################################################################################
 # split documents into chunks, create embeddings, store embeddings in chromaDB #
 ################################################################################
-def chunk_and_embed(embedding):
+def chunk_and_embed():
     src_dir = f'./studies'
     dst_dir = f'./rag_data/data'
     files = [f for f in os.listdir(src_dir) if os.path.isfile(os.path.join(src_dir, f))]
@@ -42,9 +44,25 @@ def chunk_and_embed(embedding):
         print(f' =========== number of documents {len(documents)} =========== ')
      
         Chroma.from_documents(documents=documents,
-                              embedding=embedding,
+                              embedding=llm.embedding,
                               persist_directory=persist_directory)
-    
+        # chunk_size = 2000
+        # chunk_overlap=20
+        # print(f"split TXT files")
+        # print(os.listdir(src_dir))
+        # loader = DirectoryLoader(src_dir, glob="./*.txt", loader_cls=TextLoader)
+
+        # documents = loader.load()
+        # print(f' =========== number of documents {len(documents)} =========== ')
+        # #splitting the text into
+        # text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
+        # texts = text_splitter.split_documents(documents)
+        # print(f'=========== number of chunks {len(texts)} ===========')
+     
+        # Chroma.from_documents(documents=texts,
+        #                                 embedding=llm.embedding,
+        #                                 persist_directory=persist_directory)
+
         t2 = time.perf_counter()
         print(f'time taken to embed {len(documents)} chunks:',t2-t1)
         print(f'time taken to embed {len(documents)} chunks:,{(t2-t1)/60} minutes')
@@ -66,25 +84,13 @@ def chunk_and_embed(embedding):
         print(f"ERROR NOOOOOOOOO: {e}")
 
 
-model_name = "BAAI/bge-base-en"
-encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
 
-bge_embeddings = HuggingFaceBgeEmbeddings(
-    model_name=model_name,
-    model_kwargs={'device': 'cpu'},
-    encode_kwargs=encode_kwargs
-)
-
-persist_directory = 'db'
-
-## Here you can change the embeddings etc
-embedding = bge_embeddings
-
-chunk_and_embed(embedding)
+# # chunk_and_embed(embedding)
 # vectordb = Chroma.from_documents(documents=texts,
 #                                  embedding=embedding,
 #                                  persist_directory=persist_directory)
 
 
+vectordb = Chroma(embedding_function=llm.embedding, persist_directory=persist_directory)
 
 
