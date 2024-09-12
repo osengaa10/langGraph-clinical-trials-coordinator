@@ -11,7 +11,7 @@ from langchain_core.output_parsers import StrOutputParser
 from langchain_core.output_parsers import JsonOutputParser
 import os
 import time
-import llm
+import LLMs.llm as llm
 # loader_csv = CSVLoader(file_path="./studies/westworld_resort_facts.csv")
 # loader_all = MergedDataLoader(loaders=[loader_csv]) #loader_web, loader_txt,]
 # docs_all = loader_all.load()

@@ -9,9 +9,9 @@ load_dotenv()
 os.environ['GROQ_API_KEY']
 
 GROQ_LLM = ChatGroq(
-            model="llama3-70b-8192",
+            model="llama-3.1-70b-versatile",
+            
         )
-
 
 
 model_name = "BAAI/bge-small-en-v1.5"
