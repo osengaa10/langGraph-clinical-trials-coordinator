@@ -8,7 +8,7 @@
 # from rag import vectordb
 
 
-# # vectordb = Chroma(embedding_function=configs.embedding, persist_directory=persist_directory)
+# vectordb = Chroma(embedding_function=configs.embedding, persist_directory=persist_directory)
 
 # retriever = vectordb.as_retriever(search_kwargs={"k": 5})
 

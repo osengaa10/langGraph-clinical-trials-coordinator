@@ -31,7 +31,6 @@ def chunk_and_embed():
     t1 = time.perf_counter()
     try:
         """split documents into chunks, create embeddings, store embeddings in chromaDB"""
-        print("4......inside chunk_and_embed try statement")
         # Load each text file as a separate document
         documents = []
         for file in files:
