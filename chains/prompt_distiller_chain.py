@@ -6,22 +6,21 @@ from langchain.prompts import PromptTemplate
 prompt = PromptTemplate(
     template="""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
     As a top medical expert and software engineer, you will review
-    a patient's prompt and distill their prompt into a single searchable word.
+    a patient's prompt and distill their prompt into a searchable term or phrase.
      
-    Your response MUST BE a single word. Your single word response will be the diagnosis of the patient \
-    This word will be used a search term to lookup the most relevant clinical trials to the patient
+    Your response should be a concise term or short phrase (1-3 words) that best describes the patient's condition. \
+    This term or phrase will be used as a search term to lookup the most relevant clinical trials for the patient.
      <|eot_id|><|start_header_id|>user<|end_header_id|>
     Conduct a comprehensive analysis of the prompt provided 
-    and distill their prompt into a searchable word or phrase.
+    and distill their prompt into a searchable term or short phrase.
 
+    Output a concise term or short phrase (1-3 words) that best describes the patient's condition.
 
-            Output a single word that best describes the patient's condition.
-
-    PATIENT PROMPT:\n\n {initial_prompt} \n\n
+    PATIENT PROMPT:\n\n {medical_report} \n\n
     <|eot_id|>
     <|start_header_id|>assistant<|end_header_id|>
     """,
-    input_variables=["initial_prompt"],
+    input_variables=["medical_report"],
 )
 
 prompt_distiller_chain = prompt | GROQ_LLM | StrOutputParser()

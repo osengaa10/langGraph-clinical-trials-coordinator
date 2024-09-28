@@ -4,4 +4,4 @@ studies/
 __pycache__/
 db/
 .vscode/
-./scratch.py
+./scratch*
