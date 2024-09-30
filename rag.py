@@ -1,22 +1,9 @@
-from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_community.document_loaders.merge import MergedDataLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceBgeEmbeddings
 from langchain_chroma import Chroma
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-from langchain_core.runnables import RunnablePassthrough
 from langchain_core.documents import Document
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.output_parsers import JsonOutputParser
 import os
 import time
 import LLMs.llm as llm
-# loader_csv = CSVLoader(file_path="./studies/westworld_resort_facts.csv")
-# loader_all = MergedDataLoader(loaders=[loader_csv]) #loader_web, loader_txt,]
-# docs_all = loader_all.load()
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-# texts = text_splitter.split_documents(docs_all)
+
 
 persist_directory = f'db'
 

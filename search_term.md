@@ -1,1 +1,1 @@
-**Searchable Term:** Muscle-invasive Bladder Cancer
+Stage T2 MIBC

@@ -1,1 +1,1 @@
-Muscle-Invasive Bladder Cancer, **Searchable Term:** Muscle-invasive Bladder Cancer
+PD-L1-positive MIUC, Stage T2 MIBC
