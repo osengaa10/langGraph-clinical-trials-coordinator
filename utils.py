@@ -71,10 +71,10 @@ def clinical_trials_search(condition: str) -> str:
         params["pageToken"] = nextPageToken
         counter = counter + 1
 
-    print("Number of studies found:", len(study_details_list))
+    print(f"Number of studies found for {condition}:", len(study_details_list))
     for index, trial in enumerate(study_details_list):
         report_content = create_trial_report(trial)
-        with open(f"./studies/clinical_trial_report_{index + 1}.txt", "w") as file:
+        with open(f'./studies/{condition.replace(" ", "_")}_{index + 1}.txt', "w") as file:
             file.write(report_content)
     chunk_and_embed()
     # Return the response in JSON format

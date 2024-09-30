@@ -18,7 +18,7 @@ prompt = PromptTemplate(
     and distill their prompt into a searchable term or short phrase.
 
     Output a concise term or short phrase (1-3 words) that best describes the patient's condition.
-    Ensure your output is different from the existing search terms.
+    Ensure your output is different from the existing search terms. Again your output should ONLY BE 1-3 words.
 
     PATIENT PROMPT:\n\n {medical_report} \n\n
     <|eot_id|>

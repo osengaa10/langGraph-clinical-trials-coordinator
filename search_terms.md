@@ -1,1 +1,1 @@
-PD-L1-positive MIUC, Stage T2 MIBC
+Muscle-Invasive Bladder Cancer, PD-L1 Positive.

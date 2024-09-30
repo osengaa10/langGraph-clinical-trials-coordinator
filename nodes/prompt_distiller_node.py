@@ -33,7 +33,9 @@ def prompt_distiller(state):
             print(f"Search term '{new_search_term}' already exists. Generating a new one...")
     
     # Update the state with the new list of search terms
-    state["search_term"] = current_search_terms
+    updated_state = dict(state)  # Create a new copy of the state
+    updated_state["search_term"] = current_search_terms
+    updated_state["num_steps"] = num_steps
     
     # Save to local disk
     write_markdown_file(", ".join(current_search_terms), "search_terms")
@@ -41,4 +43,4 @@ def prompt_distiller(state):
     print("___ALL SEARCH TERMS___", current_search_terms)
 
     # Return the updated state
-    return {**state, "num_steps": num_steps}
+    return updated_state

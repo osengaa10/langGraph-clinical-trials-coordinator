@@ -28,19 +28,28 @@ def consultant(state):
             {"role": "user", "content": user_response}
         ]
     else:
-        # If we're coming back from a failed trial search, ask for more details
+        # If we're coming back from a failed trial search or for more information
         follow_up = state.get("follow_up", "")
         if follow_up:
-            print(f"AI: Based on our previous conversation, we need more information. {follow_up}")
-            user_response = input("User: ")
-            chat_history.append({"role": "assistant", "content": f"We need more information. {follow_up}"})
-            chat_history.append({"role": "user", "content": user_response})
-    
-    for _ in range(2):  # Ask 2 more questions (3 total including the initial one)
-        initial_prompt = "\n".join(msg['content'] for msg in chat_history)
+            prompt = f"Based on our previous conversation and the following additional information needed: {follow_up}, ask a relevant follow-up question."
+        else:
+            prompt = "Based on our previous conversation, ask a relevant follow-up question to gather more information about the patient's condition."
+        
         response = consultant_chain["conversation"].invoke({
             "chat_history": chat_history,
-            "initial_prompt": initial_prompt
+            "initial_prompt": prompt
+        })
+        print(f"\nAI: {response} \n")
+        user_response = input("User: ")
+        chat_history.append({"role": "assistant", "content": response})
+        chat_history.append({"role": "user", "content": user_response})
+    
+    # Ask additional questions
+    for _ in range(2):  # Ask 2 more questions
+        prompt = "Based on the conversation so far, ask another relevant question to gather more information about the patient's condition."
+        response = consultant_chain["conversation"].invoke({
+            "chat_history": chat_history,
+            "initial_prompt": prompt
         })
         
         print(f"\n AI: {response} \n")
@@ -59,6 +68,7 @@ def consultant(state):
     state["chat_history"] = chat_history
     state["medical_report"] = summary
     state["num_steps"] = num_steps
+    state["follow_up"] = ""  # Clear the follow-up after it's been addressed
     
     # Format and write chat history
     formatted_chat_history = format_chat_history(chat_history)

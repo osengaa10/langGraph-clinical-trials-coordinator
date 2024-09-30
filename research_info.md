@@ -1,1 +1,11 @@
-I haven't found a clinical trial that is a good fit for this patient.
+Based on the provided medical report, I've analyzed the patient's information and matched it with the eligibility criteria of the retrieved clinical trials. 
+
+Unfortunately, none of the provided clinical trials perfectly match the patient's current medical status. However, I've found a few trials that might be relevant, but the patient would not be eligible due to certain exclusion criteria.
+
+For example, the first clinical trial (Document(page_content='Title: A Phase 2, Randomized, Double-blind, Placebo- and Active-comparator Controlled Clinical Study of Adjuvant V940 (mRNA-4157) Plus Pembrolizumab Versus Adjuvant Placebo Plus Pembrolizumab in Participants With High-risk Muscle-invasive Urothelial Carcinoma Post-radical Resection...') excludes patients who have received prior systemic anticancer therapy, which the patient has (Pembrolizumab and chemotherapy with cisplatin and gemcitabine).
+
+The second and third clinical trials (Document(page_content="Title: Pilot Study of an IDO and PD-L1 Peptide Based Immune-Modulatory Therapeutic (IO102-IO103) in Combination With Pembrolizumab for BCG-Unresponsive or Intolerant, Non-Muscle Invasive Bladder Cancer...") focus on non-muscle invasive bladder cancer, which does not match the patient's diagnosis of muscle-invasive bladder cancer.
+
+The last clinical trial (Document(page_content="Title: An Open ,Single Arm, Prospective, Phase II Clinical Study on the First-line Treatment of Recurrent or Metastatic Muscle Invasive Bladder Cancer With Cadonilimab(AK104) Plus Nab-Paclitaxel...") is for patients with recurrent or metastatic muscle-invasive bladder cancer who have not received systemic treatment. The patient has already received pembrolizumab and chemotherapy, so they would not be eligible for this trial.
+
+In conclusion, I haven't found a clinical trial that perfectly matches the patient's current medical status. However, it's essential to continue searching for trials, and the patient's doctor or a clinical trial navigator can help with this process.
