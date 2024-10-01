@@ -77,21 +77,3 @@ rag_chain = (
     | GROQ_LLM
     | StrOutputParser()
 )
-
-# Updated research_info_search node
-def research_info_search(state):
-    print("---RESEARCH INFO RAG---")
-    medical_report = state["medical_report"]
-    num_steps = state['num_steps']
-    num_steps += 1
-
-    # Perform RAG search using the medical report
-    rag_results = rag_chain.invoke({"medical_report": medical_report})
-
-    print(rag_results)
-    write_markdown_file([rag_results], "research_info")
-
-    return {
-        "research_info": [rag_results],
-        "num_steps": num_steps
-    }

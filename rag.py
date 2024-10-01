@@ -1,22 +1,9 @@
-from langchain_community.document_loaders.csv_loader import CSVLoader
-from langchain_community.document_loaders.merge import MergedDataLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.embeddings import HuggingFaceBgeEmbeddings
 from langchain_chroma import Chroma
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-from langchain_core.runnables import RunnablePassthrough
 from langchain_core.documents import Document
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.output_parsers import JsonOutputParser
 import os
 import time
 import LLMs.llm as llm
-# loader_csv = CSVLoader(file_path="./studies/westworld_resort_facts.csv")
-# loader_all = MergedDataLoader(loaders=[loader_csv]) #loader_web, loader_txt,]
-# docs_all = loader_all.load()
-# text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200)
-# texts = text_splitter.split_documents(docs_all)
+
 
 persist_directory = f'db'
 
@@ -45,22 +32,6 @@ def chunk_and_embed():
         Chroma.from_documents(documents=documents,
                               embedding=llm.embedding,
                               persist_directory=persist_directory)
-        # chunk_size = 2000
-        # chunk_overlap=20
-        # print(f"split TXT files")
-        # print(os.listdir(src_dir))
-        # loader = DirectoryLoader(src_dir, glob="./*.txt", loader_cls=TextLoader)
-
-        # documents = loader.load()
-        # print(f' =========== number of documents {len(documents)} =========== ')
-        # #splitting the text into
-        # text_splitter = RecursiveCharacterTextSplitter(chunk_size=chunk_size, chunk_overlap=chunk_overlap)
-        # texts = text_splitter.split_documents(documents)
-        # print(f'=========== number of chunks {len(texts)} ===========')
-     
-        # Chroma.from_documents(documents=texts,
-        #                                 embedding=llm.embedding,
-        #                                 persist_directory=persist_directory)
 
         t2 = time.perf_counter()
         print(f'time taken to embed {len(documents)} chunks:',t2-t1)
