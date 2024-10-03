@@ -1,5 +1,6 @@
 from rag import chunk_and_embed
 import requests
+import os
 
 def write_markdown_file(content, filename):
   """Writes the given content as a markdown file to the local directory.
@@ -55,13 +56,15 @@ def clinical_trials_search(condition: str) -> str:
         for study in raw_trials["studies"]:
             protocol_section = study.get("protocolSection", {})
             study_details_list.append({
+                "nctId": protocol_section.get("identificationModule").get("nctId"),
                 "officialTitle": protocol_section.get("identificationModule", {}).get("officialTitle"),        
                 "eligibilityModule": protocol_section.get("eligibilityModule"),
                 "centralContacts": protocol_section.get("contactsLocationsModule", {}).get("centralContacts"),
                 "conditions": protocol_section.get("conditionsModule", {}).get("conditions"),
                 "armsInterventionsModule": protocol_section.get("armsInterventionsModule"),
                 "outcomesModule": protocol_section.get("outcomesModule"),
-                "designModule": protocol_section.get("designModule")
+                "designModule": protocol_section.get("designModule"),
+                "briefSummary": protocol_section.get("descriptionModule", {}).get("briefSummary") 
             })
 
         # Update the pageToken to the next page token from the response, if any
@@ -76,9 +79,18 @@ def clinical_trials_search(condition: str) -> str:
         report_content = create_trial_report(trial)
         with open(f'./studies/{condition.replace(" ", "_")}_{index + 1}.txt', "w") as file:
             file.write(report_content)
-    chunk_and_embed()
+    
+    new_studies = []
+    for index, trial in enumerate(study_details_list):
+        report_content = create_trial_report(trial)
+        file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
+        file_path = os.path.join('./studies', file_name)
+        with open(file_path, "w") as file:
+            file.write(report_content)
+        new_studies.append((file_name, file_path))
+    chunk_and_embed(new_studies)
     # Return the response in JSON format
-    return "Clinical trials search completed."
+    return new_studies
 
 
 

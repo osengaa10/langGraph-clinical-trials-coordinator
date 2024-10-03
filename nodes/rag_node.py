@@ -43,7 +43,7 @@ def research_info_search(state):
     state["research_info"] = rag_results
     print("===RAG RESULTS===")
     print(rag_results)
-    write_markdown_file([rag_results], "research_info")
+    write_markdown_file([rag_results], "clinical_trials")
 
     return {
         "research_info": [rag_results],
