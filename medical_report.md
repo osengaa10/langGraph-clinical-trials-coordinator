@@ -1,61 +1,64 @@
-**Medical Report**
+**Comprehensive Medical Report**
 
-**Patient Information:**
+**Patient Information**
 
 * Age: 49
 * Sex: Male
-* Diagnosis: Muscle-invasive bladder cancer (MIBC)
+* Performance Status: ECOG 2
 
-**Medical History:**
+**Medical History**
 
-* Transurethral resection of the bladder tumor (TURBT) for initial tumor removal
-* Completed cisplatin and gemcitabine chemotherapy, with partial response
-* Received pembrolizumab immunotherapy, with disease progression
-* Chronic kidney disease (CKD) Stage 3, with estimated glomerular filtration rate (eGFR) of 45 mL/min/1.73 m²
+* Muscle-invasive bladder cancer
+* Prior treatments:
+	+ Transurethral resection of the bladder tumor (TURBT)
+	+ 6 cycles of cisplatin and gemcitabine chemotherapy
+	+ 4 cycles of pembrolizumab immunotherapy
+* Current disease status: Progressive disease despite standard treatments
 
-**Current Symptoms:**
+**Symptoms and Side Effects**
 
-* Worsening urinary symptoms, including increased frequency, urgency, and hematuria (blood in urine)
-* Pelvic pain, with dull ache and sharp exacerbations, especially with urination
-* Fatigue, weight loss (10 lbs), and limited mobility due to pelvic pain
+* Fatigue
+* Peripheral neuropathy (tingling in hands and feet)
+* Joint pain
+* Skin rash
+* Mild anemia
 
-**Performance Status:**
+**Current Medications**
 
-* Karnofsky Performance Status (KPS) score: 70 (ambulatory and capable of self-care, but unable to carry on normal activity or do work)
-* Eastern Cooperative Oncology Group (ECOG) performance status: 2 (ambulatory and capable of all self-care, but unable to carry out any work activities)
+* None
 
-**Laboratory Results:**
+**Laboratory Results**
 
-* eGFR: 45 mL/min/1.73 m²
-* Creatinine: [insert value]
-* Hemoglobin: [insert value]
-* White blood cell count: [insert value]
-* Platelet count: [insert value]
+* Liver function tests (ALT, AST, bilirubin): Within normal ranges
+* Kidney function (creatinine): Mild increase during chemotherapy, but no significant damage
+* PD-L1 expression: High
+* Molecular profiling (NGS): No actionable mutations, including FGFR3 or ERBB2
 
-**Imaging Studies:**
+**Physical Examination**
 
-* No evidence of metastatic disease to other organs, including lymph nodes, bones, and other visceral organs
+* No significant findings
 
-**Treatment History:**
+**Imaging Results**
 
-* Cisplatin and gemcitabine chemotherapy: completed with partial response
-* Pembrolizumab immunotherapy: disease progression
-* Radiation therapy: not received
+* Recent imaging confirmed disease progression
 
-**Eligibility for Clinical Trials:**
+**Clinical Trials Eligibility**
 
-* May be eligible for clinical trials that do not require high kidney function or nephrotoxic treatments
-* May be eligible for clinical trials that focus on symptom management and quality of life improvement
-* May be eligible for clinical trials that investigate novel therapies for MIBC, including targeted therapies and immunotherapies
+* Open to participating in all phases of clinical trials (I, II, III)
+* Willing to consider trials with various treatment combinations, including immunotherapy, chemotherapy, and targeted therapies
+* No known liver-related issues or abnormalities
 
-**Recommendations:**
+**Potential Clinical Trials**
 
-* Consider enrolling in clinical trials that focus on symptom management and quality of life improvement
-* Consider enrolling in clinical trials that investigate novel therapies for MIBC
-* Continue to monitor kidney function and adjust treatment plan as necessary to minimize risk of kidney damage
+* NCT04856189 (Selinexor and Pembrolizumab combination trial)
+* Other trials targeting muscle-invasive bladder cancer with similar treatment combinations or alternative approaches
 
-**Next Steps:**
+**Special Considerations**
 
-* Discuss clinical trial options with the patient and obtain informed consent
-* Coordinate with other healthcare providers to ensure continuity of care and communication
-* Monitor patient's condition and adjust treatment plan as necessary
+* Prior pembrolizumab treatment may impact eligibility for certain trials
+* Mild anemia and peripheral neuropathy may require monitoring during future treatments
+* Patient's ECOG score of 2 may impact eligibility for trials with specific performance status requirements
+
+**Conclusion**
+
+This patient is a 49-year-old male with muscle-invasive bladder cancer who has progressed despite standard treatments. He is open to participating in all phases of clinical trials and willing to consider various treatment combinations. His medical history, laboratory results, and imaging findings are provided to facilitate clinical trial eligibility evaluation.

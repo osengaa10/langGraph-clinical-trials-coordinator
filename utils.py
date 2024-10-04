@@ -100,8 +100,8 @@ def create_trial_report(trial):
     # Safely access values, replacing None with 'Not available'
     title = trial.get('officialTitle', 'Not available')
     eligibility_criteria = trial['eligibilityModule'].get('eligibilityCriteria', 'Not available')
-    
-    report = f"Title: {title}\n\n"
+    nctId = trial.get('nctId', 'Not available')
+    report = f"nctId: {nctId} Title: {title}\n\n"
     report += "Eligibility Criteria:\n"
     report += eligibility_criteria + "\n\n"
     
