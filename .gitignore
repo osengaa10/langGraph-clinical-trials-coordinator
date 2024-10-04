@@ -5,3 +5,5 @@ __pycache__/
 db/
 .vscode/
 ./scratch*
+rag_data/*
+scratch*
