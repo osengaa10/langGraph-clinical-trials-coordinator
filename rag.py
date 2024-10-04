@@ -11,7 +11,6 @@ def chunk_and_embed(new_studies):
     t1 = time.perf_counter()
     try:
         documents = []
-        print(f"NEW STUDIES:: {new_studies}")
         for file_name, file_path in new_studies:
             with open(file_path, 'r') as f:
                 text = f.read()
