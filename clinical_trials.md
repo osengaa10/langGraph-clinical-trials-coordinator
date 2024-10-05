@@ -1,9 +1,0 @@
-I've reviewed the patient's medical report and the retrieved clinical trials. Based on the patient's condition and the eligibility criteria of the trials, I recommend the following trials:
-
-1. **NCT06009848**: This trial is a Phase II clinical study on the first-line treatment of recurrent or metastatic muscle-invasive bladder cancer with Cadonilimab (AK104) plus Nab-Paclitaxel. The patient's medical report indicates that they have muscle-invasive bladder cancer with progressive disease despite standard treatments, making them a potential candidate for this trial. The trial's eligibility criteria include patients with advanced metastatic bladder cancer, ECOG PS score of 0-1, and measurable lesions, which align with the patient's condition.
-
-2. **NCT03711032**: This trial is a Phase 3 clinical study on the efficacy and safety of Pembrolizumab in combination with Bacillus Calmette-Guerin (BCG) in participants with high-risk non-muscle invasive bladder cancer. Although the patient's condition is muscle-invasive bladder cancer, the trial's eligibility criteria include patients with high-risk non-muscle invasive bladder cancer, and the patient's ECOG PS score of 2 may still be eligible. However, the patient's prior pembrolizumab treatment may impact their eligibility, and further evaluation is needed.
-
-The other trials retrieved do not seem to be a good fit for the patient based on their medical report and the eligibility criteria.
-
-It is essential to note that the patient's eligibility for these trials should be further evaluated by the trial's investigators, and the patient's medical history, laboratory results, and current condition should be carefully reviewed to ensure they meet the trial's eligibility criteria.
