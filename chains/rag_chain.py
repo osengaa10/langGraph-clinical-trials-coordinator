@@ -1,46 +1,7 @@
-# from langchain_core.output_parsers import StrOutputParser
-# from LLMs.llm import GROQ_LLM
-# from langchain.prompts import PromptTemplate
-# from langchain.vectorstores import Chroma
-# from langchain_core.runnables import RunnablePassthrough
-# from rag import vectordb
-
-
-# retriever = vectordb.as_retriever(search_kwargs={"k": 5})
-
-# #RAG Chain
-# rag_prompt = PromptTemplate(
-#     template="""<|begin_of_text|><|start_header_id|>system<|end_header_id|>
-#     You are a medical expert who finds the best fitting clinical trial for a patient when provided a brief medical report. 
-#     Use the following pieces of retrieved context to find the most promising clinical for the patient. 
-#     If you don't find a trial that is a good fit, just say that you haven't found one.\n
-
-#      <|eot_id|><|start_header_id|>user<|end_header_id|>
-#     medical_report: {medical_report}\n
-#     CONTEXT: {context} \n
-#     Answer:
-#     <|eot_id|>
-#     <|start_header_id|>assistant<|end_header_id|>
-#     """,
-#     input_variables=["medical_report", "context"],
-# )
-# rag_prompt_chain = rag_prompt | GROQ_LLM | StrOutputParser()
-# CONTEXT = retriever.invoke(medical_report)
-# result = rag_prompt_chain.invoke({"context":CONTEXT, "medical_report": medical_report})
-
-# rag_chain = (
-#     {"context": retriever , "question": RunnablePassthrough()}
-#     | rag_prompt
-#     | GROQ_LLM
-#     | StrOutputParser()
-# )
-
-
-
 from langchain_core.output_parsers import StrOutputParser
 from LLMs.llm import GROQ_LLM
 from langchain.prompts import PromptTemplate
-from langchain.vectorstores import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain_core.runnables import RunnablePassthrough
 from rag import vectordb
 from utils import write_markdown_file

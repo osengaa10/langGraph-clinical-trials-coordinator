@@ -39,18 +39,22 @@ async def handle_websocket(websocket, path):
 
             if command == 'start':
                 await start_conversation(websocket, state)
-
+                print(f"state: {state}")
             elif command == 'user_input':
                 await handle_user_input(websocket, state, data.get('input', ''))
+                print(f"state: {state}")
 
             elif command == 'search_term_decision':
                 await handle_search_term_decision(websocket, state, data.get('decision'))
+                print(f"state: {state}")
 
             elif command == 'user_search_term':
                 await handle_user_search_term(websocket, state, data.get('search_term', '').strip())
+                print(f"state: {state}")
 
             elif command == 'continue_search':
                 await handle_continue_search(websocket, state, data.get('decision'))
+                print(f"state: {state}")
 
     except websockets.exceptions.ConnectionClosedError:
         print("Connection closed")
@@ -67,7 +71,8 @@ async def start_conversation(websocket, state):
     state['chat_history'].append({"role": "assistant", "content": response['content']})
     await websocket.send(json.dumps({
         'type': 'question',
-        'content': response['content']
+        'content': response['content'],
+        'state': state
     }))
 
 async def handle_user_input(websocket, state, user_input):
@@ -82,7 +87,10 @@ async def handle_user_input(websocket, state, user_input):
         state['chat_history'].append({"role": "assistant", "content": response['content']})
         await websocket.send(json.dumps({
             'type': 'question',
-            'content': response['content']
+            'content': response['content'],
+            'current_node': 'consultant',
+            'next_node': 'user_input',
+            'state': state
         }))
     elif response.get('action') == 'generate_report':
         await generate_report(websocket, state)
@@ -91,33 +99,34 @@ async def generate_report(websocket, state):
     summary = consultant_chain["report"].invoke({
         "chat_history": state['chat_history']
     })
-    
     state["medical_report"] = summary
     state["num_steps"] += 1
-    
     formatted_chat_history = format_chat_history(state['chat_history'])
     write_markdown_file(formatted_chat_history, "chat_history")
     write_markdown_file(summary, "medical_report")
-    
     await websocket.send(json.dumps({
         'type': 'report',
-        'content': summary
+        'content': summary,
+        'current_node': 'consultant',
+        'next_node': 'prompt_distiller',
+        'state': state
     }))
-
     await handle_prompt_distiller(websocket, state)
 
+
 async def handle_prompt_distiller(websocket, state):
-    max_attempts = 3
-    for _ in range(max_attempts):
-        new_search_term = prompt_distiller_chain.invoke({
-            "medical_report": state['medical_report'],
-            "existing_terms": ", ".join(state['search_term'])
-        })
-        state['new_search_term'] = new_search_term
-        await websocket.send(json.dumps({
-            'type': 'new_search_term',
-            'content': new_search_term
-        }))
+    # max_attempts = 3
+    # for _ in range(max_attempts):
+    new_search_term = prompt_distiller_chain.invoke({
+        "medical_report": state['medical_report'],
+        "existing_terms": ", ".join(state['search_term'])
+    })
+    state['new_search_term'] = new_search_term
+    await websocket.send(json.dumps({
+        'type': 'new_search_term',
+        'content': new_search_term,
+        'state': state
+    }))
         # Wait for user decision in the main loop
 
 async def handle_search_term_decision(websocket, state, decision):
@@ -126,22 +135,26 @@ async def handle_search_term_decision(websocket, state, decision):
             state['search_term'].append(state['new_search_term'])
             await websocket.send(json.dumps({
                 'type': 'search_term_added',
-                'content': state['new_search_term']
+                'content': state['new_search_term'],
+                'state': state
             }))
             await continue_workflow(websocket, state)
         else:
             await websocket.send(json.dumps({
                 'type': 'search_term_exists',
-                'content': state['new_search_term']
+                'content': state['new_search_term'],
+                'state': state
             }))
             await handle_prompt_distiller(websocket, state)
     elif decision == 'no':
         await websocket.send(json.dumps({
-            'type': 'request_user_search_term'
+            'type': 'request_user_search_term',
+            'state': state
         }))
     else:
         await websocket.send(json.dumps({
-            'type': 'invalid_input'
+            'type': 'invalid_input',
+            'state': state
         }))
 
 async def handle_user_search_term(websocket, state, user_search_term):
@@ -149,45 +162,54 @@ async def handle_user_search_term(websocket, state, user_search_term):
         state['search_term'].append(user_search_term)
         await websocket.send(json.dumps({
             'type': 'search_term_added',
-            'content': user_search_term
+            'content': user_search_term,
+            'state': state
         }))
         await continue_workflow(websocket, state)
     elif user_search_term in state['search_term']:
         await websocket.send(json.dumps({
             'type': 'search_term_exists',
-            'content': user_search_term
+            'content': user_search_term,
+            'state': state
         }))
         await handle_prompt_distiller(websocket, state)
     else:
         await websocket.send(json.dumps({
-            'type': 'invalid_input'
+            'type': 'invalid_input',
+            'state': state
         }))
 
 async def continue_workflow(websocket, state):
     state['next_step'] = 'trials_search'
     
     while state['next_step'] != 'state_printer':
-        if state['next_step'] == 'trials_search':
+        current_node = state['next_step']
+        
+        if current_node == 'trials_search':
             trials_search_result = trials_search(state)
             state.update(trials_search_result)
             await websocket.send(json.dumps({
                 'type': 'update',
                 'content': 'Clinical trials search completed',
-                'current_step': state['next_step']
+                'current_node': current_node,
+                'next_node': 'research_info_search',
+                'state': state
             }))
             state['next_step'] = 'research_info_search'
 
-        elif state['next_step'] == 'research_info_search':
+        elif current_node == 'research_info_search':
             research_info_result = research_info_search(state)
             state.update(research_info_result)
             await websocket.send(json.dumps({
                 'type': 'update',
                 'content': 'Research info search completed',
-                'current_step': state['next_step']
+                'current_node': current_node,
+                'next_node': 'evaluate_research_info',
+                'state': state
             }))
             state['next_step'] = 'evaluate_research_info'
 
-        elif state['next_step'] == 'evaluate_research_info':
+        elif current_node == 'evaluate_research_info':
             evaluation_result = evaluate_research_info(state)
             state.update(evaluation_result)
             
@@ -195,19 +217,29 @@ async def continue_workflow(websocket, state):
                 await websocket.send(json.dumps({
                     'type': 'trial_found',
                     'content': state['research_info'][0],
-                    'current_step': state['next_step']
+                    'current_node': current_node,
+                    'next_node': 'user_decision',
+                    'state': state
                 }))
-                # Wait for user decision to continue search or not
                 break
             else:
                 await websocket.send(json.dumps({
                     'type': 'no_trial_found',
                     'content': state['follow_up'],
-                    'current_step': state['next_step']
+                    'current_node': current_node,
+                    'next_node': 'consultant',
+                    'state': state
                 }))
                 state['next_step'] = 'consultant'
 
-        elif state['next_step'] == 'consultant':
+        elif current_node == 'consultant':
+            await websocket.send(json.dumps({
+                'type': 'update',
+                'content': 'Returning to consultant for follow-up',
+                'current_node': current_node,
+                'next_node': 'user_input',
+                'state': state
+            }))
             await start_conversation(websocket, state)
             break
 
@@ -215,7 +247,8 @@ async def continue_workflow(websocket, state):
         await websocket.send(json.dumps({
             'type': 'workflow_complete',
             'content': 'Workflow completed',
-            'current_step': state['next_step']
+            'current_node': 'state_printer',
+            'next_node': None
         }))
 
 async def handle_continue_search(websocket, state, decision):
