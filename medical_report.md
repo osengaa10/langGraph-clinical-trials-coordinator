@@ -1,60 +1,58 @@
-**Medical Report:**
+**Patient Medical Report**
 
 **Patient Information:**
 
-* Name: [Not Provided]
-* Age: 49 years old
-* Sex: Male
-
-**Chief Complaint:**
-
-* Muscle-invasive bladder cancer (MIBC) with disease progression despite standard treatments.
+* Age: Not specified
+* Gender: Not specified
+* ECOG Performance Status: 2 (limited in more strenuous activities due to fatigue and pelvic pain)
 
 **Medical History:**
 
-* Diagnosis: Muscle-invasive bladder cancer, stage T2, high-grade
-* Initial treatment: Transurethral resection of the bladder tumor (TURBT) followed by cisplatin and gemcitabine chemotherapy
-* Subsequent treatment: Pembrolizumab immunotherapy due to high PD-L1 expression
-* Disease progression despite above treatments
-* No history of radiation therapy
-
-**Current Symptoms:**
-
-* Fatigue
-* Pelvic pain
-
-**Performance Status:**
-
-* Eastern Cooperative Oncology Group (ECOG) score: 2, indicating ability to handle basic self-care but limited in more strenuous activities due to fatigue and pelvic pain.
-
-**Comorbidities:**
-
-* Chronic kidney disease (CKD) with an estimated glomerular filtration rate (eGFR) of approximately 45 mL/min
-* No significant allergies or other comorbidities, such as liver disease or heart conditions.
-
-**Recent Diagnostic Tests:**
-
-* CT scan (approximately one month ago) showing:
-	+ Progression of the primary tumor in the bladder
-	+ No evidence of metastasis to other organs or distant sites
-	+ No new metastases or tumor sites outside the bladder
+* Diagnosis: Bladder cancer
+* Previous treatments:
+	+ Transurethral resection of the bladder tumor (TURBT) to remove the tumor
+	+ Cisplatin and gemcitabine chemotherapy
+	+ Pembrolizumab immunotherapy due to high PD-L1 expression
+* Current condition: Disease progression despite previous treatments, with worsening pelvic pain and fatigue
 
 **Current Medications:**
 
-* None mentioned, but patient has received pembrolizumab immunotherapy in the past.
+* Not specified, but patient is taking medications for manageable side effects from pembrolizumab immunotherapy (mild joint pain and skin rash)
+
+**Comorbidities:**
+
+* Chronic kidney disease (CKD) with an eGFR of approximately 45 mL/min, which may impact treatment decisions and clinical trial eligibility
+
+**Current Symptoms:**
+
+* Worsening pelvic pain
+* Fatigue
+* Mild joint pain
+* Skin rash (manageable with medications)
+
+**Imaging Studies:**
+
+* Most recent CT scan (approximately one month ago) showed:
+	+ Primary tumor in bladder has increased in size, indicating disease progression
+	+ No signs of metastasis to distant organs or lymph nodes
+	+ Tumor is still localized to the bladder, but has become more invasive
+	+ No metastatic lesions detected in other areas (lungs, liver, bones)
+
+**Laboratory Results:**
+
+* Not specified, but liver function is normal
 
 **Clinical Trial Eligibility Considerations:**
 
-* Patient is open to participating in clinical trials that can improve prognosis
-* Patient has a history of CKD, which may impact eligibility for certain trials, especially those involving nephrotoxic treatments.
-* Patient's ECOG performance status of 2 may impact eligibility for trials requiring more strenuous activities.
+* ECOG performance status of 2 may impact eligibility for certain clinical trials
+* Chronic kidney disease (CKD) with an eGFR of approximately 45 mL/min may require careful consideration for treatments that could affect kidney function
+* Mild side effects from pembrolizumab immunotherapy (joint pain and skin rash) may require monitoring during future treatments or clinical trials
+* Disease progression despite previous treatments, including pembrolizumab immunotherapy, may impact eligibility for certain clinical trials
+* Radiation therapy has not been undergone yet and may be a consideration for future treatment
 
-**Recommendations for Clinical Trials:**
+**Recommendations:**
 
-* Trials evaluating novel treatments for muscle-invasive bladder cancer, such as targeted therapies, CAR-T cell therapy, or combination immunotherapies
-* Trials with a focus on patients with CKD or impaired renal function, to ensure safety and efficacy in this population
-* Trials with a focus on patients with ECOG performance status 2, to ensure feasibility and tolerability in this population.
-
-**Conclusion:**
-
-The patient is a 49-year-old male with muscle-invasive bladder cancer, stage T2, high-grade, who has progressed despite standard treatments. He has a history of CKD and an ECOG performance status of 2, which may impact his eligibility for certain clinical trials. The patient is open to participating in clinical trials that can improve his prognosis. Further evaluation and discussion with a medical oncologist or urologic oncologist are recommended to determine the best course of treatment and potential clinical trial options.
+* Consider clinical trials that focus on treatment options for bladder cancer patients with disease progression despite previous treatments, including immunotherapy
+* Look for trials that take into account the patient's CKD and ECOG performance status of 2
+* Consider trials that offer radiation therapy as a treatment option
+* Ensure that the patient's mild side effects from pembrolizumab immunotherapy are monitored and managed during future treatments or clinical trials.

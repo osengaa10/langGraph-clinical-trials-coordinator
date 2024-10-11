@@ -82,7 +82,7 @@ async def websocket_endpoint(websocket: WebSocket):
         print("Connection closed")
         active_connections.remove(websocket)
     except Exception as e:
-        print(f"Error: {str(e)}")
+        print(f"ERROR:: {str(e)} ::ERROR")
         await websocket.send_json({'type': 'error', 'message': str(e)})
 
 
@@ -222,7 +222,7 @@ async def continue_workflow(websocket: WebSocket, state):
             research_info_result = research_info_search(state)
             state.update(research_info_result)
             await websocket.send_json({
-                'type': 'update',
+                'type': 'research_info',
                 'content': 'Research info search completed',
                 'current_node': current_node,
                 'next_node': 'evaluate_research_info',
