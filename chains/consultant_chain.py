@@ -14,12 +14,14 @@ conversation_prompt = ChatPromptTemplate.from_messages([
     MessagesPlaceholder(variable_name="chat_history", optional=True),
     ("human", """Based on the conversation so far, either ask a relevant question to gather more information
     or indicate that you have enough information to generate a medical report.
-    
+
     Your response should be in JSON format with the following structure:
     {{
         "action": "ask_question" or "generate_report",
         "content": "Your question or a message indicating you're ready to generate the report"
     }}
+    
+    Again, ONLY output valid JSON and nothing else.
 
     PATIENT PROMPT:
 

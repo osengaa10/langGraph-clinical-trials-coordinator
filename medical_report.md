@@ -1,58 +1,54 @@
-**Patient Medical Report**
+**Comprehensive Medical Report**
 
 **Patient Information:**
 
-* Age: Not specified
-* Gender: Not specified
-* ECOG Performance Status: 2 (limited in more strenuous activities due to fatigue and pelvic pain)
+* Patient ID: [Insert ID]
+* Name: [Insert Name]
+* Age: 52
+* Sex: Male
+* Date of Birth: [Insert Date of Birth]
 
 **Medical History:**
 
-* Diagnosis: Bladder cancer
-* Previous treatments:
-	+ Transurethral resection of the bladder tumor (TURBT) to remove the tumor
+* **Primary Diagnosis:** Muscle-invasive bladder cancer (MIBC)
+* **Stage and Grade:** T2, high-grade
+* **Tumor Characteristics:** High PD-L1 expression
+* **Prior Treatments:**
+	+ Transurethral resection of the bladder tumor (TURBT)
 	+ Cisplatin and gemcitabine chemotherapy
-	+ Pembrolizumab immunotherapy due to high PD-L1 expression
-* Current condition: Disease progression despite previous treatments, with worsening pelvic pain and fatigue
+	+ Pembrolizumab immunotherapy
+* **Disease Progression:** Recent scans showed disease progression despite above treatments
+* **Radiation Therapy:** None to date
+
+**Symptoms and Performance Status:**
+
+* **ECOG Performance Status:** 2 (able to perform basic self-care but with limitations due to fatigue and pelvic pain)
+* **Symptoms:**
+	+ Persistent fatigue
+	+ Mild peripheral neuropathy
+	+ Joint pain
+	+ Skin rash (from pembrolizumab)
+	+ Pelvic pain
+
+**Genetic Testing:**
+
+* **FGFR3 and ERCC2 Mutations:** Not identified
+* **PD-L1 Expression:** High
+* **Other Genetic Findings:** None reported
 
 **Current Medications:**
 
-* Not specified, but patient is taking medications for manageable side effects from pembrolizumab immunotherapy (mild joint pain and skin rash)
+* None currently, but patient was recently on pembrolizumab
 
-**Comorbidities:**
+**Additional Information:**
 
-* Chronic kidney disease (CKD) with an eGFR of approximately 45 mL/min, which may impact treatment decisions and clinical trial eligibility
+* **Willingness to Participate in Clinical Trials:** Yes, patient is open to additional testing and willing to participate in clinical trials
+* **Availability for Follow-up:** Patient is available for regular follow-up appointments and willing to travel for trial participation if necessary
 
-**Current Symptoms:**
+**Clinical Trial Eligibility:**
 
-* Worsening pelvic pain
-* Fatigue
-* Mild joint pain
-* Skin rash (manageable with medications)
+* **Eligible for Trials with:** Novel immunotherapies, targeted therapies, or combination regimens
+* **Ineligible for Trials with:** FGFR3 or ERCC2 inhibitors (due to lack of mutations)
+* **Other Considerations:** Patient's high PD-L1 expression and prior pembrolizumab treatment may impact eligibility for certain trials
 
-**Imaging Studies:**
-
-* Most recent CT scan (approximately one month ago) showed:
-	+ Primary tumor in bladder has increased in size, indicating disease progression
-	+ No signs of metastasis to distant organs or lymph nodes
-	+ Tumor is still localized to the bladder, but has become more invasive
-	+ No metastatic lesions detected in other areas (lungs, liver, bones)
-
-**Laboratory Results:**
-
-* Not specified, but liver function is normal
-
-**Clinical Trial Eligibility Considerations:**
-
-* ECOG performance status of 2 may impact eligibility for certain clinical trials
-* Chronic kidney disease (CKD) with an eGFR of approximately 45 mL/min may require careful consideration for treatments that could affect kidney function
-* Mild side effects from pembrolizumab immunotherapy (joint pain and skin rash) may require monitoring during future treatments or clinical trials
-* Disease progression despite previous treatments, including pembrolizumab immunotherapy, may impact eligibility for certain clinical trials
-* Radiation therapy has not been undergone yet and may be a consideration for future treatment
-
-**Recommendations:**
-
-* Consider clinical trials that focus on treatment options for bladder cancer patients with disease progression despite previous treatments, including immunotherapy
-* Look for trials that take into account the patient's CKD and ECOG performance status of 2
-* Consider trials that offer radiation therapy as a treatment option
-* Ensure that the patient's mild side effects from pembrolizumab immunotherapy are monitored and managed during future treatments or clinical trials.
+This report provides a comprehensive overview of the patient's medical history, current condition, and treatment history. It highlights the patient's willingness to participate in clinical trials and identifies potential eligibility for various trial types.

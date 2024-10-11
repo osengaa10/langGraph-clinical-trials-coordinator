@@ -42,7 +42,7 @@ const WebSocketClient = () => {
       } else if (data.type === 'new_search_term') {
         setSuggestedSearchTerm(data.content);
       } else if (data.type === 'research_info') {
-        setResearchInfo(data.content);
+        setResearchInfo(data.state.research_info);
         setShowFinalResults(true);
         setLoading(false);
       } else if (data.type === 'search_term_added') {
@@ -164,7 +164,7 @@ const WebSocketClient = () => {
       {showFinalResults && (
         <div style={{ marginTop: '20px' }}>
           <Title level={4}>Final Research Information</Title>
-          <ReactMarkdown>{researchInfo}</ReactMarkdown>
+          <ReactMarkdown>{researchInfo.toString()}</ReactMarkdown>
         </div>
       )}
     </div>
