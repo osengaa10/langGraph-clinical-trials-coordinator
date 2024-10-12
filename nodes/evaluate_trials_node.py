@@ -9,7 +9,7 @@ def evaluate_research_info(state):
 
     # Use the evaluation chain to determine if a trial was found
     evaluation_result = evaluate_trials_chain.invoke({"research_info": research_info})
-    
+    did_find_trials = evaluation_result
     if "A suitable clinical trial was found:" in evaluation_result:
         print("Clinical trial found.")
         print(evaluation_result)
@@ -36,5 +36,6 @@ def evaluate_research_info(state):
     return {
         "next_step": next_step,
         "num_steps": num_steps,
-        "follow_up": follow_up
+        "follow_up": follow_up,
+        "did_find_trials": did_find_trials
     }

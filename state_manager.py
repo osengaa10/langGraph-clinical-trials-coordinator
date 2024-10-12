@@ -11,7 +11,7 @@ def initialize_state():
         follow_up="",
         num_steps=0,
         next_step="consultant",
-        draft_email_feedback={},
+        did_find_trials="",
         rag_questions=[]
     )
     return state

@@ -6,7 +6,7 @@ from typing import List
 from graph import create_workflow, GraphState
 from LLMs.llm import GROQ_LLM
 from dotenv import load_dotenv
-from nodes.consultant_node import consultant_chain, format_chat_history
+from nodes.consultant_node import consultant, consultant_chain, format_chat_history
 from nodes.prompt_distiller_node import prompt_distiller_chain
 from nodes.trials_search_node import trials_search
 from nodes.rag_node import research_info_search
@@ -48,7 +48,7 @@ async def websocket_endpoint(websocket: WebSocket):
         follow_up="",
         num_steps=0,
         next_step="consultant",
-        draft_email_feedback={},
+        did_find_trials="",
         rag_questions=[]
     )
 
@@ -87,17 +87,39 @@ async def websocket_endpoint(websocket: WebSocket):
 
 
 async def start_conversation(websocket: WebSocket, state):
+    chat_history = state.get("chat_history", [])
+    if not chat_history:
+        response = consultant_chain["conversation"].invoke({
+            "chat_history": state['chat_history'],
+            "initial_prompt": "Ask the patient what their medical issue is."
+        })
+        state['chat_history'].append({"role": "assistant", "content": response['content']})
+        await websocket.send_json({
+            'type': 'question',
+            'content': response['content'],
+            'state': state
+        })
+    else:
+        # If we're coming back from a failed trial search or for more information
+        follow_up = state.get("follow_up", "")
+        if follow_up:
+            initial_prompt = f"Based on our previous conversation and the following additional information needed: {follow_up}, ask a relevant follow-up question."
+        else:
+            initial_prompt = "Based on our previous conversation, ask a relevant follow-up question to gather more information about the patient's condition."
+
+    print(f"initial_prompt:: {initial_prompt}")
     response = consultant_chain["conversation"].invoke({
         "chat_history": state['chat_history'],
-        "initial_prompt": "Ask the patient what their medical issue is."
+        "initial_prompt": initial_prompt
     })
-    
     state['chat_history'].append({"role": "assistant", "content": response['content']})
     await websocket.send_json({
         'type': 'question',
         'content': response['content'],
         'state': state
     })
+
+
 
 async def handle_user_input(websocket: WebSocket, state, user_input):
     state['chat_history'].append({"role": "user", "content": user_input})
@@ -234,7 +256,7 @@ async def continue_workflow(websocket: WebSocket, state):
             evaluation_result = evaluate_research_info(state)
             state.update(evaluation_result)
             
-            if "A suitable clinical trial was found:" in state['research_info'][0]:
+            if "A suitable clinical trial was found:" in state['did_find_trials'][0]:
                 await websocket.send_json({
                     'type': 'trial_found',
                     'content': state['research_info'][0],

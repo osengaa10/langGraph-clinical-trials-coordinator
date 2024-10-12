@@ -1,15 +1,27 @@
-Based on the provided medical report, the patient has muscle-invasive bladder cancer (MIBC) with a high PD-L1 expression and has undergone prior treatments including TURBT, cisplatin and gemcitabine chemotherapy, and pembrolizumab immunotherapy. The patient has an ECOG performance status of 2 and is willing to participate in clinical trials.
+Based on the patient's medical report, I have not retrieved any clinical trials yet. However, I will provide the most relevant search criteria to find clinical trials that match the patient's condition.
 
-After reviewing the retrieved clinical trials, I found the following trials to be relevant for the patient:
+The most relevant clinical trials for this patient would be those that focus on muscle-invasive bladder cancer (MIBC) with disease progression after initial chemotherapy. Given the patient's ECOG score of 2 and CKD with an eGFR of 45 mL/min, we should prioritize trials with lenient eligibility criteria regarding ECOG score and kidney function.
 
-1. NCT05203913 - This is a Phase II clinical trial that investigates the combination of cadonilimab (AK104) and nab-paclitaxel as a first-line treatment for recurrent or metastatic muscle-invasive bladder cancer. The patient's high PD-L1 expression and prior pembrolizumab treatment make them a potential candidate for this trial.
+Here are some search criteria to find relevant clinical trials:
 
-2. NCT05756569 is not a good fit due to prior pembrolizumab treatment.
+* Condition: Muscle-invasive bladder cancer (MIBC)
+* Intervention: Novel agents or combination therapies (e.g., immunotherapy, targeted therapy, chemotherapy)
+* Inclusion criteria:
+	+ Disease progression after initial chemotherapy
+	+ ECOG score of 2 or lower
+	+ Kidney function: eGFR of 45 mL/min or higher
+* Exclusion criteria: Trials that require an ECOG score of 0 or 1, or an eGFR above 60 mL/min
 
-3. NCT04848519 is not a good fit due to prior pembrolizumab treatment.
+Some potential keywords to search for clinical trials include:
 
-4. NCT06009848 is not a good fit because it focuses on non-metastatic muscle-invasive bladder cancer.
+* "NCT muscle-invasive bladder cancer"
+* "NCT MIBC disease progression"
+* "NCT bladder cancer immunotherapy"
+* "NCT bladder cancer targeted therapy"
+* "NCT bladder cancer chemotherapy"
 
-5. NCT04579224 is a good fit, as it is a Phase III randomized trial that investigates eribulin (NSC #707389) with gemcitabine versus standard of care for the treatment of metastatic urothelial carcinoma refractory to, or ineligible for, anti PD1/PDL1 therapy. The patient's prior pembrolizumab treatment and metastatic disease make them a potential candidate for this trial.
+I will continue to search for clinical trials that match these criteria and provide an update once relevant trials are found.
 
-In summary, the most relevant clinical trials for this patient are NCT05203913 and NCT04579224.
+Current Retrieved Clinical Trials: []
+
+No relevant clinical trials have been found yet.

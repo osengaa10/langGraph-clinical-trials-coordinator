@@ -18,6 +18,7 @@ const WebSocketClient = () => {
   const [researchInfo, setResearchInfo] = useState('');
   const [conversationStarted, setConversationStarted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [showTrialButtons, setShowTrialButtons] = useState(false);
   const chatEndRef = useRef(null);
 
   useEffect(() => {
@@ -33,9 +34,12 @@ const WebSocketClient = () => {
       const data = JSON.parse(event.data);
       if (data.type === 'connected') {
         message.success('WebSocket connection established');
-      } else if (data.type === 'question' || data.type === 'update' || data.type === 'trial_found' || data.type === 'no_trial_found') {
+      } else if (data.type === 'question' || data.type === 'update' || data.type === 'no_trial_found') {
         setChatHistory((prev) => [...prev, { role: 'assistant', content: data.content }]);
         setConversationStarted(true);
+        if (data.type === 'no_trial_found') {
+          setShowTrialButtons(false);
+        }
       } else if (data.type === 'report') {
         setMedicalReport(data.content);
         setShowSearchTermSection(true);
@@ -53,6 +57,8 @@ const WebSocketClient = () => {
         message.error('Invalid input. Please try again.');
       } else if (data.type === 'workflow_complete') {
         message.success('Workflow completed');
+      } else if (data.type === 'trials_found') {
+        setShowTrialButtons(true);
       }
     };
 
@@ -96,6 +102,21 @@ const WebSocketClient = () => {
     }
   };
 
+  const handleContinueSearch = () => {
+    if (socket) {
+      socket.send(JSON.stringify({ command: 'continue_search', decision: 'yes' }));
+      setShowTrialButtons(false);
+      setConversationStarted(true);
+    }
+  };
+
+  const handleEndSearch = () => {
+    if (socket) {
+      socket.send(JSON.stringify({ command: 'continue_search', decision: 'no' }));
+      setShowTrialButtons(false);
+    }
+  };
+
   return (
     <div style={{ padding: '20px' }}>
       <Title>Clinexus</Title>
@@ -125,7 +146,7 @@ const WebSocketClient = () => {
           Start Conversation
         </Button>
       )}
-      {!showSearchTermSection && !showFinalResults && conversationStarted && (
+      {!showSearchTermSection && conversationStarted && (
         <>
           <Input.TextArea
             rows={4}
@@ -141,19 +162,15 @@ const WebSocketClient = () => {
       )}
       {showSearchTermSection && (
         <div style={{ marginTop: '20px' }}>
-          <Title level={4}>Medical Report</Title>
-          <ReactMarkdown>{medicalReport}</ReactMarkdown>
-          <div style={{ marginTop: '20px' }}>
-            <Text strong>Suggested Search Term: </Text>
-            <Input
-              value={searchTerm || suggestedSearchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              style={{ marginBottom: '10px', width: '300px' }}
-            />
-            <Button type="primary" onClick={handleUserSearchTerm} disabled={!searchTerm.trim() && !suggestedSearchTerm.trim()}>
-              Add Search Term
-            </Button>
-          </div>
+          <Text strong>Suggested Search Term: </Text>
+          <Input
+            value={searchTerm || suggestedSearchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            style={{ marginBottom: '10px', width: '300px' }}
+          />
+          <Button type="primary" onClick={handleUserSearchTerm} disabled={!searchTerm.trim() && !suggestedSearchTerm.trim()}>
+            Add Search Term
+          </Button>
         </div>
       )}
       {loading && (
@@ -161,10 +178,24 @@ const WebSocketClient = () => {
           <Spin tip="Loading final research information..." />
         </div>
       )}
-      {showFinalResults && (
-        <div style={{ marginTop: '20px' }}>
-          <Title level={4}>Final Research Information</Title>
-          <ReactMarkdown>{researchInfo.toString()}</ReactMarkdown>
+      <div style={{ marginTop: '20px' }}>
+        <Title level={4}>Medical Report</Title>
+        <ReactMarkdown>{medicalReport}</ReactMarkdown>
+      </div>
+
+      <div style={{ marginTop: '20px' }}>
+        <Title level={4}>Final Research Information</Title>
+        <ReactMarkdown>{researchInfo.toString()}</ReactMarkdown>
+      </div>
+
+      {showTrialButtons && (
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <Button type="primary" onClick={handleContinueSearch} style={{ marginRight: '10px' }}>
+            Continue Searching
+          </Button>
+          <Button type="default" onClick={handleEndSearch}>
+            End Search
+          </Button>
         </div>
       )}
     </div>

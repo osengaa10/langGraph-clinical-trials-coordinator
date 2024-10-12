@@ -8,12 +8,24 @@ from nodes.rag_node import research_info_search
 from nodes.evaluate_trials_node import evaluate_research_info
 
 
-async def start_conversation(websocket, state):
+async def start_conversation(websocket: WebSocket, state):
+    chat_history = state.get("chat_history", [])
+    initial_prompt = ""
+    if not chat_history:
+        initial_prompt = "Ask the patient what their medical issue is."
+    else:
+        # If we're coming back from a failed trial search or for more information
+        follow_up = state.get("follow_up", "")
+        if follow_up:
+            initial_prompt = f"Based on our previous conversation and the following additional information needed: {follow_up}, ask a relevant follow-up question."
+        else:
+            initial_prompt = "Based on our previous conversation, ask a relevant follow-up question to gather more information about the patient's condition."
+
+    print(f"initial_prompt:: {initial_prompt}")
     response = consultant_chain["conversation"].invoke({
         "chat_history": state['chat_history'],
-        "initial_prompt": "Ask the patient what their medical issue is."
+        "initial_prompt": initial_prompt
     })
-    
     state['chat_history'].append({"role": "assistant", "content": response['content']})
     await websocket.send_json({
         'type': 'question',
@@ -108,13 +120,18 @@ async def handle_search_term_decision(websocket: WebSocket, state, decision):
 
 
 async def handle_user_search_term(websocket: WebSocket, state, user_search_term):
+    print(f"user_search_term:: {user_search_term}")
     if user_search_term and user_search_term not in state['search_term']:
+        print(f"user_search_term inside search_term_added:: {user_search_term}")
+
         state['search_term'].append(user_search_term)
         await websocket.send_json({
             'type': 'search_term_added',
             'content': user_search_term,
             'state': state
         })
+        print("===sent response back to UI to tell user search term added!!====")
+        print(f"heres the state: {state}")
         await continue_workflow(websocket, state)
     elif user_search_term in state['search_term']:
         await websocket.send_json({
@@ -174,7 +191,7 @@ async def continue_workflow(websocket: WebSocket, state):
             evaluation_result = evaluate_research_info(state)
             state.update(evaluation_result)
             
-            if "A suitable clinical trial was found:" in state['research_info'][0]:
+            if "A suitable clinical trial was found:" in state['did_find_trials']:
                 await websocket.send_json({
                     'type': 'trial_found',
                     'content': state['research_info'][0],
@@ -211,3 +228,12 @@ async def continue_workflow(websocket: WebSocket, state):
             'current_node': 'state_printer',
             'next_node': None
         })
+
+# async def handle_continue_search(websocket: WebSocket, state, decision):
+#     if decision == 'yes':
+#         state['next_step'] = 'consultant'
+#         state['follow_up'] = "Let's explore more options. Can you provide any additional details about your condition or preferences for treatment?"
+#         await start_conversation(websocket, state)
+#     else:
+#         state['next_step'] = 'state_printer'
+#         await continue_workflow(websocket, state)
