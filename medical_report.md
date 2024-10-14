@@ -2,56 +2,59 @@
 
 **Patient Information:**
 
-* Name: [Redacted]
-* Age: 47 years old
-* Sex: Male
+* Age: 49
+* Sex: Not specified
+* ECOG Performance Status: 1
 
 **Medical History:**
 
-* Primary Diagnosis: Muscle-invasive bladder cancer (MIBC)
-* Stage and Grade: Stage T2, high-grade
-* Initial Treatment: Transurethral resection of the bladder tumor (TURBT) followed by cisplatin and gemcitabine chemotherapy
-* Disease Progression: Despite initial chemotherapy, recent scans have shown disease progression
+* Muscle Invasive Bladder Cancer (MIBC)
+* Recent transurethral resection of bladder tumor (TURBT) to remove the tumor
+* No prior chemotherapy or radiation therapy
+* FGFR3 point mutation identified
+* Chronic Kidney Disease (CKD) stage 2 with:
+	+ eGFR: 60-89 mL/min
+	+ Creatinine levels: 1.5-1.8 mg/dL
+* No prior surgeries or conditions that may affect eligibility for clinical trials
+* No history of organ transplants, HIV, or hepatitis B/C infection
 
-**Current Symptoms:**
+**Symptoms:**
 
-* Fatigue
-* Pelvic pain
-* Hematuria (blood in the urine)
-
-**Performance Status:**
-
-* Eastern Cooperative Oncology Group (ECOG) score: 2, indicating limited ability to perform strenuous activities due to fatigue and pelvic pain
-
-**Comorbidities:**
-
-* Chronic Kidney Disease (CKD) with an estimated glomerular filtration rate (eGFR) of 45 mL/min
-* Mild anemia, likely related to cancer and previous treatments
-
-**Laboratory Results:**
-
-* Complete Blood Count (CBC): Mild anemia (Hemoglobin: [Redacted]), white blood cell and platelet counts within normal ranges
-* Liver Function Tests: Normal (ALT, AST, bilirubin levels within normal ranges)
-* Urinalysis: Traces of hematuria (blood in the urine)
+* Hematuria (visible blood in urine)
+* Urinary frequency
+* Mild pelvic pain
 
 **Current Medications:**
 
-* [No current medications are listed, but please note that any potential medications will need to be evaluated for compatibility with clinical trial participation]
+* None mentioned
 
-**Other Relevant Factors:**
+**Treatment Goals:**
 
-* No significant medical history of heart disease, diabetes, liver issues, or other comorbidities that might impact clinical trial eligibility
-* Careful monitoring of kidney function will be necessary due to CKD and eGFR of 45 mL/min
+* Patient is seeking an immunotherapy or precision medicine approach in a clinical trial
+* Willing to consider combination therapy trials that pair an FGFR inhibitor with an immunotherapy agent
+* Also open to single-agent precision medicine approaches
 
-**Clinical Trial Eligibility Considerations:**
+**Clinical Trial Eligibility:**
 
-* The patient's ECOG score of 2 and CKD with an eGFR of 45 mL/min may impact eligibility for certain clinical trials
-* Any potential clinical trial participation will require careful evaluation of the patient's current health status, laboratory results, and medication regimen to ensure compatibility and minimize potential risks
+* Seeking trials that focus on MIBC with FGFR3 point mutations
+* Interested in trials that investigate FGFR inhibitors, checkpoint inhibitors, or other immunotherapies
+* Trials should be suitable for patients with CKD stage 2 and mild pelvic pain
 
-**Recommendations for Clinical Trial Search:**
+**Relevant Laboratory Results:**
 
-* Consider clinical trials focusing on muscle-invasive bladder cancer (MIBC) with disease progression after initial chemotherapy
-* Look for trials with lenient eligibility criteria regarding ECOG score and kidney function to accommodate the patient's current health status
-* Evaluate trials with novel agents or combination therapies that may offer improved efficacy and tolerability compared to standard treatments
+* eGFR: 60-89 mL/min
+* Creatinine levels: 1.5-1.8 mg/dL
+* FGFR3 point mutation identified
 
-This comprehensive medical report provides a detailed overview of the patient's condition, including symptoms, medical history, laboratory results, and other relevant factors. This information will be essential for identifying suitable clinical trials and ensuring the patient's safety and potential benefits from participation.
+**Other Relevant Information:**
+
+* Patient is closely monitored for kidney function due to CKD stage 2
+* Patient's symptoms are manageable but present
+
+**Recommendations:**
+
+* Consider enrolling patient in clinical trials that investigate FGFR inhibitors or combination therapies with immunotherapy agents
+* Monitor patient's kidney function closely throughout the trial
+* Assess patient's symptoms and quality of life regularly to ensure trial tolerability
+
+This comprehensive medical report provides a detailed summary of the patient's condition, medical history, and treatment goals. It will serve as a valuable resource for healthcare professionals to identify suitable clinical trials for the patient.

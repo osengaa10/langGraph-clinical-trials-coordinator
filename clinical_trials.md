@@ -1,27 +1,17 @@
-Based on the patient's medical report, I have not retrieved any clinical trials yet. However, I will provide the most relevant search criteria to find clinical trials that match the patient's condition.
+Based on the patient's medical report, I have found one clinical trial that may be relevant for them. The patient has Muscle Invasive Bladder Cancer (MIBC) with an FGFR3 point mutation, and they are seeking an immunotherapy or precision medicine approach in a clinical trial.
 
-The most relevant clinical trials for this patient would be those that focus on muscle-invasive bladder cancer (MIBC) with disease progression after initial chemotherapy. Given the patient's ECOG score of 2 and CKD with an eGFR of 45 mL/min, we should prioritize trials with lenient eligibility criteria regarding ECOG score and kidney function.
+The most relevant clinical trial for this patient is:
 
-Here are some search criteria to find relevant clinical trials:
+1. NCT05544552: A Multicenter, Open-label Phase 1/2 Study of TYRA300 in Advanced Urothelial Carcinoma and Other Solid Tumors With Activating FGFR3 Gene Alterations (SURF301)
 
-* Condition: Muscle-invasive bladder cancer (MIBC)
-* Intervention: Novel agents or combination therapies (e.g., immunotherapy, targeted therapy, chemotherapy)
-* Inclusion criteria:
-	+ Disease progression after initial chemotherapy
-	+ ECOG score of 2 or lower
-	+ Kidney function: eGFR of 45 mL/min or higher
-* Exclusion criteria: Trials that require an ECOG score of 0 or 1, or an eGFR above 60 mL/min
+This trial is studying the efficacy and safety of TYRA-300, an oral, novel potent FGFR3-selective tyrosine kinase inhibitor, in patients with advanced urothelial carcinoma and other solid tumors with activating FGFR3 gene alterations. The trial is open-label, meaning that all patients will receive the study treatment, and it is a Phase 1/2 trial, meaning that it is evaluating the safety and efficacy of the treatment.
 
-Some potential keywords to search for clinical trials include:
+The expected outcome of this trial is to determine the maximum tolerated dose of TYRA-300 and to evaluate its efficacy in patients with advanced urothelial carcinoma and other solid tumors with activating FGFR3 gene alterations.
 
-* "NCT muscle-invasive bladder cancer"
-* "NCT MIBC disease progression"
-* "NCT bladder cancer immunotherapy"
-* "NCT bladder cancer targeted therapy"
-* "NCT bladder cancer chemotherapy"
+The possible risks associated with this trial include eye toxicity, cardiovascular disease, and gastrointestinal disorders. Additionally, females who are pregnant or breastfeeding and males who plan to father a child while enrolled in this study are excluded from participating.
 
-I will continue to search for clinical trials that match these criteria and provide an update once relevant trials are found.
+It is essential to note that this trial is not specifically designed for patients with MIBC, but it does include patients with advanced urothelial carcinoma, which may be relevant for this patient. However, the patient's medical report does not provide enough information to determine if they meet the eligibility criteria for this trial.
 
-Current Retrieved Clinical Trials: []
+The other trials mentioned in the retrieved clinical trials are not relevant for this patient. NCT04917809 is a trial for patients with recurrent FGFR3-altered non-muscle invasive bladder cancer, which does not match the patient's diagnosis of MIBC. NCT05151341 is a trial for the detection of bladder cancer using a urine analysis combining VisioCyt automated cytology and FGFR3 mutations, which is not a treatment trial.
 
-No relevant clinical trials have been found yet.
+In conclusion, NCT05544552 is the most relevant clinical trial for this patient, but it is essential to review the patient's medical report and the trial's eligibility criteria to determine if they are a good fit for the trial.

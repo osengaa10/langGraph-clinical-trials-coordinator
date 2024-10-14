@@ -35,9 +35,11 @@ const WebSocketClient = () => {
       if (data.type === 'connected') {
         message.success('WebSocket connection established');
       } else if (data.type === 'question' || data.type === 'update' || data.type === 'no_trial_found') {
+        console.log("data.type", data.type)
         setChatHistory((prev) => [...prev, { role: 'assistant', content: data.content }]);
         setConversationStarted(true);
         if (data.type === 'no_trial_found') {
+          console.log("NO TRIAL FOUND")
           setShowTrialButtons(false);
         }
       } else if (data.type === 'report') {
@@ -50,7 +52,10 @@ const WebSocketClient = () => {
         setShowFinalResults(true);
         setLoading(false);
       } else if (data.type === 'search_term_added') {
+        console.log("Search term added received:", data);
         message.success(`Search term added: ${data.content}`);
+        setShowSearchTermSection(false);
+        setLoading(true);
       } else if (data.type === 'search_term_exists') {
         message.warning(`Search term already exists: ${data.content}`);
       } else if (data.type === 'invalid_input') {
@@ -58,6 +63,7 @@ const WebSocketClient = () => {
       } else if (data.type === 'workflow_complete') {
         message.success('Workflow completed');
       } else if (data.type === 'trials_found') {
+        console.log("TRIALS FOUND")
         setShowTrialButtons(true);
       }
     };
@@ -92,19 +98,27 @@ const WebSocketClient = () => {
     }
   };
 
+//   const handleUserSearchTerm2 = () => {
+//     if (socket && (searchTerm.trim() || suggestedSearchTerm.trim())) {
+//       const termToAdd = searchTerm.trim() || suggestedSearchTerm;
+//       socket.send(JSON.stringify({ command: 'user_search_term', search_term: termToAdd }));
+//       setSearchTerm('');
+//       setShowSearchTermSection(false);
+//       setLoading(true);
+//     }
+//   };
+
   const handleUserSearchTerm = () => {
     if (socket && (searchTerm.trim() || suggestedSearchTerm.trim())) {
       const termToAdd = searchTerm.trim() || suggestedSearchTerm;
       socket.send(JSON.stringify({ command: 'user_search_term', search_term: termToAdd }));
       setSearchTerm('');
-      setShowSearchTermSection(false);
-      setLoading(true);
     }
   };
 
   const handleContinueSearch = () => {
     if (socket) {
-      socket.send(JSON.stringify({ command: 'continue_search', decision: 'yes' }));
+      socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'yes' }));
       setShowTrialButtons(false);
       setConversationStarted(true);
     }
@@ -112,7 +126,7 @@ const WebSocketClient = () => {
 
   const handleEndSearch = () => {
     if (socket) {
-      socket.send(JSON.stringify({ command: 'continue_search', decision: 'no' }));
+      socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'no' }));
       setShowTrialButtons(false);
     }
   };

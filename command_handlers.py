@@ -6,7 +6,7 @@ from fastapi import WebSocket
 from nodes.trials_search_node import trials_search 
 from nodes.rag_node import research_info_search
 from nodes.evaluate_trials_node import evaluate_research_info
-
+import asyncio
 
 async def start_conversation(websocket: WebSocket, state):
     chat_history = state.get("chat_history", [])
@@ -130,6 +130,7 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
             'content': user_search_term,
             'state': state
         })
+        await asyncio.sleep(0.1)
         print("===sent response back to UI to tell user search term added!!====")
         print(f"heres the state: {state}")
         await continue_workflow(websocket, state)
@@ -148,11 +149,14 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
 
 
 async def handle_continue_search(websocket: WebSocket, state, decision):
+    state['keep_searching'] = 'yes'
     if decision == 'yes':
         state['next_step'] = 'consultant'
+        # state['keep_searching'] = 'yes'
         state['follow_up'] = "Let's explore more options. Can you provide any additional details about your condition or preferences for treatment?"
         await start_conversation(websocket, state)
     else:
+        # state['keep_searching'] = 'no'
         state['next_step'] = 'state_printer'
         await continue_workflow(websocket, state)
 
@@ -229,11 +233,7 @@ async def continue_workflow(websocket: WebSocket, state):
             'next_node': None
         })
 
-# async def handle_continue_search(websocket: WebSocket, state, decision):
-#     if decision == 'yes':
-#         state['next_step'] = 'consultant'
-#         state['follow_up'] = "Let's explore more options. Can you provide any additional details about your condition or preferences for treatment?"
-#         await start_conversation(websocket, state)
-#     else:
-#         state['next_step'] = 'state_printer'
-#         await continue_workflow(websocket, state)
+
+async def handle_evaluate_trials(websocket: WebSocket, state):
+    
+    pass

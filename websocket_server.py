@@ -49,7 +49,8 @@ async def websocket_endpoint(websocket: WebSocket):
         num_steps=0,
         next_step="consultant",
         did_find_trials="",
-        rag_questions=[]
+        rag_questions=[],
+        keep_searching =""
     )
 
     try:
@@ -81,9 +82,9 @@ async def websocket_endpoint(websocket: WebSocket):
     except WebSocketDisconnect:
         print("Connection closed")
         active_connections.remove(websocket)
-    except Exception as e:
-        print(f"ERROR:: {str(e)} ::ERROR")
-        await websocket.send_json({'type': 'error', 'message': str(e)})
+    # except Exception as e:
+    #     print(f"ERROR:: {str(e)} ::ERROR")
+    #     await websocket.send_json({'type': 'error', 'message': str(e)})
 
 
 async def start_conversation(websocket: WebSocket, state):
@@ -140,6 +141,7 @@ async def handle_user_input(websocket: WebSocket, state, user_input):
         })
     elif response.get('action') == 'generate_report':
         await generate_report(websocket, state)
+
 
 async def generate_report(websocket: WebSocket, state):
     summary = consultant_chain["report"].invoke({
@@ -202,12 +204,14 @@ async def handle_search_term_decision(websocket: WebSocket, state, decision):
 
 async def handle_user_search_term(websocket: WebSocket, state, user_search_term):
     if user_search_term and user_search_term not in state['search_term']:
+        print(f"user_search_term inside search_term_added:: {user_search_term}")
         state['search_term'].append(user_search_term)
         await websocket.send_json({
             'type': 'search_term_added',
             'content': user_search_term,
             'state': state
         })
+        print("===sent response back to UI to tell user search term added!!====")
         await continue_workflow(websocket, state)
     elif user_search_term in state['search_term']:
         await websocket.send_json({

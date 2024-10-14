@@ -12,6 +12,7 @@ def initialize_state():
         num_steps=0,
         next_step="consultant",
         did_find_trials="",
-        rag_questions=[]
+        rag_questions=[],
+        keep_searching = ""
     )
     return state

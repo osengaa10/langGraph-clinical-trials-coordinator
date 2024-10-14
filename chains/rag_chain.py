@@ -23,6 +23,7 @@ rag_prompt = PromptTemplate(
     {context}
 
     Find the most relevant clinical trials for this patient based on their medical report.
+    State the expected outcome and possible risks associated.
     Ensure that you always include the NCT ID for each trial you mention
     <|eot_id|>
     <|start_header_id|>assistant<|end_header_id|>
