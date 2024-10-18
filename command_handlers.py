@@ -5,7 +5,7 @@ from fastapi import WebSocket
 # from workflow_handler import continue_workflow
 from nodes.trials_search_node import trials_search 
 from nodes.rag_node import research_info_search
-from nodes.evaluate_trials_node import evaluate_research_info
+from nodes.evaluate_trials_node import evaluate_research_info, evaluate_trials_chain
 import asyncio
 
 async def start_conversation(websocket: WebSocket, state):
@@ -85,6 +85,7 @@ async def handle_prompt_distiller(websocket, state):
     await websocket.send_json({
         'type': 'new_search_term',
         'content': new_search_term,
+        'current_node': 'prompt_distiller',
         'state': state
     })
 
@@ -120,9 +121,7 @@ async def handle_search_term_decision(websocket: WebSocket, state, decision):
 
 
 async def handle_user_search_term(websocket: WebSocket, state, user_search_term):
-    print(f"user_search_term:: {user_search_term}")
     if user_search_term and user_search_term not in state['search_term']:
-        print(f"user_search_term inside search_term_added:: {user_search_term}")
 
         state['search_term'].append(user_search_term)
         await websocket.send_json({
@@ -131,8 +130,6 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
             'state': state
         })
         await asyncio.sleep(0.1)
-        print("===sent response back to UI to tell user search term added!!====")
-        print(f"heres the state: {state}")
         await continue_workflow(websocket, state)
     elif user_search_term in state['search_term']:
         await websocket.send_json({
@@ -146,6 +143,31 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
             'type': 'invalid_input',
             'state': state
         })
+
+async def handle_evaluate_trials(websocket: WebSocket, state):
+    research_info = state['research_info']
+    evaluation_result = evaluate_trials_chain.invoke({"research_info": research_info})
+    print(f"evaluation_result:: {evaluation_result}")
+    if "A suitable clinical trial was found:" in evaluation_result:
+        await websocket.send_json({
+            'type': 'trials_found',
+            'content': state['research_info'][0],
+            'current_node': 'evaluate_trials',
+            'next_node': 'user_decision',
+            'state': state
+        })
+        await asyncio.sleep(0.1)
+        state['next_step'] = 'state_printer'
+    else:
+        await websocket.send_json({
+            'type': 'no_trial_found',
+            'content': state['follow_up'],
+            'current_node': 'evaluate_trials',
+            'next_node': 'consultant',
+            'state': state
+        })
+        await asyncio.sleep(0.1)
+        state['next_step'] = 'consultant'
 
 
 async def handle_continue_search(websocket: WebSocket, state, decision):
@@ -177,6 +199,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 'next_node': 'research_info_search',
                 'state': state
             })
+            await asyncio.sleep(0.1)
             state['next_step'] = 'research_info_search'
 
         elif current_node == 'research_info_search':
@@ -189,30 +212,35 @@ async def continue_workflow(websocket: WebSocket, state):
                 'next_node': 'evaluate_research_info',
                 'state': state
             })
+            await asyncio.sleep(0.1)
             state['next_step'] = 'evaluate_research_info'
 
         elif current_node == 'evaluate_research_info':
-            evaluation_result = evaluate_research_info(state)
-            state.update(evaluation_result)
+            # evaluation_result = evaluate_research_info(state)
+            await handle_evaluate_trials(websocket, state)
+            # print(f"evaluation_result:: {evaluation_result}")
+            # state.update(evaluation_result)
             
-            if "A suitable clinical trial was found:" in state['did_find_trials']:
-                await websocket.send_json({
-                    'type': 'trial_found',
-                    'content': state['research_info'][0],
-                    'current_node': current_node,
-                    'next_node': 'user_decision',
-                    'state': state
-                })
-                break
-            else:
-                await websocket.send_json({
-                    'type': 'no_trial_found',
-                    'content': state['follow_up'],
-                    'current_node': current_node,
-                    'next_node': 'consultant',
-                    'state': state
-                })
-                state['next_step'] = 'consultant'
+            # if "A suitable clinical trial was found:" in state['did_find_trials']:
+            #     await websocket.send_json({
+            #         'type': 'trial_found',
+            #         'content': state['research_info'][0],
+            #         'current_node': current_node,
+            #         'next_node': 'user_decision',
+            #         'state': state
+            #     })
+            #     await asyncio.sleep(0.1)
+            #     break
+            # else:
+            #     await websocket.send_json({
+            #         'type': 'no_trial_found',
+            #         'content': state['follow_up'],
+            #         'current_node': current_node,
+            #         'next_node': 'consultant',
+            #         'state': state
+            #     })
+            #     await asyncio.sleep(0.1)
+            #     state['next_step'] = 'consultant'
 
         elif current_node == 'consultant':
             await websocket.send_json({
@@ -222,6 +250,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 'next_node': 'user_input',
                 'state': state
             })
+            await asyncio.sleep(0.1)
             await start_conversation(websocket, state)
             break
 
@@ -232,8 +261,3 @@ async def continue_workflow(websocket: WebSocket, state):
             'current_node': 'state_printer',
             'next_node': None
         })
-
-
-async def handle_evaluate_trials(websocket: WebSocket, state):
-    
-    pass
