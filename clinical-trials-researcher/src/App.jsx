@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Button, Input, Typography, List, message, Spin } from 'antd';
+import { Button, Input, Typography, List, message, Spin, Divider } from 'antd';
 import ReactMarkdown from 'react-markdown';
 import 'antd/dist/reset.css';
 
@@ -65,6 +65,8 @@ const WebSocketClient = () => {
       } else if (data.type === 'trials_found') {
         console.log("TRIALS FOUND")
         setShowTrialButtons(true);
+      } else if (data.content === 'Clinical trials search completed') {
+        message.info(`${data.state.studies_found} trials received for: ${searchTerm}`);
       }
     };
 
@@ -97,16 +99,6 @@ const WebSocketClient = () => {
       setUserInput('');
     }
   };
-
-//   const handleUserSearchTerm2 = () => {
-//     if (socket && (searchTerm.trim() || suggestedSearchTerm.trim())) {
-//       const termToAdd = searchTerm.trim() || suggestedSearchTerm;
-//       socket.send(JSON.stringify({ command: 'user_search_term', search_term: termToAdd }));
-//       setSearchTerm('');
-//       setShowSearchTermSection(false);
-//       setLoading(true);
-//     }
-//   };
 
   const handleUserSearchTerm = () => {
     if (socket && (searchTerm.trim() || suggestedSearchTerm.trim())) {
@@ -192,15 +184,18 @@ const WebSocketClient = () => {
           <Spin tip="Loading final research information..." />
         </div>
       )}
-      <div style={{ marginTop: '20px' }}>
-        <Title level={4}>Medical Report</Title>
-        <ReactMarkdown>{medicalReport}</ReactMarkdown>
-      </div>
-
-      <div style={{ marginTop: '20px' }}>
-        <Title level={4}>Final Research Information</Title>
-        <ReactMarkdown>{researchInfo.toString()}</ReactMarkdown>
-      </div>
+      {medicalReport && (
+        <div style={{ marginTop: '20px' }}>
+        <Divider style={{  borderColor: '#7cb305' }}>Medical Report</Divider>
+          <ReactMarkdown>{medicalReport}</ReactMarkdown>
+        </div>
+      )}
+      {researchInfo && (
+        <div style={{ marginTop: '20px' }}>
+          <Divider style={{  borderColor: '#7cb305' }}>Final Research Information</Divider>
+          <ReactMarkdown>{researchInfo.toString()}</ReactMarkdown>
+        </div>
+      )}
 
       {showTrialButtons && (
         <div style={{ marginTop: '20px', textAlign: 'center' }}>

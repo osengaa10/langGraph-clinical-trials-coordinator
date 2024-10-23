@@ -16,10 +16,7 @@ def evaluate_research_info(state):
         print(evaluation_result)
         
         while True:
-            print("BEFORE user response...")
             user_response = input("Do you want to keep searching? (yes/no): ").lower().strip()
-            print("AFTER user response...")
-
             if user_response in ['yes', 'no'] or keep_searching in ['yes', 'no']:
                 break
             print("Please answer with 'yes' or 'no'.")

@@ -192,6 +192,7 @@ async def continue_workflow(websocket: WebSocket, state):
         if current_node == 'trials_search':
             trials_search_result = trials_search(state)
             state.update(trials_search_result)
+            print(f"trials_search_result:: {trials_search_result}")
             await websocket.send_json({
                 'type': 'update',
                 'content': 'Clinical trials search completed',
@@ -216,31 +217,7 @@ async def continue_workflow(websocket: WebSocket, state):
             state['next_step'] = 'evaluate_research_info'
 
         elif current_node == 'evaluate_research_info':
-            # evaluation_result = evaluate_research_info(state)
             await handle_evaluate_trials(websocket, state)
-            # print(f"evaluation_result:: {evaluation_result}")
-            # state.update(evaluation_result)
-            
-            # if "A suitable clinical trial was found:" in state['did_find_trials']:
-            #     await websocket.send_json({
-            #         'type': 'trial_found',
-            #         'content': state['research_info'][0],
-            #         'current_node': current_node,
-            #         'next_node': 'user_decision',
-            #         'state': state
-            #     })
-            #     await asyncio.sleep(0.1)
-            #     break
-            # else:
-            #     await websocket.send_json({
-            #         'type': 'no_trial_found',
-            #         'content': state['follow_up'],
-            #         'current_node': current_node,
-            #         'next_node': 'consultant',
-            #         'state': state
-            #     })
-            #     await asyncio.sleep(0.1)
-            #     state['next_step'] = 'consultant'
 
         elif current_node == 'consultant':
             await websocket.send_json({
