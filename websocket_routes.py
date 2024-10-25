@@ -34,7 +34,7 @@ async def websocket_endpoint(websocket: WebSocket):
             elif command == 'user_search_term':
                 await handle_user_search_term(websocket, state, data.get('search_term', '').strip())
             elif command == 'continue_search':
-                await handle_continue_search(websocket, state, data.get('decision'))
+                await handle_continue_search(websocket, state, data.get('keep_searching'))
 
     except WebSocketDisconnect:
         print("Connection closed")

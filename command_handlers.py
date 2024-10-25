@@ -171,16 +171,18 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
 
 
 async def handle_continue_search(websocket: WebSocket, state, decision):
-    state['keep_searching'] = 'yes'
     if decision == 'yes':
         state['next_step'] = 'consultant'
-        # state['keep_searching'] = 'yes'
         state['follow_up'] = "Let's explore more options. Can you provide any additional details about your condition or preferences for treatment?"
         await start_conversation(websocket, state)
     else:
-        # state['keep_searching'] = 'no'
         state['next_step'] = 'state_printer'
-        await continue_workflow(websocket, state)
+        await websocket.send_json({
+                'type': 'workflow_complete',
+                'content': 'Workflow completed',
+                'current_node': 'state_printer',
+                'next_node': None
+            })            
 
 
 async def continue_workflow(websocket: WebSocket, state):
@@ -230,11 +232,3 @@ async def continue_workflow(websocket: WebSocket, state):
             await asyncio.sleep(0.1)
             await start_conversation(websocket, state)
             break
-
-    if state['next_step'] == 'state_printer':
-        await websocket.send_json({
-            'type': 'workflow_complete',
-            'content': 'Workflow completed',
-            'current_node': 'state_printer',
-            'next_node': None
-        })
