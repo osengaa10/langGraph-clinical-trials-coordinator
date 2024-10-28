@@ -1,29 +1,31 @@
-Based on the provided medical report, I have identified two clinical trials that may be relevant for the patient with muscle-invasive bladder cancer (MIBC) and a confirmed FGFR3 point mutation.
+Based on the patient's medical report, the most relevant clinical trials are:
 
-1. **NCT04917809: A Phase 2 "Window of Opportunity" Trial of Targeted Therapy with Erdafitinib in Patients with Recurrent FGFR3-Altered Non-Muscle Invasive Bladder Cancer**
+1. **NCT04917809**: A Phase 2 "Window of Opportunity" Trial of Targeted Therapy with Erdafitinib in Patients with Recurrent FGFR3-Altered Non-Muscle Invasive Bladder Cancer.
 
-This trial may not be the best fit for this patient as it is focused on non-muscle-invasive bladder cancer. However, it's worth discussing with the investigators to see if they would consider a patient with muscle-invasive disease.
+This trial is relevant because the patient has a confirmed FGFR3 mutation and has undergone TURBT. The trial is also focused on preserving kidney function, which is a priority for the patient. However, the patient's stage 2 CKD may impact eligibility for this trial.
 
-Expected Outcome: The primary endpoint of this trial is the objective response rate at the time of TURBT/biopsy following treatment with erdafitinib. If the patient is eligible and enrolls in this trial, they may experience a complete or partial pathologic response to the treatment.
+Expected outcome: The trial aims to evaluate the objective response rate at the time of TURBT/biopsy following treatment with erdafitinib.
 
-Possible Risks: The trial's exclusion criteria and potential risks associated with erdafitinib, such as eye toxicity, cardiovascular disease, and gastrointestinal disorders, should be carefully evaluated.
+Possible risks: The trial may involve adverse effects from erdafitinib, such as kidney damage, phosphorus and calcium imbalances, and eye toxicity.
 
-Contact Information:
+Contact information:
 Eugene Pietzak, MD - CONTACT
 Phone: 646-422-4781, Email: pietzake@mskcc.org
 Gopakumar Iyer, MD - CONTACT
 Phone: 646-888-4737, Email: iyerg@mskcc.org
 
-2. **NCT05544552: A Multicenter, Open-label Phase 1/2 Study of TYRA300 in Advanced Urothelial Carcinoma and Other Solid Tumors With Activating FGFR3 Gene Alterations (SURF301)**
+2. **NCT05544552**: A Multicenter, Open-label Phase 1/2 Study of TYRA-300 in Advanced Urothelial Carcinoma and Other Solid Tumors With Activating FGFR3 Gene Alterations (SURF301).
 
-This trial is more relevant to the patient's condition, as it includes advanced urothelial carcinoma and FGFR3 gene alterations.
+This trial is relevant because the patient has a confirmed FGFR3 mutation and has undergone TURBT. The trial is also focused on treating advanced urothelial carcinoma, which is the patient's diagnosis.
 
-Expected Outcome: The primary endpoint of this trial is the overall response rate (ORR) defined by RECIST v1.1. If the patient is eligible and enrolls in this trial, they may experience a complete or partial response to the treatment with TYRA-300.
+Expected outcome: The trial aims to determine the maximum tolerated doses (MTD) and recommended Phase 2 dose (R2PD) of TYRA-300.
 
-Possible Risks: The trial's exclusion criteria and potential risks associated with TYRA-300, such as eye toxicity, cardiovascular disease, and gastrointestinal disorders, should be carefully evaluated.
+Possible risks: The trial may involve adverse effects from TYRA-300, such as kidney damage, phosphorus and calcium imbalances, and eye toxicity.
 
-Contact Information:
+Contact information:
 Grace Indyk - CONTACT
 Phone: (619)728-4805, Email: TyraClinicalTrials@tyra.bio
 
-It is essential to discuss the patient's eligibility and potential risks with the investigators of these trials and to carefully evaluate the inclusion and exclusion criteria before making a decision. Additionally, the patient's stage 2 chronic kidney disease (CKD) should be taken into consideration when evaluating potential trial therapies and monitoring renal function.
+The other trials listed are not as relevant to the patient's specific condition and medical history. NCT05151341 is a diagnostic trial, and NCT04921553 is a registry study that is not specifically focused on FGFR3 mutations or urothelial carcinoma.
+
+It's essential to note that the patient's stage 2 CKD may impact eligibility for these trials, and a thorough review of the inclusion and exclusion criteria is necessary to ensure the patient's eligibility and safety.

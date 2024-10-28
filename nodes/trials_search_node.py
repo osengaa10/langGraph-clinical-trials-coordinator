@@ -7,12 +7,13 @@ def trials_search(state):
     state['search_term'].append(search_term)
     num_steps = int(state['num_steps'])
     num_steps += 1
+    uid = state['uid']
 
-    print("___SEARCH TERM BEFORE TRIALS SEARCH___ ", search_term)
+    print("___UID___ ", uid)
 
-    studies_found = len(clinical_trials_search(search_term.replace("\"", "")))
+    studies_found = len(clinical_trials_search(search_term.replace("\"", ""), uid))
 
     # save to local disk
     write_markdown_file(search_term, "search_term")
 
-    return {"search_term": state['search_term'], "num_steps": num_steps, "studies_found": studies_found}
+    return {"search_term": state['search_term'], "num_steps": num_steps, "studies_found": studies_found, "uid": uid}

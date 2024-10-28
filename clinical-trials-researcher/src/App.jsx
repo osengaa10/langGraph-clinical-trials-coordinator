@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Button, Input, Typography, List, message, Spin, Divider, Card } from 'antd';
 import ReactMarkdown from 'react-markdown';
 import 'antd/dist/reset.css';
+import { v4 as uuidv4 } from 'uuid';
+
 
 const { Title, Text } = Typography;
 
@@ -23,7 +25,8 @@ const WebSocketClient = () => {
   const userInputRef = useRef(null);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8000/ws');
+    const uid = uuidv4();
+    const ws = new WebSocket(`ws://localhost:8000/ws?uid=${uid}`);
     setSocket(ws);
 
     ws.onopen = () => {

@@ -1,6 +1,8 @@
 from fastapi import WebSocket, WebSocketDisconnect
 from typing import List
 import json
+import os
+from uuid import uuid4
 from state_manager import initialize_state
 from command_handlers import (
     start_conversation,
@@ -14,12 +16,17 @@ active_connections: List[WebSocket] = []
 
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    active_connections.append(websocket)
+    
+    # Extract UID from the query parameter
+    uid = websocket.query_params.get("uid")  
+    user_directory = f"./user_data/{uid}"
 
-    state = initialize_state()
+    active_connections.append(websocket)
+    state = initialize_state(uid)
 
     try:
-        await websocket.send_json({"type": "connected"})
+        await websocket.send_json({"type": "connected", "uid": uid}) 
+        
         while True:
             message = await websocket.receive_text()
             data = json.loads(message)

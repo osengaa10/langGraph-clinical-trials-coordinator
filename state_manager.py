@@ -1,6 +1,6 @@
 from graph import create_workflow, GraphState
 from LLMs.llm import GROQ_LLM
-def initialize_state():
+def initialize_state(uid):
     workflow = create_workflow(GROQ_LLM)
     state = GraphState(
         medical_report="",
@@ -14,6 +14,7 @@ def initialize_state():
         did_find_trials="",
         rag_questions=[],
         keep_searching = "",
-        studies_found=0
+        studies_found=0,
+        uid = str(uid)
     )
     return state
