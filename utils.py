@@ -74,25 +74,30 @@ def clinical_trials_search(condition, uid):
         params["pageToken"] = nextPageToken
         counter = counter + 1
 
-    print(f"Number of studies found for {condition}:", len(study_details_list))
-    for index, trial in enumerate(study_details_list):
-        report_content = create_trial_report(trial)
-        directory = f'./studies/{uid}'
-        os.makedirs(directory, exist_ok=True)
-        with open(f'./studies/{uid}/{condition.replace(" ", "_")}_{index + 1}.txt', "w+") as file:
-            file.write(report_content)
-    
-    new_studies = []
-    for index, trial in enumerate(study_details_list):
-        report_content = create_trial_report(trial)
-        file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
-        file_path = os.path.join(f'./studies/{uid}', file_name)
-        with open(file_path, "w") as file:
-            file.write(report_content)
-        new_studies.append((file_name, file_path))
-    vectordb = chunk_and_embed(new_studies, uid)
-    # Return the response in JSON format
-    return new_studies
+
+    if len(study_details_list) == 0:
+        print("no studies found")
+        return []
+    else:
+        print(f"Number of studies found for {condition}:", len(study_details_list))
+        for index, trial in enumerate(study_details_list):
+            report_content = create_trial_report(trial)
+            directory = f'./studies/{uid}'
+            os.makedirs(directory, exist_ok=True)
+            with open(f'./studies/{uid}/{condition.replace(" ", "_")}_{index + 1}.txt', "w+") as file:
+                file.write(report_content)
+        
+        new_studies = []
+        for index, trial in enumerate(study_details_list):
+            report_content = create_trial_report(trial)
+            file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
+            file_path = os.path.join(f'./studies/{uid}', file_name)
+            with open(file_path, "w") as file:
+                file.write(report_content)
+            new_studies.append((file_name, file_path))
+        vectordb = chunk_and_embed(new_studies, uid)
+        # Return the response in JSON format
+        return new_studies
 
 
 

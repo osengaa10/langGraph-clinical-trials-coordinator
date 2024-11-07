@@ -23,9 +23,11 @@ const WebSocketClient = () => {
   const [showTrialButtons, setShowTrialButtons] = useState(false);
   const chatEndRef = useRef(null);
   const userInputRef = useRef(null);
+  const [userUid, setUserUid] = useState(null)
 
   useEffect(() => {
     const uid = uuidv4();
+    setUserUid(uid)
     const ws = new WebSocket(`ws://localhost:8000/ws?uid=${uid}`);
     setSocket(ws);
 
@@ -67,6 +69,13 @@ const WebSocketClient = () => {
         setShowTrialButtons(true);
       } else if (data.content === 'Clinical trials search completed') {
         message.info(`${data.state.studies_found} trials received for: ${searchTerm}`);
+      } else if (data.content === 'no studies found') {
+        console.log("no studies found")
+        alert(`no studies found for search term '${searchTerm}'. Please try another`)
+        setLoading(false);
+        console.log(`loading: ${loading}`)
+        setShowSearchTermSection(true);
+        console.log(`showSearchTermSection: ${showSearchTermSection}`)
       }
     };
 
@@ -129,7 +138,7 @@ const WebSocketClient = () => {
 
   const handleEndSearch = () => {
     if (socket) {
-      socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'no' }));
+      socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
       setShowTrialButtons(false);
     }
   };

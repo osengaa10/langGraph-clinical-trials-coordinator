@@ -1,31 +1,39 @@
-Based on the patient's medical report, the most relevant clinical trials are:
+Based on the patient's medical report, I have identified two promising clinical trials that may be suitable for them.
 
-1. **NCT04917809**: A Phase 2 "Window of Opportunity" Trial of Targeted Therapy with Erdafitinib in Patients with Recurrent FGFR3-Altered Non-Muscle Invasive Bladder Cancer.
+**Trial 1: NCT05316155**
 
-This trial is relevant because the patient has a confirmed FGFR3 mutation and has undergone TURBT. The trial is also focused on preserving kidney function, which is a priority for the patient. However, the patient's stage 2 CKD may impact eligibility for this trial.
+Title: Phase 1 Study of Erdafitinib Intravesical Delivery System (TAR-210) in Participants With Non-Muscle-Invasive or Muscle-Invasive Bladder Cancer and Selected FGFR Mutations or Fusions
 
-Expected outcome: The trial aims to evaluate the objective response rate at the time of TURBT/biopsy following treatment with erdafitinib.
+This trial is a good fit for the patient because:
 
-Possible risks: The trial may involve adverse effects from erdafitinib, such as kidney damage, phosphorus and calcium imbalances, and eye toxicity.
+* The patient has muscle-invasive bladder cancer, stage T2, high-grade, and an FGFR3 mutation, which aligns with the trial's eligibility criteria.
+* The trial is investigating the safety and efficacy of Erdafitinib Intravesical Delivery System (TAR-210), which targets FGFR mutations, making it a relevant treatment option for the patient.
 
-Contact information:
-Eugene Pietzak, MD - CONTACT
-Phone: 646-422-4781, Email: pietzake@mskcc.org
-Gopakumar Iyer, MD - CONTACT
-Phone: 646-888-4737, Email: iyerg@mskcc.org
+Expected outcome: The primary outcome of this trial is to assess the number of participants with adverse events (AEs), dose-limiting toxicity (DLT), and the overall response rate (ORR).
 
-2. **NCT05544552**: A Multicenter, Open-label Phase 1/2 Study of TYRA-300 in Advanced Urothelial Carcinoma and Other Solid Tumors With Activating FGFR3 Gene Alterations (SURF301).
+Possible risks: The trial may involve risks associated with Erdafitinib Intravesical Delivery System, such as urinary tract infections, hematuria, and bladder spasms.
 
-This trial is relevant because the patient has a confirmed FGFR3 mutation and has undergone TURBT. The trial is also focused on treating advanced urothelial carcinoma, which is the patient's diagnosis.
+Contact Information:
+Study Contact - CONTACT
+Phone: 844-434-4210
+Email: Participate-In-This-Study@its.jnj.com
 
-Expected outcome: The trial aims to determine the maximum tolerated doses (MTD) and recommended Phase 2 dose (R2PD) of TYRA-300.
+**Trial 2: NCT05567185**
 
-Possible risks: The trial may involve adverse effects from TYRA-300, such as kidney damage, phosphorus and calcium imbalances, and eye toxicity.
+Title: A Phase 1 Study to Evaluate the Tolerability, Safety, and Pharmacokinetics of TAR-210 in Japanese Participants With Bladder Cancer and Selected FGFR Mutations or Fusions
 
-Contact information:
-Grace Indyk - CONTACT
-Phone: (619)728-4805, Email: TyraClinicalTrials@tyra.bio
+This trial is also a good fit for the patient because:
 
-The other trials listed are not as relevant to the patient's specific condition and medical history. NCT05151341 is a diagnostic trial, and NCT04921553 is a registry study that is not specifically focused on FGFR3 mutations or urothelial carcinoma.
+* The patient has bladder cancer with an FGFR3 mutation, which aligns with the trial's eligibility criteria.
+* The trial is investigating the safety and efficacy of TAR-210, which is similar to the Erdafitinib Intravesical Delivery System used in Trial 1.
 
-It's essential to note that the patient's stage 2 CKD may impact eligibility for these trials, and a thorough review of the inclusion and exclusion criteria is necessary to ensure the patient's eligibility and safety.
+Expected outcome: The primary outcome of this trial is to assess the tolerability, safety, and pharmacokinetics of TAR-210.
+
+Possible risks: The trial may involve risks associated with TAR-210, such as urinary tract infections, hematuria, and bladder spasms.
+
+Contact Information:
+Study Contact - CONTACT
+Phone: 844-434-4210
+Email: Participate-In-This-Study@its.jnj.com
+
+It is essential to discuss the potential benefits and risks of these trials with the patient's healthcare provider to determine the best course of action.

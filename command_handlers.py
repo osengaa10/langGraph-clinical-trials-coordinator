@@ -7,6 +7,8 @@ from nodes.trials_search_node import trials_search
 from nodes.rag_node import research_info_search
 from nodes.evaluate_trials_node import evaluate_research_info, evaluate_trials_chain
 import asyncio
+import os
+import shutil
 
 async def start_conversation(websocket: WebSocket, state):
     chat_history = state.get("chat_history", [])
@@ -90,36 +92,6 @@ async def handle_prompt_distiller(websocket, state):
     })
 
 
-
-async def handle_search_term_decision(websocket: WebSocket, state, decision):
-    if decision == 'yes':
-        if state['new_search_term'] not in state['search_term']:
-            state['search_term'].append(state['new_search_term'])
-            await websocket.send_json({
-                'type': 'search_term_added',
-                'content': state['new_search_term'],
-                'state': state
-            })
-            await continue_workflow(websocket, state)
-        else:
-            await websocket.send_json({
-                'type': 'search_term_exists',
-                'content': state['new_search_term'],
-                'state': state
-            })
-            await handle_prompt_distiller(websocket, state)
-    elif decision == 'no':
-        await websocket.send_json({
-            'type': 'request_user_search_term',
-            'state': state
-        })
-    else:
-        await websocket.send_json({
-            'type': 'invalid_input',
-            'state': state
-        })
-
-
 async def handle_user_search_term(websocket: WebSocket, state, user_search_term):
     if user_search_term and user_search_term not in state['search_term']:
 
@@ -193,17 +165,29 @@ async def continue_workflow(websocket: WebSocket, state):
         
         if current_node == 'trials_search':
             trials_search_result = trials_search(state)
-            state.update(trials_search_result)
-            print(f"trials_search_result:: {trials_search_result}")
-            await websocket.send_json({
-                'type': 'update',
-                'content': 'Clinical trials search completed',
-                'current_node': current_node,
-                'next_node': 'research_info_search',
-                'state': state
-            })
-            await asyncio.sleep(0.1)
-            state['next_step'] = 'research_info_search'
+            studies_found_count = trials_search_result['studies_found']
+            if studies_found_count == 0:
+                print("none found")
+                await websocket.send_json({
+                    'type': 'need_new_term',
+                    'content': 'no studies found',
+                    'current_node': current_node,
+                    'state': state
+                })
+                await asyncio.sleep(0.1)
+                break
+            else:
+                state.update(trials_search_result)
+                print(f"trials_search_result:: {trials_search_result}")
+                await websocket.send_json({
+                    'type': 'update',
+                    'content': 'Clinical trials search completed',
+                    'current_node': current_node,
+                    'next_node': 'research_info_search',
+                    'state': state
+                })
+                await asyncio.sleep(0.1)
+                state['next_step'] = 'research_info_search'
 
         elif current_node == 'research_info_search':
             research_info_result = research_info_search(state)
@@ -232,3 +216,41 @@ async def continue_workflow(websocket: WebSocket, state):
             await asyncio.sleep(0.1)
             await start_conversation(websocket, state)
             break
+
+
+
+async def cleanup_workflow(websocket: WebSocket, state):
+    uid = state['uid']
+    base_path = './rag_data/data'
+    user_path = os.path.join(base_path, uid)
+    db_base_path = './db'
+    db_path = os.path.join(db_base_path, uid)
+
+    if (os.path.exists(user_path) and os.path.isdir(user_path)) or (os.path.exists(db_path) and os.path.isdir(db_path)):
+        try:
+            if os.path.exists(user_path) and os.path.isdir(user_path):
+                shutil.rmtree(user_path)
+                print(f"Successfully deleted the directory: {user_path}")
+            else:
+                print(f"The directory {user_path} does not exist.")
+
+            if os.path.exists(db_path) and os.path.isdir(db_path):
+                shutil.rmtree(db_path)
+                print(f"Successfully deleted the directory: {db_path}")
+            else:
+                print(f"The directory {db_path} does not exist.")
+
+            await websocket.send_json({
+                'type': 'cleanup',
+                'content': f'deleted {user_path} and {db_path}',
+                'state': state
+            })
+            await asyncio.sleep(0.1) 
+        except Exception as e:
+            print(f"An error occurred while deleting the directories: {e}")
+            await websocket.send_json({
+                'type': 'cleanup',
+                'content': f'error occurred: {e}',
+                'state': state
+            })
+    

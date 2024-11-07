@@ -1,1 +1,1 @@
-FGFR3 Bladder Cancer
+FGFR bladder cancer
