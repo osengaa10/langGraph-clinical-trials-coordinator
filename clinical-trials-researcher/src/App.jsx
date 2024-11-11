@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import 'antd/dist/reset.css';
 import { v4 as uuidv4 } from 'uuid';
 
-
 const { Title, Text } = Typography;
 
 const WebSocketClient = () => {
@@ -21,6 +20,10 @@ const WebSocketClient = () => {
   const [conversationStarted, setConversationStarted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showTrialButtons, setShowTrialButtons] = useState(false);
+  const [showRetryButton, setShowRetryButton] = useState(false);
+  const [retryCountdown, setRetryCountdown] = useState(60);
+  const [retryCommand, setRetryCommand] = useState("")
+  const [retryData, setRetryData] = useState("")
   const chatEndRef = useRef(null);
   const userInputRef = useRef(null);
   const [userUid, setUserUid] = useState(null)
@@ -76,6 +79,20 @@ const WebSocketClient = () => {
         console.log(`loading: ${loading}`)
         setShowSearchTermSection(true);
         console.log(`showSearchTermSection: ${showSearchTermSection}`)
+      } else if (data.type === 'rate_limit_error') {
+        setRetryCommand(data.retry_command)
+        setRetryData(data.retry_data)
+        alert(data.message);
+        setShowRetryButton(true);
+        let countdown = 60;
+        setRetryCountdown(countdown);
+        const countdownInterval = setInterval(() => {
+          countdown -= 1;
+          setRetryCountdown(countdown);
+          if (countdown === 0) {
+            clearInterval(countdownInterval);
+          }
+        }, 1000);
       }
     };
 
@@ -140,6 +157,18 @@ const WebSocketClient = () => {
     if (socket) {
       socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
       setShowTrialButtons(false);
+    }
+  };
+
+  const handleRetry = () => {
+    if (socket) {
+    //   socket.send(JSON.stringify({ command: 'retry' }));
+      socket.send(JSON.stringify({
+        command: 'retry',
+        retry_command: retryCommand,
+        retry_data: retryData
+    }));
+      setShowRetryButton(false);
     }
   };
 
@@ -240,6 +269,14 @@ const WebSocketClient = () => {
           </Button>
           <Button type="default" onClick={handleEndSearch}>
             End Search
+          </Button>
+        </div>
+      )}
+      {showRetryButton && (
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+          <Text type="warning">Rate limit reached. Please wait {retryCountdown} seconds to retry.</Text>
+          <Button type="primary" onClick={handleRetry} disabled={retryCountdown > 0} style={{ marginTop: '10px' }} id="retryButton">
+            Retry
           </Button>
         </div>
       )}

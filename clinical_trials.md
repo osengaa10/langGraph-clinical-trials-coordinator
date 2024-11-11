@@ -1,43 +1,33 @@
-Based on the patient's medical report, I have identified three clinical trials that may be relevant for them. Please note that the patient's suitability for each trial should be determined by a qualified healthcare professional.
+Based on the provided medical report, the patient has muscle-invasive bladder cancer (T2, N0, M0) and has undergone cisplatin-based chemotherapy as primary treatment. The patient has moderate PD-L1 expression and no prior surgeries or radiation therapy. Considering these factors, I have identified the most relevant clinical trials for this patient.
 
-**Trial 1: NCT06040762 - "Get Moving Trial"**
+1. **NCT05401279: Bladder Sparing Treatment of Tislelizumab Combined With Gemcitabine and Cisplatin for Patients With PD-L1 Positive Muscle Invasive Bladder Cancer (T2-3N0M0): a Phase II Prospective Study**
 
-This Phase I/II trial focuses on home-based prehabilitation with exercise and education in patients with muscle-invasive bladder cancer and upper tract urothelial cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
+This trial is a good match for the patient as it focuses on PD-L1 positive muscle-invasive bladder cancer, which aligns with the patient's moderate PD-L1 expression. The trial combines tislelizumab with gemcitabine and cisplatin, which are chemotherapy agents that have shown efficacy in bladder cancer. The expected outcome is a two-year bladder-intact disease-free survival rate.
 
-Expected outcome: The trial aims to improve physical function, reduce symptoms, and enhance quality of life in patients with muscle-invasive bladder cancer.
+Possible risks associated with this trial include:
 
-Possible risks: The trial involves exercise and physical activity, which may pose risks for patients with underlying medical conditions. Patients may experience muscle soreness, fatigue, or other exercise-related side effects.
+* Adverse reactions to tislelizumab, gemcitabine, and cisplatin
+* Increased risk of infections due to immunosuppression
+* Potential for worsening of pre-existing kidney disease
 
-Contact information:
-Get Moving Research Coordinator - CONTACT
-Phone: 206-210-4040, Email: GetMoving@uw.edu
+Contact Information:
+Yunze Xu, PhD - CONTACT
+Phone: +8618801967501, Email: rjxuyunze@163.com
 
-**Trial 2: NCT06009848 - Cadonilimab (AK104) plus Nab-Paclitaxel for Recurrent or Metastatic Muscle Invasive Bladder Cancer**
+2. **NCT04960709: A Phase III Randomized, Open-Label, Multicenter Study to Determine the Efficacy and Safety of Durvalumab in Combination With Tremelimumab and Enfortumab Vedotin or Durvalumab in Combination With Enfortumab Vedotin for Perioperative Treatment in Patients Ineligible for Cisplatin or Who Refuse Cisplatin Undergoing Radical Cystectomy for Muscle Invasive Bladder Cancer (VOLGA)**
 
-This Phase II trial investigates the efficacy and safety of cadonilimab (AK104) in combination with nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
+Although the patient is not explicitly stated to be ineligible for cisplatin or refusing cisplatin, this trial is still relevant as it focuses on muscle-invasive bladder cancer and combines durvalumab with other agents to enhance treatment efficacy. The expected outcome is event-free survival (EFS) compared to cystectomy.
 
-Expected outcome: The trial aims to evaluate the objective response rate (ORR) and disease control rate (DCR) of cadonilimab plus nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer.
+Possible risks associated with this trial include:
 
-Possible risks: The trial involves the use of immunotherapy and chemotherapy, which may pose risks such as infusion reactions, immune-related adverse events, and hematological toxicities.
+* Adverse reactions to durvalumab, tremelimumab, and enfortumab vedotin
+* Increased risk of infections due to immunosuppression
+* Potential for worsening of pre-existing kidney disease
 
-Contact information:
-HaiTao Wang, Ph.D - CONTACT
-Phone: +86-022-88326385, Email: peterrock2000@126.com
-Lili Wang, Ph.D - CONTACT
-Phone: +86-022-88326610, Email: wangliliaigang@163.com
+Contact Information:
+AstraZeneca Clinical Study Information Center - CONTACT
+Phone: 1-877-240-9479, Email: information.center@astrazeneca.com
 
-**Trial 3: NCT03914794 - Pemigatinib in Non-muscle Invasive Bladder Cancer Patients With Recurrent Low- or Intermediate-Risk Tumors**
+It is essential to note that the patient's current kidney function (GFR 60-70 mL/min/1.73 m²) and stage 2 chronic kidney disease may impact their eligibility for these trials. The patient's kidney function should be closely monitored throughout the trial to prevent potential decline.
 
-Although this Phase 2 trial focuses on non-muscle invasive bladder cancer, the patient's medical report indicates that they have muscle-invasive bladder cancer. However, the trial's inclusion criteria do not explicitly exclude patients with muscle-invasive disease. A healthcare professional should determine the patient's suitability for this trial.
-
-Expected outcome: The trial aims to evaluate the complete response rate of pemigatinib therapy in patients with recurrent low- or intermediate-risk non-muscle invasive bladder cancer.
-
-Possible risks: The trial involves the use of pemigatinib, which may pose risks such as gastrointestinal toxicities, skin toxicities, and changes in liver function tests.
-
-Contact information:
-Amber Michalik, BA - CONTACT
-Phone: 667-306-8336, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
-Rana Sullivan, RN - CONTACT
-Phone: 410-614-6337, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
-
-Please note that these trials may have additional eligibility criteria, and the patient's suitability should be determined by a qualified healthcare professional.
+Before enrolling in any clinical trial, the patient should discuss the potential benefits and risks with their healthcare provider and carefully review the trial's inclusion and exclusion criteria.
