@@ -9,7 +9,7 @@ prompt = PromptTemplate(
      
     Your response should be a concise term or short phrase (1-3 words) that best describes the patient's condition. \
     This term or phrase will be used as a search term to lookup the most relevant clinical trials for the patient.
-
+    Your output should ONLY BE 1 to 3 words!
     Existing search terms: {existing_terms}
 
     Your new search term must be different from the existing terms.

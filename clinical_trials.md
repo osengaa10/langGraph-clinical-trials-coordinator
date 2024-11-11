@@ -1,39 +1,43 @@
-Based on the patient's medical report, I have identified two promising clinical trials that may be suitable for them.
+Based on the patient's medical report, I have identified three clinical trials that may be relevant for them. Please note that the patient's suitability for each trial should be determined by a qualified healthcare professional.
 
-**Trial 1: NCT05316155**
+**Trial 1: NCT06040762 - "Get Moving Trial"**
 
-Title: Phase 1 Study of Erdafitinib Intravesical Delivery System (TAR-210) in Participants With Non-Muscle-Invasive or Muscle-Invasive Bladder Cancer and Selected FGFR Mutations or Fusions
+This Phase I/II trial focuses on home-based prehabilitation with exercise and education in patients with muscle-invasive bladder cancer and upper tract urothelial cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
 
-This trial is a good fit for the patient because:
+Expected outcome: The trial aims to improve physical function, reduce symptoms, and enhance quality of life in patients with muscle-invasive bladder cancer.
 
-* The patient has muscle-invasive bladder cancer, stage T2, high-grade, and an FGFR3 mutation, which aligns with the trial's eligibility criteria.
-* The trial is investigating the safety and efficacy of Erdafitinib Intravesical Delivery System (TAR-210), which targets FGFR mutations, making it a relevant treatment option for the patient.
+Possible risks: The trial involves exercise and physical activity, which may pose risks for patients with underlying medical conditions. Patients may experience muscle soreness, fatigue, or other exercise-related side effects.
 
-Expected outcome: The primary outcome of this trial is to assess the number of participants with adverse events (AEs), dose-limiting toxicity (DLT), and the overall response rate (ORR).
+Contact information:
+Get Moving Research Coordinator - CONTACT
+Phone: 206-210-4040, Email: GetMoving@uw.edu
 
-Possible risks: The trial may involve risks associated with Erdafitinib Intravesical Delivery System, such as urinary tract infections, hematuria, and bladder spasms.
+**Trial 2: NCT06009848 - Cadonilimab (AK104) plus Nab-Paclitaxel for Recurrent or Metastatic Muscle Invasive Bladder Cancer**
 
-Contact Information:
-Study Contact - CONTACT
-Phone: 844-434-4210
-Email: Participate-In-This-Study@its.jnj.com
+This Phase II trial investigates the efficacy and safety of cadonilimab (AK104) in combination with nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
 
-**Trial 2: NCT05567185**
+Expected outcome: The trial aims to evaluate the objective response rate (ORR) and disease control rate (DCR) of cadonilimab plus nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer.
 
-Title: A Phase 1 Study to Evaluate the Tolerability, Safety, and Pharmacokinetics of TAR-210 in Japanese Participants With Bladder Cancer and Selected FGFR Mutations or Fusions
+Possible risks: The trial involves the use of immunotherapy and chemotherapy, which may pose risks such as infusion reactions, immune-related adverse events, and hematological toxicities.
 
-This trial is also a good fit for the patient because:
+Contact information:
+HaiTao Wang, Ph.D - CONTACT
+Phone: +86-022-88326385, Email: peterrock2000@126.com
+Lili Wang, Ph.D - CONTACT
+Phone: +86-022-88326610, Email: wangliliaigang@163.com
 
-* The patient has bladder cancer with an FGFR3 mutation, which aligns with the trial's eligibility criteria.
-* The trial is investigating the safety and efficacy of TAR-210, which is similar to the Erdafitinib Intravesical Delivery System used in Trial 1.
+**Trial 3: NCT03914794 - Pemigatinib in Non-muscle Invasive Bladder Cancer Patients With Recurrent Low- or Intermediate-Risk Tumors**
 
-Expected outcome: The primary outcome of this trial is to assess the tolerability, safety, and pharmacokinetics of TAR-210.
+Although this Phase 2 trial focuses on non-muscle invasive bladder cancer, the patient's medical report indicates that they have muscle-invasive bladder cancer. However, the trial's inclusion criteria do not explicitly exclude patients with muscle-invasive disease. A healthcare professional should determine the patient's suitability for this trial.
 
-Possible risks: The trial may involve risks associated with TAR-210, such as urinary tract infections, hematuria, and bladder spasms.
+Expected outcome: The trial aims to evaluate the complete response rate of pemigatinib therapy in patients with recurrent low- or intermediate-risk non-muscle invasive bladder cancer.
 
-Contact Information:
-Study Contact - CONTACT
-Phone: 844-434-4210
-Email: Participate-In-This-Study@its.jnj.com
+Possible risks: The trial involves the use of pemigatinib, which may pose risks such as gastrointestinal toxicities, skin toxicities, and changes in liver function tests.
 
-It is essential to discuss the potential benefits and risks of these trials with the patient's healthcare provider to determine the best course of action.
+Contact information:
+Amber Michalik, BA - CONTACT
+Phone: 667-306-8336, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
+Rana Sullivan, RN - CONTACT
+Phone: 410-614-6337, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
+
+Please note that these trials may have additional eligibility criteria, and the patient's suitability should be determined by a qualified healthcare professional.
