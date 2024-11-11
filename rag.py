@@ -4,10 +4,15 @@ import os
 import time
 import LLMs.llm as llm
 
-persist_directory = 'db'
-vectordb = Chroma(embedding_function=llm.embedding, persist_directory=persist_directory)
+def create_vector_db(uid):
+    persist_directory = f'db/{uid}'
+    vectordb = Chroma(embedding_function=llm.embedding, persist_directory=persist_directory)
+    return vectordb
 
-def chunk_and_embed(new_studies):
+
+
+def chunk_and_embed(new_studies, uid):
+    vectordb = create_vector_db(uid)
     t1 = time.perf_counter()
     try:
         documents = []
@@ -22,13 +27,13 @@ def chunk_and_embed(new_studies):
         # vectordb.add_documents(documents)
         Chroma.from_documents(documents=documents,
                             embedding=llm.embedding,
-                            persist_directory=persist_directory)
+                            persist_directory=f'db/{uid}')
 
         t2 = time.perf_counter()
         print(f'time taken to embed {len(documents)} new chunks: {(t2-t1)/60} minutes')
 
         # Move processed files to a different directory
-        dst_dir = './rag_data/data'
+        dst_dir = f'./rag_data/data/{uid}'
         if not os.path.exists(dst_dir):
             os.makedirs(dst_dir)
         
@@ -38,7 +43,7 @@ def chunk_and_embed(new_studies):
 
         print(f"Moved {len(new_studies)} files to {dst_dir}.")
         
-        return f'time taken to embed {len(documents)} new chunks: {(t2-t1)/60} minutes'
+        return vectordb
 
     except Exception as e:
         print(f"ERROR: {e}")

@@ -26,6 +26,7 @@ class GraphState(TypedDict):
         follow_up: whether to add search info
         num_steps: number of steps
         next_step: str 
+        did_find_trials: back to consultant with more context
     """
     medical_report : str
     search_term : List[str]
@@ -35,7 +36,7 @@ class GraphState(TypedDict):
     follow_up : str
     num_steps : int
     next_step: str 
-    draft_email_feedback : dict
+    did_find_trials : str
     rag_questions : List[str]
 
 

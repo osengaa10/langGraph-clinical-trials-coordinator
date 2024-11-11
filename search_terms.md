@@ -1,1 +1,0 @@
-Muscle-Invasive Bladder Cancer, metastic bladder cancer

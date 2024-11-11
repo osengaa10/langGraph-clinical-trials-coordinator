@@ -3,59 +3,48 @@
 **Patient Information:**
 
 * Age: 49
-* Sex: Male
-* Diagnosis: Muscle-invasive bladder cancer (MIBC)
+* Gender: Male
 
 **Medical History:**
 
-* Transurethral resection of the bladder tumor (TURBT) for initial tumor removal
-* Completed cisplatin and gemcitabine chemotherapy, with partial response
-* Received pembrolizumab immunotherapy, with disease progression
-* Chronic kidney disease (CKD) Stage 3, with estimated glomerular filtration rate (eGFR) of 45 mL/min/1.73 m²
+* Muscle-invasive bladder cancer, Stage T2 (tumor has invaded the muscle wall of the bladder)
+* High-grade tumor (aggressive and more likely to grow and spread)
+* Chronic kidney disease, Stage 2 (stable, but requires close monitoring)
 
-**Current Symptoms:**
+**Symptoms:**
 
-* Worsening urinary symptoms, including increased frequency, urgency, and hematuria (blood in urine)
-* Pelvic pain, with dull ache and sharp exacerbations, especially with urination
-* Fatigue, weight loss (10 lbs), and limited mobility due to pelvic pain
-
-**Performance Status:**
-
-* Karnofsky Performance Status (KPS) score: 70 (ambulatory and capable of self-care, but unable to carry on normal activity or do work)
-* Eastern Cooperative Oncology Group (ECOG) performance status: 2 (ambulatory and capable of all self-care, but unable to carry out any work activities)
-
-**Laboratory Results:**
-
-* eGFR: 45 mL/min/1.73 m²
-* Creatinine: [insert value]
-* Hemoglobin: [insert value]
-* White blood cell count: [insert value]
-* Platelet count: [insert value]
-
-**Imaging Studies:**
-
-* No evidence of metastatic disease to other organs, including lymph nodes, bones, and other visceral organs
+* Initial presentation: blood in urine (intermittent, then persistent)
+* Discomfort while urinating (dull ache in lower abdomen)
+* Urinary urgency (occasionally)
+* Symptoms have improved with chemotherapy, but still present
 
 **Treatment History:**
 
-* Cisplatin and gemcitabine chemotherapy: completed with partial response
-* Pembrolizumab immunotherapy: disease progression
-* Radiation therapy: not received
+* Chemotherapy (multiple cycles) to shrink the tumor and potentially make surgery more effective
+* Currently evaluating response to chemotherapy and discussing next steps (surgery or more intensive treatments)
 
-**Eligibility for Clinical Trials:**
+**Imaging Studies:**
 
-* May be eligible for clinical trials that do not require high kidney function or nephrotoxic treatments
-* May be eligible for clinical trials that focus on symptom management and quality of life improvement
-* May be eligible for clinical trials that investigate novel therapies for MIBC, including targeted therapies and immunotherapies
+* CT scan: tumor confined to the bladder wall, no evidence of spread to nearby organs or distant lymph nodes
+* MRI: confirmed muscle invasion, no clear lymph node involvement or metastasis outside the bladder area
 
-**Recommendations:**
+**Surgical Options:**
 
-* Consider enrolling in clinical trials that focus on symptom management and quality of life improvement
-* Consider enrolling in clinical trials that investigate novel therapies for MIBC
-* Continue to monitor kidney function and adjust treatment plan as necessary to minimize risk of kidney damage
+* Radical cystectomy (removal of the entire bladder) being considered as a potential next step
+* Urinary diversion options: ileal conduit (external bag) or neobladder (more natural urination, but with potential challenges)
 
-**Next Steps:**
+**Performance Status:**
 
-* Discuss clinical trial options with the patient and obtain informed consent
-* Coordinate with other healthcare providers to ensure continuity of care and communication
-* Monitor patient's condition and adjust treatment plan as necessary
+* Eastern Cooperative Oncology Group (ECOG) performance status: 1 (ambulatory, but restricted in physically strenuous activity)
+* Self-reported quality of life: 5/10 (impacted by symptoms and treatment)
+
+**Current Medications:**
+
+* Chemotherapy regimens (specific medications not specified)
+
+**Other Relevant Factors:**
+
+* History of chronic kidney disease, Stage 2, which may impact recovery from cystectomy or affect suitability for certain clinical trials
+* Limited by kidney condition, but still exploring clinical trials with neoadjuvant or targeted therapies that could complement current treatment
+
+This report summarizes the patient's medical history, symptoms, treatment history, and current condition. It highlights the importance of considering the patient's chronic kidney disease and performance status when evaluating potential clinical trials.

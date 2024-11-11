@@ -18,7 +18,7 @@ def write_markdown_file(content, filename):
 
 
 
-def clinical_trials_search(condition: str) -> str:
+def clinical_trials_search(condition, uid):
     """Fetches data from ClinicalTrials.gov API for a given condition. Input is a medical condition search term"""  
     # Base URL for the ClinicalTrials.gov API
     base_url = "https://clinicaltrials.gov/api/v2/studies"
@@ -74,23 +74,30 @@ def clinical_trials_search(condition: str) -> str:
         params["pageToken"] = nextPageToken
         counter = counter + 1
 
-    print(f"Number of studies found for {condition}:", len(study_details_list))
-    for index, trial in enumerate(study_details_list):
-        report_content = create_trial_report(trial)
-        with open(f'./studies/{condition.replace(" ", "_")}_{index + 1}.txt', "w") as file:
-            file.write(report_content)
-    
-    new_studies = []
-    for index, trial in enumerate(study_details_list):
-        report_content = create_trial_report(trial)
-        file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
-        file_path = os.path.join('./studies', file_name)
-        with open(file_path, "w") as file:
-            file.write(report_content)
-        new_studies.append((file_name, file_path))
-    chunk_and_embed(new_studies)
-    # Return the response in JSON format
-    return new_studies
+
+    if len(study_details_list) == 0:
+        print("no studies found")
+        return []
+    else:
+        print(f"Number of studies found for {condition}:", len(study_details_list))
+        for index, trial in enumerate(study_details_list):
+            report_content = create_trial_report(trial)
+            directory = f'./studies/{uid}'
+            os.makedirs(directory, exist_ok=True)
+            with open(f'./studies/{uid}/{condition.replace(" ", "_")}_{index + 1}.txt', "w+") as file:
+                file.write(report_content)
+        
+        new_studies = []
+        for index, trial in enumerate(study_details_list):
+            report_content = create_trial_report(trial)
+            file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
+            file_path = os.path.join(f'./studies/{uid}', file_name)
+            with open(file_path, "w") as file:
+                file.write(report_content)
+            new_studies.append((file_name, file_path))
+        vectordb = chunk_and_embed(new_studies, uid)
+        # Return the response in JSON format
+        return new_studies
 
 
 
@@ -100,8 +107,8 @@ def create_trial_report(trial):
     # Safely access values, replacing None with 'Not available'
     title = trial.get('officialTitle', 'Not available')
     eligibility_criteria = trial['eligibilityModule'].get('eligibilityCriteria', 'Not available')
-    
-    report = f"Title: {title}\n\n"
+    nctId = trial.get('nctId', 'Not available')
+    report = f"nctId: {nctId} Title: {title}\n\n"
     report += "Eligibility Criteria:\n"
     report += eligibility_criteria + "\n\n"
     

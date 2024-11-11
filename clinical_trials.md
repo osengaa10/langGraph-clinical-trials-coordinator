@@ -1,19 +1,43 @@
-Based on the provided medical report, the patient has Muscle-invasive bladder cancer (MIBC) and has undergone various treatments, including TURBT, cisplatin and gemcitabine chemotherapy, and pembrolizumab immunotherapy. The patient's current symptoms include increased frequency and urgency of urination, hematuria, pelvic pain, and nocturia. The patient also has chronic kidney disease (CKD) and has experienced treatment-related toxicities, including mild kidney damage and immune-related side effects.
+Based on the patient's medical report, I have identified three clinical trials that may be relevant for them. Please note that the patient's suitability for each trial should be determined by a qualified healthcare professional.
 
-Considering the patient's medical history and current symptoms, I have evaluated the provided clinical trials to find the most relevant ones. Here are the results:
+**Trial 1: NCT06040762 - "Get Moving Trial"**
 
-1. **A Phase 2, Open-label, Multi-centre, Multi-national Interventional Trial to Evaluate the Efficacy and Safety of Erdafitinib (ERDA) Monotherapy and Erdafitinib (ERDA) and Cetrelimab (CET) Combination as Neoadjuvant Treatment in Cisplatin-ineligible Patients With Muscle-invasive Bladder Cancer (MIBC) Whose Tumours Express Fibroblast Growth Factor Receptor (FGFR) Gene Alterations**
+This Phase I/II trial focuses on home-based prehabilitation with exercise and education in patients with muscle-invasive bladder cancer and upper tract urothelial cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
 
-This trial is relevant because the patient has MIBC, and the trial is specifically designed for cisplatin-ineligible patients. The patient's tumor may express FGFR gene alterations, which is a requirement for this trial. However, the patient's CKD and previous treatment-related toxicities may impact eligibility.
+Expected outcome: The trial aims to improve physical function, reduce symptoms, and enhance quality of life in patients with muscle-invasive bladder cancer.
 
-2. **An Open, Single Arm, Prospective, Phase II Clinical Study on the First-line Treatment of Recurrent or Metastatic Muscle Invasive Bladder Cancer With Cadonilimab(AK104) Plus Nab-Paclitaxel**
+Possible risks: The trial involves exercise and physical activity, which may pose risks for patients with underlying medical conditions. Patients may experience muscle soreness, fatigue, or other exercise-related side effects.
 
-This trial is relevant because the patient has MIBC, and the trial is designed for patients with recurrent or metastatic disease. The trial's inclusion criteria include patients with measurable lesions, which the patient may have. However, the trial's exclusion criteria include patients with active autoimmune disease, which may be a concern given the patient's immune-related side effects from pembrolizumab.
+Contact information:
+Get Moving Research Coordinator - CONTACT
+Phone: 206-210-4040, Email: GetMoving@uw.edu
 
-The other trials are not as relevant due to various reasons:
+**Trial 2: NCT06009848 - Cadonilimab (AK104) plus Nab-Paclitaxel for Recurrent or Metastatic Muscle Invasive Bladder Cancer**
 
-* The first trial is designed for patients with non-muscle invasive bladder cancer (NMIBC), which is not the patient's diagnosis.
-* The third trial is designed for patients with NMIBC, and the patient's diagnosis of MIBC makes them ineligible.
-* The fourth trial is designed for patients with high-risk NMIBC, and the patient's diagnosis of MIBC makes them ineligible.
+This Phase II trial investigates the efficacy and safety of cadonilimab (AK104) in combination with nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
 
-In conclusion, the two most relevant clinical trials for this patient are the Erdafitinib and Cetrelimab combination trial and the Cadonilimab and Nab-Paclitaxel trial. However, the patient's CKD and previous treatment-related toxicities may impact eligibility, and careful consideration of these factors will be necessary when evaluating potential clinical trial options.
+Expected outcome: The trial aims to evaluate the objective response rate (ORR) and disease control rate (DCR) of cadonilimab plus nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer.
+
+Possible risks: The trial involves the use of immunotherapy and chemotherapy, which may pose risks such as infusion reactions, immune-related adverse events, and hematological toxicities.
+
+Contact information:
+HaiTao Wang, Ph.D - CONTACT
+Phone: +86-022-88326385, Email: peterrock2000@126.com
+Lili Wang, Ph.D - CONTACT
+Phone: +86-022-88326610, Email: wangliliaigang@163.com
+
+**Trial 3: NCT03914794 - Pemigatinib in Non-muscle Invasive Bladder Cancer Patients With Recurrent Low- or Intermediate-Risk Tumors**
+
+Although this Phase 2 trial focuses on non-muscle invasive bladder cancer, the patient's medical report indicates that they have muscle-invasive bladder cancer. However, the trial's inclusion criteria do not explicitly exclude patients with muscle-invasive disease. A healthcare professional should determine the patient's suitability for this trial.
+
+Expected outcome: The trial aims to evaluate the complete response rate of pemigatinib therapy in patients with recurrent low- or intermediate-risk non-muscle invasive bladder cancer.
+
+Possible risks: The trial involves the use of pemigatinib, which may pose risks such as gastrointestinal toxicities, skin toxicities, and changes in liver function tests.
+
+Contact information:
+Amber Michalik, BA - CONTACT
+Phone: 667-306-8336, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
+Rana Sullivan, RN - CONTACT
+Phone: 410-614-6337, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
+
+Please note that these trials may have additional eligibility criteria, and the patient's suitability should be determined by a qualified healthcare professional.

@@ -6,11 +6,6 @@ from dotenv import load_dotenv
 
 app = create_workflow(GROQ_LLM)
 
-
-# PROMPT = """
-# I am a 49 year old male with bladder cancer.
-# """
-
 # run the agent
 inputs = {"num_steps":0}
 
