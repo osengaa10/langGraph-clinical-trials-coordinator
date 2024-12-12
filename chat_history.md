@@ -1,25 +1,29 @@
-AI: What is the primary medical issue or symptom you are currently experiencing?
+AI: Can you please describe the medical issue you are experiencing, including any symptoms, when they started, and how long you've been experiencing them?
 
 User: I am a 49 year old male with muscle invasive bladder cancer
 
-AI: Can you please tell me what treatment options you have explored so far for your muscle-invasive bladder cancer, and have you undergone any surgeries, chemotherapy, or radiation therapy?
+AI: Have you undergone any previous treatments for your muscle-invasive bladder cancer, such as surgery, chemotherapy, or radiation therapy, and if so, what were the outcomes?
 
-User: So far, I’ve been undergoing cisplatin-based chemotherapy as the primary treatment for my muscle-invasive bladder cancer. I haven’t had any surgeries or radiation therapy yet; future options depend on my response to the chemotherapy.
+User: I’m currently undergoing cisplatin-based chemotherapy as my first treatment for muscle-invasive bladder cancer. The tumor has remained stable in size, with no spread, based on recent imaging. I haven’t had surgery or radiation therapy yet.
 
-AI: Have you experienced any significant side effects from the cisplatin-based chemotherapy, and what is your current Eastern Cooperative Oncology Group (ECOG) performance status?
-
-User: Yes, I’ve experienced fatigue, nausea, and mild neuropathy from the cisplatin-based chemotherapy. My current ECOG performance status is 1—I can do daily activities but experience some fatigue.
-
-AI: Can you please provide more details about your cancer, such as the T stage, N stage, and M stage, as well as the presence of any lymph node involvement or metastasis?
+AI: Can you please provide more information about your current cisplatin-based chemotherapy, such as the regimen you're on, the number of cycles you've completed, and any side effects you've experienced?
 
 User: 
-My cancer is classified as T2, N0, M0. This means the tumor has invaded the bladder muscle (T2) but has no lymph node involvement (N0) and no distant metastasis (M0). The cancer remains localized to the bladder.
+I’m on a cisplatin-based chemotherapy regimen, aiming to shrink the tumor. I’ve completed several cycles so far. Side effects include fatigue, nausea, and mild neuropathy in my hands and feet, all of which are manageable but affect my daily activities.
 
-AI: Have you had any genetic or molecular testing on your tumor, such as PD-L1 expression or FGFR alterations, which may be relevant for potential clinical trial eligibility?
+AI: What is your current performance status, such as ECOG or Karnofsky score, and have you experienced any significant weight loss or changes in your overall health status since starting chemotherapy?
 
-User: Yes, I’ve had molecular testing on my tumor. It shows moderate PD-L1 expression, which may qualify me for immunotherapy trials. No FGFR alterations or other significant mutations were identified that would influence targeted therapy options.
+User: My current ECOG performance status is 1—I can perform daily activities but experience some fatigue. I’ve had minor weight loss and a slight decrease in appetite since starting chemotherapy, but my overall health remains stable.
 
-AI: What is your current kidney function, as measured by your glomerular filtration rate (GFR), and have you experienced any kidney damage or dysfunction as a result of the cisplatin-based chemotherapy?
+AI: Have you had any genetic or molecular testing of your tumor, such as PD-L1 expression, FGFR3 mutation, or ERCC1 expression, which may help identify potential clinical trial options?
 
-User: My current glomerular filtration rate (GFR) is around 60-70 mL/min/1.73 m², consistent with stage 2 chronic kidney disease. So far, I haven’t experienced significant kidney damage from the cisplatin-based chemotherapy, but my kidney function is being closely monitored to prevent any decline.
+User: Yes, molecular testing revealed moderate PD-L1 expression, making immunotherapy a potential option. No FGFR3 or ERCC1 mutations were identified that would influence targeted therapies. This information is guiding treatment and trial considerations.
+
+AI: Have you discussed or considered radical cystectomy as a potential treatment option, and if so, what are your thoughts or concerns about undergoing this surgery?
+
+User: Yes, I’ve discussed radical cystectomy with my medical team as a potential next step if chemotherapy doesn’t achieve sufficient results. While I understand it’s a definitive treatment, my main concerns are the impact on quality of life, recovery time, and adapting to urinary diversion methods. I’m open to it if necessary but would prefer bladder-preserving options if viable.
+
+AI: Are you willing to participate in clinical trials that may involve experimental treatments, such as combination therapies or novel agents, and are you open to being randomized to different treatment arms, or do you have a preference for a specific type of trial or treatment?
+
+User: I'd like a trial the could have the best chances to improving my prognosis
 
