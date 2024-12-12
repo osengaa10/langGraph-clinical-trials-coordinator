@@ -1,43 +1,27 @@
-Based on the patient's medical report, I have identified three clinical trials that may be relevant for them. Please note that the patient's suitability for each trial should be determined by a qualified healthcare professional.
+Based on the provided medical report, I have found two clinical trials that may be suitable for the patient:
 
-**Trial 1: NCT06040762 - "Get Moving Trial"**
+1. **NCT05401279 - Bladder Sparing Treatment of Tislelizumab Combined With Gemcitabine and Cisplatin for Patients With PD-L1 Positive Muscle Invasive Bladder Cancer (T2-3N0M0): a Phase II Prospective Study**
 
-This Phase I/II trial focuses on home-based prehabilitation with exercise and education in patients with muscle-invasive bladder cancer and upper tract urothelial cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
+This trial is relevant because the patient has muscle-invasive bladder cancer, moderate PD-L1 expression, and is willing to participate in clinical trials. The trial aims to evaluate the efficacy and safety of tislelizumab in combination with gemcitabine and cisplatin for bladder-sparing treatment.
 
-Expected outcome: The trial aims to improve physical function, reduce symptoms, and enhance quality of life in patients with muscle-invasive bladder cancer.
+Expected outcome: The primary outcome is the two-year bladder-intact disease-free survival rate. The trial may offer an alternative to radical cystectomy, which the patient is willing to consider.
 
-Possible risks: The trial involves exercise and physical activity, which may pose risks for patients with underlying medical conditions. Patients may experience muscle soreness, fatigue, or other exercise-related side effects.
-
-Contact information:
-Get Moving Research Coordinator - CONTACT
-Phone: 206-210-4040, Email: GetMoving@uw.edu
-
-**Trial 2: NCT06009848 - Cadonilimab (AK104) plus Nab-Paclitaxel for Recurrent or Metastatic Muscle Invasive Bladder Cancer**
-
-This Phase II trial investigates the efficacy and safety of cadonilimab (AK104) in combination with nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's medical report indicates that they have muscle-invasive bladder cancer, which aligns with the trial's inclusion criteria.
-
-Expected outcome: The trial aims to evaluate the objective response rate (ORR) and disease control rate (DCR) of cadonilimab plus nab-paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer.
-
-Possible risks: The trial involves the use of immunotherapy and chemotherapy, which may pose risks such as infusion reactions, immune-related adverse events, and hematological toxicities.
+Possible risks: The trial involves chemotherapy and immunotherapy, which can cause side effects such as fatigue, nausea, and neuropathy. Additionally, there may be risks associated with the experimental treatment tislelizumab.
 
 Contact information:
-HaiTao Wang, Ph.D - CONTACT
-Phone: +86-022-88326385, Email: peterrock2000@126.com
-Lili Wang, Ph.D - CONTACT
-Phone: +86-022-88326610, Email: wangliliaigang@163.com
+Yunze Xu, PhD - CONTACT
+Phone: +8618801967501, Email: rjxuyunze@163.com
 
-**Trial 3: NCT03914794 - Pemigatinib in Non-muscle Invasive Bladder Cancer Patients With Recurrent Low- or Intermediate-Risk Tumors**
+2. **NCT04960709 - A Phase III Randomized, Open-Label, Multicenter Study to Determine the Efficacy and Safety of Durvalumab in Combination With Tremelimumab and Enfortumab Vedotin or Durvalumab in Combination With Enfortumab Vedotin for Perioperative Treatment in Patients Ineligible for Cisplatin or Who Refuse Cisplatin Undergoing Radical Cystectomy for Muscle Invasive Bladder Cancer (VOLGA)**
 
-Although this Phase 2 trial focuses on non-muscle invasive bladder cancer, the patient's medical report indicates that they have muscle-invasive bladder cancer. However, the trial's inclusion criteria do not explicitly exclude patients with muscle-invasive disease. A healthcare professional should determine the patient's suitability for this trial.
+This trial is relevant because the patient has muscle-invasive bladder cancer and is willing to consider radical cystectomy. The trial aims to evaluate the efficacy and safety of durvalumab in combination with tremelimumab and enfortumab vedotin or durvalumab in combination with enfortumab vedotin for perioperative treatment.
 
-Expected outcome: The trial aims to evaluate the complete response rate of pemigatinib therapy in patients with recurrent low- or intermediate-risk non-muscle invasive bladder cancer.
+Expected outcome: The primary outcome is event-free survival (EFS) up to 3 years. The trial may offer an alternative to standard treatment for patients who are ineligible for cisplatin or refuse cisplatin.
 
-Possible risks: The trial involves the use of pemigatinib, which may pose risks such as gastrointestinal toxicities, skin toxicities, and changes in liver function tests.
+Possible risks: The trial involves chemotherapy, immunotherapy, and surgery, which can cause side effects such as fatigue, nausea, and neuropathy. Additionally, there may be risks associated with the experimental treatments durvalumab, tremelimumab, and enfortumab vedotin.
 
 Contact information:
-Amber Michalik, BA - CONTACT
-Phone: 667-306-8336, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
-Rana Sullivan, RN - CONTACT
-Phone: 410-614-6337, Email: BladderCancerClinicalTrials@live.johnshopkins.edu
+AstraZeneca Clinical Study Information Center - CONTACT
+Phone: 1-877-240-9479, Email: information.center@astrazeneca.com
 
-Please note that these trials may have additional eligibility criteria, and the patient's suitability should be determined by a qualified healthcare professional.
+The other trials mentioned do not seem to be a good fit for the patient based on their medical report. For example, NCT05843448 is for patients with non-muscle invasive bladder cancer, and NCT02625961 is for patients with high-risk non-muscle invasive bladder cancer. NCT04579224 is for patients with metastatic urothelial carcinoma, which is not the patient's current diagnosis.

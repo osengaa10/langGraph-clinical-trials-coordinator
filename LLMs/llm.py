@@ -15,7 +15,8 @@ os.environ['TOGETHER_API_KEY']
 #             model="llama3-8b-8192",
 #         )
 
-GROQ_LLM = ChatTogether(model="meta-llama/Llama-3-70b-chat-hf")
+GROQ_LLM = ChatTogether(model="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo")
+CHAT_LLM = ChatTogether(model="meta-llama/Llama-3-70b-chat-hf")
 
 model_name = "BAAI/bge-small-en-v1.5"
 encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
