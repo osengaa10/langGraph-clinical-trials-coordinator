@@ -12,3 +12,5 @@ scratch.txt
 scratch.txt
 scratch.json
 scratch.py
+clinical-trials-researcher/.env.development
+clinical-trials-researcher/.env.production

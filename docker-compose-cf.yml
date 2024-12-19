@@ -12,8 +12,6 @@ services:
   backend:
     image: clinical-trials/backend
     build: ./
-    volumes:
-      - ./clinical-trials-data:/app/clinical-trials-data # Adjust or remove as needed
     env_file:
       - ./.env
     networks:
@@ -37,13 +35,14 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     command: tunnel --no-autoupdate run --token ${TUNNEL_TOKEN}
-    volumes:
-      - /home/austin/.cloudflared:/etc/cloudflared
     env_file:
       - ./.env
+    volumes:
+      - /home/austin/.cloudflared:/etc/cloudflared
     restart: unless-stopped
     networks:
       - app-network
+
 
 networks:
   app-network:

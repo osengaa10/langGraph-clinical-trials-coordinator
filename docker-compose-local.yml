@@ -23,30 +23,6 @@ services:
     ports:
       - "8000:8000" # FastAPI default port
 
-  # nginx:
-  #   image: nginx:latest
-  #   ports:
-  #     - "80:80"
-  #     - "443:443"
-  #   volumes:
-  #     - /etc/nginx/nginx.conf:/etc/nginx/nginx.conf
-  #     - /etc/nginx/sites-enabled:/etc/nginx/sites-enabled
-  #     - /etc/nginx/sites-available:/etc/nginx/sites-available
-  #     - /etc/letsencrypt:/etc/letsencrypt:ro
-  #   depends_on:
-  #     - frontend
-  #     - backend
-  #   networks:
-  #     - app-network
-
-  # cloudflared:
-  #   image: cloudflare/cloudflared:latest
-  #   command: tunnel --no-autoupdate run --token eyJhIjoiOTg0MjdkOGJkZmMzZTMzOWRmYTM1N2MwMTJkNGVhNDIiLCJ0IjoiMjBiYWZkYmMtOWFhOC00ZTUyLThjYWItMjI1OTgxMzEyNGM4IiwicyI6IllqQTNaakZsWldRdFlqTXpaaTAwWldSaUxXSXhNelV0TnpCa09URXdaVFpqWTJVMiJ9
-  #   volumes:
-  #     - /home/austin/.cloudflared:/etc/cloudflared
-  #   restart: unless-stopped
-  #   networks:
-  #     - app-network
 
 networks:
   app-network:
