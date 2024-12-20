@@ -28,10 +28,12 @@ const WebSocketClient = () => {
   const userInputRef = useRef(null);
   const [userUid, setUserUid] = useState(null)
 
+   const websocketBaseUrl = import.meta.env.VITE_WEBSOCKET_URL
   useEffect(() => {
     const uid = uuidv4();
     setUserUid(uid)
-    const ws = new WebSocket(`ws://localhost:8000/ws?uid=${uid}`);
+    const ws = new WebSocket(`${websocketBaseUrl}?uid=${uid}`);
+//    const ws = new WebSocket(`ws://localhost:8000/ws?uid=${uid}`);
     setSocket(ws);
 
     ws.onopen = () => {
