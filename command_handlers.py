@@ -1,14 +1,16 @@
-from nodes.consultant_node import consultant_chain, format_chat_history
+from nodes.consultant_node import consultant_chain, format_chat_history, clinical_notes_chain
 from nodes.prompt_distiller_node import prompt_distiller_chain
 from utils import write_markdown_file
 from fastapi import WebSocket
-# from workflow_handler import continue_workflow
 from nodes.trials_search_node import trials_search 
 from nodes.rag_node import research_info_search
 from nodes.evaluate_trials_node import evaluate_research_info, evaluate_trials_chain
 import asyncio
 import os
 import shutil
+from PyPDF2 import PdfReader
+from io import BytesIO
+import base64
 
 async def start_conversation(websocket: WebSocket, state):
     chat_history = state.get("chat_history", [])
@@ -38,18 +40,17 @@ async def start_conversation(websocket: WebSocket, state):
 
 async def handle_user_input(websocket, state, user_input):
     state['chat_history'].append({"role": "user", "content": user_input})
-    
     response = consultant_chain["conversation"].invoke({
         "chat_history": state['chat_history'],
         "initial_prompt": "Continue the conversation based on the patient's response."
     })
-
     if response.get('action') == 'ask_question':
         state['chat_history'].append({"role": "assistant", "content": response['content']})
         await websocket.send_json({
             'type': 'question',
             'content': response['content'],
             'current_node': 'consultant',
+            'current_step': 'consultant',
             'next_node': 'user_input',
             'state': state
         })
@@ -58,19 +59,56 @@ async def handle_user_input(websocket, state, user_input):
 
 
 
+async def handle_file_upload(websocket, state, data):
+    try:
+        # Extract and decode PDF
+        pdf_data = data.get('data', '')
+        filename = data.get('filename', 'clinical_notes.pdf')
+        pdf_bytes = base64.b64decode(pdf_data)
+        
+        # Extract text from PDF
+        text = ""
+        with BytesIO(pdf_bytes) as pdf_file:
+            reader = PdfReader(pdf_file)
+            for page in reader.pages:
+                text += page.extract_text() + "\n"
+        
+        # Store in state and update chat history
+        state['clinical_notes'] = text
+        await generate_report(websocket, state)
+        
+    except Exception as e:
+        await websocket.send_json({
+            'type': 'error',
+            'content': f'Failed to process PDF: {str(e)}'
+        })
+        raise e
+
 async def generate_report(websocket, state):
-    summary = consultant_chain["report"].invoke({
-        "chat_history": state['chat_history']
-    })
+    if 'clinical_notes' in state:
+        report_content = state['clinical_notes']
+        summary = clinical_notes_chain["report"].invoke({
+            "clinical_notes": report_content
+        })
+        write_markdown_file(str(report_content), "clinical_notes")
+
+    else:
+        formatted_chat_history = format_chat_history(state['chat_history'])
+        summary = consultant_chain["report"].invoke({
+            "chat_history": state['chat_history']
+        })
+        write_markdown_file(formatted_chat_history, "chat_history")
+
+
+  
     state["medical_report"] = summary
     state["num_steps"] += 1
-    formatted_chat_history = format_chat_history(state['chat_history'])
-    write_markdown_file(formatted_chat_history, "chat_history")
     write_markdown_file(summary, "medical_report")
     await websocket.send_json({
         'type': 'report',
         'content': summary,
         'current_node': 'consultant',
+        'current_step': 'medical_report',
         'next_node': 'prompt_distiller',
         'state': state
     })
@@ -88,6 +126,7 @@ async def handle_prompt_distiller(websocket, state):
         'type': 'new_search_term',
         'content': new_search_term,
         'current_node': 'prompt_distiller',
+        'current_step': 'search_term',
         'state': state
     })
 
@@ -99,6 +138,7 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
         await websocket.send_json({
             'type': 'search_term_added',
             'content': user_search_term,
+            'current_step': 'fetch_trials',
             'state': state
         })
         await asyncio.sleep(0.1)
@@ -125,6 +165,7 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
             'type': 'trials_found',
             'content': state['research_info'][0],
             'current_node': 'evaluate_trials',
+            'current_step': 'verify_eligibility',
             'next_node': 'user_decision',
             'state': state
         })
@@ -135,6 +176,7 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
             'type': 'no_trial_found',
             'content': state['follow_up'],
             'current_node': 'evaluate_trials',
+            'current_step': 'verify_eligibility',
             'next_node': 'consultant',
             'state': state
         })
@@ -180,9 +222,10 @@ async def continue_workflow(websocket: WebSocket, state):
                 state.update(trials_search_result)
                 print(f"trials_search_result:: {trials_search_result}")
                 await websocket.send_json({
-                    'type': 'update',
+                    'type': 'studies_found',
                     'content': 'Clinical trials search completed',
                     'current_node': current_node,
+                    'current_step': 'fetch_trials',
                     'next_node': 'research_info_search',
                     'state': state
                 })
@@ -196,6 +239,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 'type': 'research_info',
                 'content': 'Research info search completed',
                 'current_node': current_node,
+                'current_step': 'matching_trials',
                 'next_node': 'evaluate_research_info',
                 'state': state
             })

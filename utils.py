@@ -9,6 +9,7 @@ def write_markdown_file(content, filename):
     content: The string content to write to the file.
     filename: The filename to save the file as.
   """
+  print(f"content:: {content}")
   if type(content) == dict:
     content = '\n'.join(f"{key}: {value}" for key, value in content.items())
   if type(content) == list:
@@ -69,7 +70,7 @@ def clinical_trials_search(condition, uid):
 
         # Update the pageToken to the next page token from the response, if any
         nextPageToken = raw_trials.get("nextPageToken")
-        if not nextPageToken or counter > 2:
+        if not nextPageToken:
             break
         params["pageToken"] = nextPageToken
         counter = counter + 1
