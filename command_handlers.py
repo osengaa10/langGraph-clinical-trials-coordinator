@@ -14,8 +14,10 @@ import base64
 
 async def start_conversation(websocket: WebSocket, state):
     chat_history = state.get("chat_history", [])
+    clinical_notes = state.get("clinical_notes", [])
+
     initial_prompt = ""
-    if not chat_history:
+    if not chat_history or not clinical_notes:
         initial_prompt = "Ask the patient what their medical issue is."
     else:
         # If we're coming back from a failed trial search or for more information
@@ -75,6 +77,7 @@ async def handle_file_upload(websocket, state, data):
         
         # Store in state and update chat history
         state['clinical_notes'] = text
+        state['chat_history'] = text
         await generate_report(websocket, state)
         
     except Exception as e:
@@ -99,8 +102,6 @@ async def generate_report(websocket, state):
         })
         write_markdown_file(formatted_chat_history, "chat_history")
 
-
-  
     state["medical_report"] = summary
     state["num_steps"] += 1
     write_markdown_file(summary, "medical_report")

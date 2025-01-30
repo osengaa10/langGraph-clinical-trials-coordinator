@@ -1,69 +1,62 @@
-**MEDICAL REPORT**
+**Medical Report**
 
 **Patient Information:**
 
-* Age: 35 years old
+* Age: 35 years
 * Sex: Female
-* Menopausal Status: Premenopausal
+* Menopausal status: Premenopausal
+* BRCA mutation status: Germline pathogenic BRCA1 mutation
 
 **Medical History:**
 
-* Diagnosed with invasive ductal carcinoma of the right breast on September 6, 2016
-* Nottingham grade 3 (of 3), estrogen receptor (ER) positive (>75%), progesterone receptor (PR) positive (1-10%), human epidermal growth receptor 2 (HER-2) positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) positive for amplification)
-* Germline pathogenic BRCA1 mutation, confirming a hereditary breast cancer predisposition syndrome
-* Treated with neoadjuvant chemotherapy, followed by bilateral mastectomy and adjuvant breast radiotherapy
-* Completed 12 months of adjuvant trastuzumab and tamoxifen
-* Developed severe headaches and nausea, with brain MRI revealing 2 dominant brain metastases
-* Treated with gamma knife surgery and ado-trastuzumab emtansine
-* Developed liver metastasis and treated with capecitabine/lapatinib
-* Currently on experimental pembrolizumab as part of a clinical trial
+* Breast cancer diagnosed in August 2016
+* Neoadjuvant chemotherapy with paclitaxel, trastuzumab, and pertuzumab (September 2016)
+* Dose-dense doxorubicin and cyclophosphamide with neulasta support (January 2017)
+* Bilateral mastectomy with right axillary sentinel lymph node biopsy (April 2017)
+* Adjuvant trastuzumab with plans to continue 12 months of therapy along with tamoxifen (May 2017)
+* Bilateral salpingo-oophorectomy for prophylactic purposes (July 2017)
+* Gamma knife surgery for brain metastases (September 2017)
+* Systemic therapy changes due to disease progression:
+	+ Ado-trastuzumab emtansine (October 2017)
+	+ Capecitabine/lapatinib (February 2018)
+	+ Pembrolizumab (March 2018) as part of a clinical trial
 
-**Current Medications:**
+**Current Condition:**
 
-* Pembrolizumab (as part of a clinical trial)
+* Metastatic breast cancer with involvement of the brain and liver
+* ER+, PR+, HER2+, and PD-L1+ molecular features
+* Currently on pembrolizumab with a complete radiographic response to therapy (June 2018)
 
-**Allergies:**
+**Symptoms and Physical Examination:**
 
-* None reported
-
-**Symptoms:**
-
-* Severe headaches and nausea (resolved after gamma knife surgery)
-* None reported currently
-
-**Physical Examination:**
-
-* Not reported currently
+* Severe headaches and nausea (September 2017)
+* No current symptoms reported
 
 **Laboratory Results:**
 
-* ER positive (>75%)
-* PR positive (1-10%)
-* HER-2 positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) positive for amplification)
-* PD-L1 positive (as per liver biopsy)
+* Comprehensive hereditary breast cancer panel revealing a germline pathogenic BRCA1 mutation (February 2017)
+* Liver biopsy revealing metastatic breast cancer, positive for PDL-1 (February 2018)
 
 **Imaging Results:**
 
-* Mammogram (September 2, 2016): 3.5 cm right breast mass, suspicious for malignancy
-* Axillary ultrasound (September 2, 2016): 2 suspicious axillary lymph nodes, concerning for metastatic involvement
-* Breast MRI (September 5, 2016): 3.8 cm right breast mass, along with 3 pathological appearing lymph nodes
-* PET/CT scan (June 15, 2018): complete radiographic response to therapy with pembrolizumab
+* PET/CT scan after 3 months on pembrolizumab revealing a complete radiographic response to therapy (June 2018)
+
+**Current Medications:**
+
+* Pembrolizumab
+* Tamoxifen
 
 **Clinical Trials Eligibility:**
 
-* Metastatic breast cancer with brain and liver involvement
-* ER positive, PR positive, HER-2 positive, and PD-L1 positive
-* Prior therapies include THP-ddAC, ado-trastuzumab emtansine, capecitabine/lapatinib, and pembrolizumab (on trial)
-* Currently on experimental pembrolizumab as part of a clinical trial
+* Metastatic breast cancer with HER2+ and PD-L1+ molecular features
+* Prior treatments with ado-trastuzumab emtansine and capecitabine/lapatinib
+* Current response to pembrolizumab
+* Germline pathogenic BRCA1 mutation
 
 **Recommendations:**
 
-* Neoadjuvant chemotherapy followed by surgery and adjuvant breast radiotherapy
-* Adjuvant trastuzumab and tamoxifen
-* Gamma knife surgery for brain metastases
-* Experimental pembrolizumab as part of a clinical trial for metastatic disease
+* Continue pembrolizumab therapy due to complete radiographic response
+* Consider further clinical trials for metastatic breast cancer with HER2+ and PD-L1+ molecular features
+* Monitor for potential side effects of pembrolizumab and adjust treatment plan accordingly
 
-**Follow-up:**
-
-* Regular follow-up with Medical Oncology for monitoring of disease progression and response to therapy
-* Consideration for future clinical trials based on disease progression and response to therapy
+This medical report provides a comprehensive summary of the patient's medical history, current condition, and laboratory results. It highlights the patient's eligibility for clinical trials and provides recommendations for further treatment.
