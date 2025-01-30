@@ -23,6 +23,7 @@ export const WebSocketProvider = ({ children }) => {
   const [retryData, setRetryData] = useState('');
   const [numStudiesFound, setNumStudiesFound] = useState(0);
   const [currentNode, setCurrentNode] = useState("consultant"); 
+  const [showTrialButtons, setShowTrialButtons] = useState(false);
 
   const chatEndRef = useRef(null);
   
@@ -35,7 +36,7 @@ export const WebSocketProvider = ({ children }) => {
 
     ws.onopen = () => {
       setConnected(true);
-      message.success('Connected to server');
+    //   message.success('Connected to server');
     };
 
     ws.onmessage = (event) => {
@@ -52,6 +53,7 @@ export const WebSocketProvider = ({ children }) => {
         case 'update':
         case 'studies_found':
             setNumStudiesFound(data.state.studies_found)
+            message.success(`${data.state.studies_found} trials found`)
         case 'no_trial_found':
           setChatHistory((prev) => [...prev, { role: 'assistant', content: data.content }]);
           setConversationStarted(true);
@@ -83,7 +85,19 @@ export const WebSocketProvider = ({ children }) => {
           message.success('Workflow completed');
           break;
         case 'trials_found':
-          break;
+            setShowTrialButtons(true);
+            break;
+        case 'no_trials_found':
+            setShowTrialButtons(false);
+            break;
+        case 'need_new_term':
+            console.log("no studies found")
+            alert(`no studies found for search term '${searchTerm}'. Please try another`)
+            setLoading(false);
+            console.log(`loading: ${loading}`)
+            setShowSearchTermSection(true);
+            console.log(`showSearchTermSection: ${showSearchTermSection}`)
+            break;
         case 'rate_limit_error':
           setRetryCommand(data.retry_command);
           setRetryData(data.retry_data);
@@ -104,7 +118,7 @@ export const WebSocketProvider = ({ children }) => {
 
     ws.onclose = () => {
       setConnected(false);
-      message.error('WebSocket connection closed');
+    //   message.error('WebSocket connection closed');
     };
 
     return () => ws.close();
@@ -134,7 +148,9 @@ export const WebSocketProvider = ({ children }) => {
       chatEndRef,
       numStudiesFound,
       setNumStudiesFound,
-      currentNode
+      currentNode,
+      setShowTrialButtons,
+      showTrialButtons
     }}>
       {children}
     </WebSocketContext.Provider>

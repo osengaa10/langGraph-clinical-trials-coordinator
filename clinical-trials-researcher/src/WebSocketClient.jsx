@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import {WebSocketContext} from './WebSocketContext'
-import { Typography, Steps } from 'antd';
+import { Typography, Steps, Button } from 'antd';
 import ChatList from './ChatList';
 import FileUploader from './FileUploader';
 import InputSection from './InputSection';
@@ -47,7 +47,9 @@ const WebSocketClient = () => {
         setRetryData,
         chatEndRef,
         numStudiesFound,
-        currentNode
+        currentNode,
+        showTrialButtons,
+        setShowTrialButtons
       } = useContext(WebSocketContext);
 
 
@@ -60,12 +62,30 @@ const WebSocketClient = () => {
         { title: "Verifying Eligibility", key: "verify_eligibility" },
       ];
  const activeStep = steps.findIndex(step => step.key === currentNode);
+
+
+ const handleContinueSearch = () => {
+    if (socket) {
+      socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'yes' }));
+      setShowTrialButtons(false);
+      setConversationStarted(true);
+    }
+  };
+
+  const handleEndSearch = () => {
+    if (socket) {
+      socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
+      setShowTrialButtons(false);
+    }
+  };
+
+
   return (
         <div style={{ padding: '20px' }}>
             <div style={{ position: 'sticky', top: 0, background: '#fff', zIndex: 1, paddingBottom: '10px', textAlign: 'center' }}>
                 <Title level={2} style={{ marginBottom: '5px' }}>Clinexus</Title>
                 <Text type="secondary" style={{ fontSize: '16px' }}>
-                Let AI search the labyrinth of clinical trials to find one for you.
+                Let AI find the best clinical trial for you
                 </Text>
                 <div style={{ marginTop: '15px' }}>
                     {connected ? (
@@ -119,7 +139,16 @@ const WebSocketClient = () => {
 
       {medicalReport && <ReportCard title="Medical Report" content={medicalReport} />}
       {showFinalResults && <ReportCard title="Final Research Information" content={researchInfo.toString()} />}
-      
+        {showTrialButtons && (
+            <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <Button type="primary" onClick={handleContinueSearch} style={{ marginRight: '10px' }}>
+                Continue Searching
+            </Button>
+            <Button type="default" onClick={handleEndSearch}>
+                End Search
+            </Button>
+            </div>
+      )}
       {showRetryButton && (
         <RetrySection
           retryCountdown={retryCountdown}
