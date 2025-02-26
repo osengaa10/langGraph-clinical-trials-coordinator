@@ -1,5 +1,5 @@
 from langchain_core.output_parsers import StrOutputParser
-from LLMs.llm import GROQ_LLM, CHAT_LLM  # You might need to change this import depending on the LLM you're using
+from LLMs.llm import GROQ_LLM 
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder

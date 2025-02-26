@@ -1,62 +1,55 @@
-**Medical Report**
+**Comprehensive Medical Report**
 
 **Patient Information:**
 
 * Age: 35 years
 * Sex: Female
-* Menopausal status: Premenopausal
-* BRCA mutation status: Germline pathogenic BRCA1 mutation
+* Premenopausal status: Yes
+* BRCA mutation: Germline pathogenic BRCA1 mutation
 
 **Medical History:**
 
-* Breast cancer diagnosed in August 2016
-* Neoadjuvant chemotherapy with paclitaxel, trastuzumab, and pertuzumab (September 2016)
-* Dose-dense doxorubicin and cyclophosphamide with neulasta support (January 2017)
-* Bilateral mastectomy with right axillary sentinel lymph node biopsy (April 2017)
-* Adjuvant trastuzumab with plans to continue 12 months of therapy along with tamoxifen (May 2017)
-* Bilateral salpingo-oophorectomy for prophylactic purposes (July 2017)
-* Gamma knife surgery for brain metastases (September 2017)
-* Systemic therapy changes due to disease progression:
-	+ Ado-trastuzumab emtansine (October 2017)
-	+ Capecitabine/lapatinib (February 2018)
-	+ Pembrolizumab (March 2018) as part of a clinical trial
+* Recently diagnosed breast cancer (August 2016)
+* Invasive ductal carcinoma, Nottingham grade 3 (of 3)
+* Estrogen receptor (ER) positive (>75%)
+* Progesterone receptor (PR) positive (1-10%)
+* Human epidermal growth receptor 2 (HER2) positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) positive for amplification)
+* Metastatic disease to the brain (September 2017) and liver (February 2018)
 
-**Current Condition:**
+**Treatment History:**
 
-* Metastatic breast cancer with involvement of the brain and liver
-* ER+, PR+, HER2+, and PD-L1+ molecular features
-* Currently on pembrolizumab with a complete radiographic response to therapy (June 2018)
+1. Neoadjuvant chemotherapy:
+	* Paclitaxel, trastuzumab, and pertuzumab (September 2016)
+	* Dose-dense doxorubicin, cyclophosphamide with neulasta support (January 2017)
+2. Surgery:
+	* Bilateral mastectomy with right axillary sentinel lymph node biopsy (April 2017)
+3. Adjuvant therapy:
+	* Trastuzumab with plans to continue 12 months of therapy along with tamoxifen (May 2017)
+4. Metastatic treatment:
+	* Ado-trastuzumab emtansine (October 2017)
+	* Capecitabine/lapatinib (February 2018)
+	* Pembrolizumab (March 2018) as part of a clinical trial
+5. Procedures:
+	* Gamma knife surgery for brain metastases (September 2017)
+	* Bilateral salpingo-oophorectomy for prophylactic purposes (July 2017)
 
-**Symptoms and Physical Examination:**
+**Current Status:**
 
-* Severe headaches and nausea (September 2017)
-* No current symptoms reported
+* Complete radiographic response to pembrolizumab therapy (June 2018)
+* PD-L1 positive disease
+* ER+, PR+, HER2+, PD-L1+ molecular features
 
-**Laboratory Results:**
+**Clinical Trial Eligibility:**
 
-* Comprehensive hereditary breast cancer panel revealing a germline pathogenic BRCA1 mutation (February 2017)
-* Liver biopsy revealing metastatic breast cancer, positive for PDL-1 (February 2018)
-
-**Imaging Results:**
-
-* PET/CT scan after 3 months on pembrolizumab revealing a complete radiographic response to therapy (June 2018)
-
-**Current Medications:**
-
-* Pembrolizumab
-* Tamoxifen
-
-**Clinical Trials Eligibility:**
-
-* Metastatic breast cancer with HER2+ and PD-L1+ molecular features
-* Prior treatments with ado-trastuzumab emtansine and capecitabine/lapatinib
-* Current response to pembrolizumab
-* Germline pathogenic BRCA1 mutation
+* Prior therapies: THP-ddAC (residual disease), T-DM1, pembro (on trial)
+* Procedures: Gamma knife to brain mets
+* Sites of involvement: Brain, liver
+* Molecular features: ER+, PR+, HER2+, PD-L1+
 
 **Recommendations:**
 
-* Continue pembrolizumab therapy due to complete radiographic response
-* Consider further clinical trials for metastatic breast cancer with HER2+ and PD-L1+ molecular features
-* Monitor for potential side effects of pembrolizumab and adjust treatment plan accordingly
+* Continue pembrolizumab therapy
+* Consider enrolling in clinical trials that target PD-L1 positive, ER+, PR+, HER2+ breast cancer
+* Monitor for potential side effects and disease progression
 
-This medical report provides a comprehensive summary of the patient's medical history, current condition, and laboratory results. It highlights the patient's eligibility for clinical trials and provides recommendations for further treatment.
+This comprehensive medical report provides a detailed summary of the patient's medical history, treatment history, and current status. It highlights the patient's molecular features, prior therapies, and procedures, making it an essential document for other doctors to determine the best clinical trials for the patient.

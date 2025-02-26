@@ -150,6 +150,7 @@ export const WebSocketProvider = ({ children }) => {
       setNumStudiesFound,
       currentNode,
       setShowTrialButtons,
+      setChatHistory,
       showTrialButtons
     }}>
       {children}

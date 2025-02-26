@@ -1,1 +1,1 @@
-HER2+ Breast Cancer
+HER2-positive breast cancer
