@@ -88,7 +88,7 @@ export const WebSocketProvider = ({ children }) => {
             setShowTrialButtons(true);
             break;
         case 'no_trials_found':
-            setShowTrialButtons(false);
+            setShowTrialButtons(true);
             break;
         case 'need_new_term':
             console.log("no studies found")

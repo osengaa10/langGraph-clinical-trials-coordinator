@@ -1,31 +1,28 @@
-Based on the patient's medical report, I have reviewed the provided clinical trials and found that none of them are a perfect match for the patient's current condition. However, I can suggest a few trials that may be relevant, although they may not be an exact fit.
+Based on the patient's medical report, I have identified a few clinical trials that may be relevant. However, it's essential to note that the patient's history of brain metastases and liver metastasis may affect eligibility for certain clinical trials.
 
-The patient has metastatic breast cancer with a germline BRCA1 mutation, ER+, PR+, and HER2+ status, and has received prior treatments including pembrolizumab. Considering these factors, the following trials may be of interest:
-
-1. NCT03213041: I-CURE-1: A Phase II, Single Arm Study of Pembroluzimab Combined With Carboplatin in Patients With Circulating Tumor Cells (CTCs) Positive Her-2 Negative Metastatic Breast Cancer (MBC)
-
-Although this trial is focused on HER2-negative MBC, the patient's prior response to pembrolizumab and current HER2+ status may make them an interesting candidate for this study. The trial combines pembrolizumab with carboplatin, which may be beneficial for the patient.
+1. **NCT05950945**: This Phase 3b study is investigating Trastuzumab Deruxtecan (T-DXd) in subjects with unresectable and/or metastatic HER2-low or HER2 IHC 0 breast cancer. Although the patient's HER2 status is positive, the trial allows for patients with HER2 IHC 2+/ISH- status, which might be relevant. The patient's prior treatment with trastuzumab and pertuzumab may also be considered. The expected prognosis outcome is the time from the start of T-DXd to initiation of subsequent anticancer treatment (TTNT). Possible risks associated with this trial include cardiovascular events, interstitial lung disease, and hypersensitivity reactions.
 
 Contact Information:
-Study Coordinator - CONTACT
-Phone: (312)695-1301, Email: cancertrials@northwestern.edu
+(US Sites) Daiichi Sankyo Contact for Clinical Trial Information - CONTACT
+Phone: 908-992-6400, Email: CTRinfo@dsi.com
 
-Expected prognosis outcome: The trial aims to evaluate the progression-free survival (PFS) of patients with CTC-positive, HER2-negative MBC treated with pembrolizumab and carboplatin.
+(Asia Sites) Daiichi Sankyo Contact for Clinical Trial Information - CONTACT
+Phone: +81-3-6225-1111 (M-F 9-5 JST), Email: dsclinicaltrial@daiichisankyo.co.jp
 
-Possible risks associated: The trial involves the use of pembrolizumab, which the patient has already received, and carboplatin, which may have additional side effects. The patient should discuss the potential risks and benefits with their healthcare provider.
-
-2. NCT05929768: A Pilot Study of Neoadjuvant Response-Adapted Chemotherapy With Pembrolizumab in Patients With Stage 2 and 3 Triple Negative Breast Cancer to Determine Early PET and Biomarker Dynamics
-
-Although this trial is focused on triple-negative breast cancer, the patient's prior treatment with pembrolizumab and current metastatic disease may make them an interesting candidate for this study. The trial investigates the use of pembrolizumab in combination with chemotherapy.
+2. **NCT05292742**: This randomized, open-label, multicenter study is comparing continuation of original targeted therapy with trastuzumab combined with pyrotinib and capecitabine as postoperative adjuvant therapy in non-pCR patients with HER2-positive early breast cancer. Although the patient has metastatic disease, the trial's focus on HER2-positive breast cancer and the combination of trastuzumab with other therapies might be relevant. The expected prognosis outcome is the 3-year invasive disease-free survival (iDFS) rate. Possible risks associated with this trial include cardiac toxicity, hematologic toxicity, and hypersensitivity reactions.
 
 Contact Information:
-Cesar A Santa-Maria, MD - CONTACT
-Phone: 410-614-0874, Email: csantam2@jhmi.edu
-Hopkins Breast Trials - CONTACT
-Phone: 410-614-1361, Email: HopkinsBreastTrials@jhmi.edu
+Chuan Wang - CONTACT
+Phone: 13515020716, Email: chuanwang68@qq.com
+Silu Wang - CONTACT
+Phone: 18559171530, Email: wangsiluaaron@163.com
 
-Expected prognosis outcome: The trial aims to evaluate the correlation between early PET and biomarker dynamics and pathological complete response (pCR) in patients with stage 2 and 3 triple-negative breast cancer.
+3. **NCT05891561**: This open-label, single-arm study is investigating short-course trastuzumab, pertuzumab combined with taxanes in the adjuvant treatment of early HER2-positive breast cancer. Although the patient has metastatic disease, the trial's focus on HER2-positive breast cancer and the combination of trastuzumab with other therapies might be relevant. The expected prognosis outcome is the disease-free survival (DFS) rate. Possible risks associated with this trial include cardiac toxicity, hematologic toxicity, and hypersensitivity reactions.
 
-Possible risks associated: The trial involves the use of pembrolizumab, which the patient has already received, and chemotherapy, which may have additional side effects. The patient should discuss the potential risks and benefits with their healthcare provider.
+Contact Information:
+Xiaosong Chen - CONTACT
+Phone: +8621-64370045*602102, Email: chenxiaosong0156@hotmail.com
+Yiwei Tong - CONTACT
+Phone: +8621-64370045*602107, Email: ash_yiwei@sjtu.edu.cn
 
-In conclusion, while none of the provided trials are a perfect match for the patient's current condition, NCT03213041 and NCT05929768 may be of interest. However, it is essential to note that the patient's prior treatments and current disease status may affect their eligibility for these trials. The patient should discuss their individual situation with their healthcare provider to determine the best course of action.
+It's essential to note that these trials may have specific eligibility criteria, and the patient's medical history and current disease status should be carefully evaluated to determine the best course of treatment. The patient's oncology team should discuss the potential benefits and risks of each trial and determine the most suitable option.

@@ -161,6 +161,8 @@ const WebSocketClient = () => {
         />
       )}
       {showFinalResults && <ReportCard title="Final Research Information" content={researchInfo.toString()} />}
+
+      {showTrialButtons && (
             <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <Button type="primary" onClick={handleContinueSearch} style={{ marginRight: '10px' }}>
                 Continue Searching
@@ -169,7 +171,7 @@ const WebSocketClient = () => {
                 End Search
             </Button>
             </div>
-      
+      )}
       {showRetryButton && (
         <RetrySection
           retryCountdown={retryCountdown}
