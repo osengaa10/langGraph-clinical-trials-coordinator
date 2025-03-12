@@ -18,7 +18,7 @@ deepseek_api_key = os.environ['OPENROUTER_API_KEY']
 #             model="llama3-8b-8192",
 #         )
 
-GROQ_LLM = ChatTogether(model="meta-llama/Meta-Llama-3.1-70B-Instruct-Turbo")
+GROQ_LLM = ChatTogether(model="meta-llama/Llama-3.3-70B-Instruct-Turbo")
 # GROQ_LLM = ChatTogether(model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free")
 
 # GROQ_LLM = ChatOpenAI(

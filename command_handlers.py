@@ -4,6 +4,7 @@ from utils import write_markdown_file
 from fastapi import WebSocket
 from nodes.trials_search_node import trials_search 
 from nodes.rag_node import research_info_search
+from rag import chunk_and_embed
 from nodes.evaluate_trials_node import evaluate_research_info, evaluate_trials_chain
 import asyncio
 import os
@@ -77,7 +78,7 @@ async def handle_file_upload(websocket, state, data):
         
         # Store in state and update chat history
         state['clinical_notes'] = text
-        state['chat_history'] = text
+        state['chat_history'].append({"role": "user", "content": text})
         await generate_report(websocket, state)
         
     except Exception as e:
@@ -208,7 +209,9 @@ async def continue_workflow(websocket: WebSocket, state):
         
         if current_node == 'trials_search':
             trials_search_result = trials_search(state)
-            studies_found_count = trials_search_result['studies_found']
+            studies_found_count = trials_search_result['studies_found_count']
+            studies_found = trials_search_result['studies_found']
+            uid = trials_search_result['uid']
             if studies_found_count == 0:
                 print("none found")
                 await websocket.send_json({
@@ -231,6 +234,19 @@ async def continue_workflow(websocket: WebSocket, state):
                     'state': state
                 })
                 await asyncio.sleep(0.1)
+                await websocket.send_json({
+                    'type': 'studies_found',
+                    'content': 'Clinical trials search completed',
+                    'current_node': current_node,
+                    'current_step': 'embed_trials',
+                    'next_node': 'research_info_search',
+                    'state': state
+                })
+                await asyncio.sleep(0.1)
+                print("beginning to embed!!")
+                chunk_and_embed(studies_found, uid)
+                print(f"embedded {studies_found_count} trials!")
+
                 state['next_step'] = 'research_info_search'
 
         elif current_node == 'research_info_search':

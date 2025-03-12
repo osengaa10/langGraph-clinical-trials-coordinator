@@ -42,7 +42,7 @@ export const WebSocketProvider = ({ children }) => {
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
       if (data.current_step) {
-        setCurrentNode(data.current_step);  // Update current node
+        setCurrentNode(data.current_step);
       }
       
       switch (data.type) {
@@ -52,8 +52,8 @@ export const WebSocketProvider = ({ children }) => {
         case 'question':
         case 'update':
         case 'studies_found':
-            setNumStudiesFound(data.state.studies_found)
-            message.success(`${data.state.studies_found} trials found`)
+            setNumStudiesFound(data.state.studies_found_count)
+            message.success(`${data.state.studies_found_count} trials found`)
         case 'no_trial_found':
           setChatHistory((prev) => [...prev, { role: 'assistant', content: data.content }]);
           setConversationStarted(true);

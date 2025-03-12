@@ -1,6 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useRef, useEffect } from 'react';
 import {WebSocketContext} from './WebSocketContext'
-import { Typography, Steps, Button } from 'antd';
+import { Typography, Steps, Button, Spin } from 'antd';
 import ChatList from './ChatList';
 import FileUploader from './FileUploader';
 import InputSection from './InputSection';
@@ -53,31 +53,50 @@ const WebSocketClient = () => {
       } = useContext(WebSocketContext);
 
 
-      const steps = [
-        { title: "Consultant", key: "consultant" },
-        { title: "Medical Report", key: "medical_report" },
-        { title: "Search Term", key: "search_term" },
-        { title: "Finding Trials", key: "fetch_trials" },
-        { title: "Matching Trials", key: "matching_trials" },
-        { title: "Verifying Eligibility", key: "verify_eligibility" },
-      ];
- const activeStep = steps.findIndex(step => step.key === currentNode);
+    // Reference for scrolling
+    const bottomRef = useRef(null);
 
-
- const handleContinueSearch = () => {
-    if (socket) {
-      socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'yes' }));
-      setShowTrialButtons(false);
-      setConversationStarted(true);
+    useEffect(() => {
+    // Scroll to bottom whenever a new component is rendered or chat updates
+    if (bottomRef.current) {
+        bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
-  };
+    }, [
+    chatHistory,
+    medicalReport,
+    showFinalResults,
+    showSearchTermSection,
+    showTrialButtons,
+    showRetryButton
+    ]);
 
-  const handleEndSearch = () => {
-    if (socket) {
-      socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
-      setShowTrialButtons(false);
-    }
-  };
+
+    const steps = [
+    { title: "Consultant", key: "consultant" },
+    { title: "Medical Report", key: "medical_report" },
+    { title: "Search Term", key: "search_term" },
+    { title: "Finding Trials", key: "fetch_trials" },
+    { title: "Embedding Trials", key: "embed_trials" },
+    { title: "Matching Trials", key: "matching_trials" },
+    { title: "Verifying Eligibility", key: "verify_eligibility" },
+    ];
+    const activeStep = steps.findIndex(step => step.key === currentNode);
+
+
+    const handleContinueSearch = () => {
+        if (socket) {
+            socket.send(JSON.stringify({ command: 'continue_search', keep_searching: 'yes' }));
+            setShowTrialButtons(false);
+            setConversationStarted(true);
+        }
+    };
+
+    const handleEndSearch = () => {
+        if (socket) {
+            socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
+            setShowTrialButtons(false);
+        }
+    };
 
 
   return (
@@ -94,11 +113,15 @@ const WebSocketClient = () => {
                         <Text type="danger" strong>Not connected to server</Text>
                     )}
                 </div>
-                <Steps current={activeStep} style={{ marginTop: '20px' }}>
-                {steps.map((step) => (
-                <Step key={step.key} title={step.title} />
-                ))}
-            </Steps>
+                <Steps current={activeStep} style={{ marginTop: '20px' }} size="small">
+          {steps.map((step, index) => (
+            <Step
+              key={step.key}
+              title={step.title}
+              icon={index === activeStep ? <Spin size="small" /> : null}
+            />
+          ))}
+        </Steps>
 
             </div>
 
@@ -124,6 +147,7 @@ const WebSocketClient = () => {
         />
       )}
 
+      {medicalReport && <ReportCard title="Medical Report" content={medicalReport} />}
       {showSearchTermSection && (
         <SearchTermSection
           searchTerm={searchTerm}
@@ -136,10 +160,7 @@ const WebSocketClient = () => {
           loading={loading}
         />
       )}
-
-      {medicalReport && <ReportCard title="Medical Report" content={medicalReport} />}
       {showFinalResults && <ReportCard title="Final Research Information" content={researchInfo.toString()} />}
-        {showTrialButtons && (
             <div style={{ marginTop: '20px', textAlign: 'center' }}>
             <Button type="primary" onClick={handleContinueSearch} style={{ marginRight: '10px' }}>
                 Continue Searching
@@ -148,7 +169,7 @@ const WebSocketClient = () => {
                 End Search
             </Button>
             </div>
-      )}
+      
       {showRetryButton && (
         <RetrySection
           retryCountdown={retryCountdown}
@@ -158,6 +179,7 @@ const WebSocketClient = () => {
           }}
         />
       )}
+      <div ref={bottomRef} />
     </div>
   );
 };

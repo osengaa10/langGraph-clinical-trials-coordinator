@@ -96,7 +96,6 @@ def clinical_trials_search(condition, uid):
             with open(file_path, "w") as file:
                 file.write(report_content)
             new_studies.append((file_name, file_path))
-        vectordb = chunk_and_embed(new_studies, uid)
         # Return the response in JSON format
         return new_studies
 
