@@ -33,7 +33,6 @@ def evaluate_research_info(state):
         print("No suitable clinical trial found. Updating follow-up information.")
         follow_up = evaluation_result.split("Additional information needed:")[1].strip()
         next_step = "consultant"
-        print(f"follow_up::: {follow_up}")
     return {
         "next_step": next_step,
         "num_steps": num_steps,

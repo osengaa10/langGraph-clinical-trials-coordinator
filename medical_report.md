@@ -1,34 +1,38 @@
-**Comprehensive Medical Report**
+**Medical Report:**
 
-**Patient Information:**
-
-* Age: 35 years old
-* Sex: Female
-* Menopausal status: Premenopausal
-* BRCA mutation: Positive (germline pathogenic BRCA1 mutation)
+**Patient Profile:**
+A 35-year-old premenopausal female with a germline pathogenic BRCA1 mutation, diagnosed with node-positive, estrogen receptor-positive (ER+), progesterone receptor-positive (PR+), and human epidermal growth factor receptor 2-positive (HER2+) right breast cancer.
 
 **Medical History:**
 
-The patient was diagnosed with invasive ductal carcinoma of the right breast in August 2016. The tumor was initially 3.5 cm in size, with two suspicious axillary lymph nodes. A breast MRI revealed a 3.8 cm mass with three pathological appearing lymph nodes. A biopsy confirmed the diagnosis of invasive ductal carcinoma, Nottingham grade 3, estrogen receptor (ER) positive (>75%), progesterone receptor (PR) positive (1-10%), and human epidermal growth receptor 2 (HER2) positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) positive for amplification).
+* August 15, 2016: Patient noticed a palpable right breast mass after breastfeeding.
+* September 2, 2016: Diagnostic mammogram revealed a 3.5 cm right breast mass, suspicious for malignancy.
+* September 5, 2016: Breast MRI revealed a right breast mass measuring 3.8 cm, along with 3 pathological appearing lymph nodes.
+* September 6, 2016: Ultrasound-guided biopsy of the right breast revealed an invasive ductal carcinoma, Nottingham grade 3 (of 3), ER+, PR+, and HER2+.
+* September 8, 2016: Initial visit with Medical Oncology, and neoadjuvant chemotherapy followed by surgery and adjuvant breast radiotherapy was recommended.
 
 **Treatment History:**
 
-The patient underwent neoadjuvant chemotherapy with paclitaxel, trastuzumab, and pertuzumab, followed by dose-dense doxorubicin and cyclophosphamide with neulasta support. After completing neoadjuvant chemotherapy, the patient underwent bilateral mastectomy with right axillary sentinel lymph node biopsy, which revealed residual disease. The patient then initiated adjuvant trastuzumab with plans to continue for 12 months, along with tamoxifen.
-
-**Metastatic Disease:**
-
-The patient developed brain metastases in September 2017, which were treated with gamma knife surgery. Subsequently, the patient developed liver metastasis, which was treated with capecitabine and lapatinib. A liver biopsy revealed metastatic breast cancer, positive for PD-L1. The patient then started experimental pembrolizumab as part of a clinical trial, which led to a complete radiographic response.
+* September 15, 2016: Patient started neoadjuvant chemotherapy with paclitaxel, trastuzumab, and pertuzumab.
+* January 30, 2017: Patient started dose-dense doxorubicin, cyclophosphamide with neulasta support.
+* April 20, 2017: Patient underwent bilateral mastectomy with right axillary sentinel lymph node biopsy.
+* May 15, 2017: Patient initiated adjuvant trastuzumab with plans to continue 12 months of therapy along with tamoxifen.
+* July 3, 2017: Patient underwent bilateral salpingo-oophorectomy for prophylactic purposes, given BRCA mutation.
+* September 26, 2017: Patient underwent gamma knife surgery for two dominant brain metastases.
+* October 15, 2017: Systemic therapy changed to ado-trastuzumab emtansine, with discontinuation of the previous plan of completing 12 months of adjuvant trastuzumab.
+* February 20, 2018: Evidence of liver metastasis, and systemic treatment changed to capecitabine/lapatinib.
+* February 25, 2018: Liver biopsy revealed metastatic breast cancer, positive for PDL-1.
+* March 1, 2018: Patient started experimental pembrolizumab as part of a clinical trial.
 
 **Current Status:**
-
-The patient is currently on pembrolizumab, with a complete response to therapy. The patient has a history of metastatic disease to the brain and liver, and has undergone gamma knife surgery and multiple lines of systemic therapy.
+The patient has achieved a complete radiographic response to therapy with pembrolizumab, as evidenced by a PET/CT scan after 3 months of treatment.
 
 **Molecular Features:**
 
-* ER: Positive (>75%)
-* PR: Positive (1-10%)
-* HER2: Positive (immunohistochemistry 2+, FISH positive for amplification)
-* PD-L1: Positive
+* ER+: Estrogen receptor-positive
+* PR+: Progesterone receptor-positive
+* HER2+: Human epidermal growth factor receptor 2-positive
+* PD-L1+: Positive for programmed death-ligand 1
 
 **Prior Therapies:**
 
@@ -36,10 +40,19 @@ The patient is currently on pembrolizumab, with a complete response to therapy. 
 * Metastatic: T-DM1, pembro (on trial)
 * Procedures: Gamma knife to brain metastases
 
-**Clinical Trials Eligibility:**
+**Sites of Involvement:**
 
-Based on the patient's medical history, treatment history, and molecular features, the patient may be eligible for clinical trials investigating new therapies for HER2-positive, ER-positive, and PD-L1-positive breast cancer. The patient's complete response to pembrolizumab suggests that immunotherapy may be a viable treatment option. However, the patient's history of brain metastases and liver metastasis may affect eligibility for certain clinical trials.
+* Brain
+* Liver
+
+**Date of Diagnosis:**
+
+* August 2016 (operable)
+* September 2017 (metastatic)
+
+**Current Medications:**
+
+* Pembrolizumab (experimental, as part of a clinical trial)
 
 **Recommendations:**
-
-Further evaluation and consideration for clinical trials should be based on the patient's current disease status, molecular features, and prior therapies. The patient's oncology team should continue to monitor the patient's response to pembrolizumab and consider additional treatment options as needed.
+The patient's remarkable response to pembrolizumab suggests that she may be a suitable candidate for further clinical trials investigating the efficacy of immunotherapies in metastatic breast cancer. Additionally, consideration should be given to exploring other targeted therapies, such as those directed against the HER2 pathway, given the patient's HER2-positive status. Ongoing monitoring of the patient's disease status and adjustment of her treatment plan as needed will be crucial in optimizing her outcomes.

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useEffect } from 'react';
+import React, { useContext, useRef, useEffect, useState } from 'react';
 import {WebSocketContext} from './WebSocketContext'
 import { Typography, Steps, Button, Spin } from 'antd';
 import ChatList from './ChatList';
@@ -12,6 +12,7 @@ const { Title, Text } = Typography;
 const { Step } = Steps;
 
 const WebSocketClient = () => {
+    const [workflowEnded, setWorkflowEnded] = useState(false)
     const {
         socket,
         setSocket,
@@ -48,6 +49,7 @@ const WebSocketClient = () => {
         chatEndRef,
         numStudiesFound,
         currentNode,
+        setCurrentNode,
         showTrialButtons,
         setShowTrialButtons
       } = useContext(WebSocketContext);
@@ -62,12 +64,12 @@ const WebSocketClient = () => {
         bottomRef.current.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
     }, [
-    chatHistory,
-    medicalReport,
-    showFinalResults,
-    showSearchTermSection,
-    showTrialButtons,
-    showRetryButton
+        chatHistory,
+        medicalReport,
+        showFinalResults,
+        showSearchTermSection,
+        showTrialButtons,
+        showRetryButton
     ]);
 
 
@@ -92,6 +94,7 @@ const WebSocketClient = () => {
     };
 
     const handleEndSearch = () => {
+        setWorkflowEnded(true)
         if (socket) {
             socket.send(JSON.stringify({ command: 'cleanup', keep_searching: 'no' }));
             setShowTrialButtons(false);
@@ -114,14 +117,14 @@ const WebSocketClient = () => {
                     )}
                 </div>
                 <Steps current={activeStep} style={{ marginTop: '20px' }} size="small">
-          {steps.map((step, index) => (
-            <Step
-              key={step.key}
-              title={step.title}
-              icon={index === activeStep ? <Spin size="small" /> : null}
-            />
-          ))}
-        </Steps>
+                    {steps.map((step, index) => (
+                        <Step
+                        key={step.key}
+                        title={step.title}
+                        icon={index === activeStep && !workflowEnded ? <Spin size="small" /> : null}
+                        />
+                    ))}
+                </Steps>
 
             </div>
 

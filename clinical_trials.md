@@ -1,28 +1,29 @@
-Based on the patient's medical report, I have identified a few clinical trials that may be relevant. However, it's essential to note that the patient's history of brain metastases and liver metastasis may affect eligibility for certain clinical trials.
+Based on the provided medical report, the patient is a 35-year-old premenopausal female with a germline pathogenic BRCA1 mutation, diagnosed with node-positive, estrogen receptor-positive (ER+), progesterone receptor-positive (PR+), and human epidermal growth factor receptor 2-positive (HER2+) right breast cancer. She has undergone various treatments, including neoadjuvant chemotherapy, surgery, adjuvant breast radiotherapy, and immunotherapy with pembrolizumab, which has resulted in a complete radiographic response.
 
-1. **NCT05950945**: This Phase 3b study is investigating Trastuzumab Deruxtecan (T-DXd) in subjects with unresectable and/or metastatic HER2-low or HER2 IHC 0 breast cancer. Although the patient's HER2 status is positive, the trial allows for patients with HER2 IHC 2+/ISH- status, which might be relevant. The patient's prior treatment with trastuzumab and pertuzumab may also be considered. The expected prognosis outcome is the time from the start of T-DXd to initiation of subsequent anticancer treatment (TTNT). Possible risks associated with this trial include cardiovascular events, interstitial lung disease, and hypersensitivity reactions.
+After reviewing the retrieved clinical trials, I have identified a few trials that may be suitable for this patient. However, it's essential to note that each trial has its own eligibility criteria, and the patient's specific condition and treatment history must be carefully evaluated to determine the best fit.
 
-Contact Information:
-(US Sites) Daiichi Sankyo Contact for Clinical Trial Information - CONTACT
-Phone: 908-992-6400, Email: CTRinfo@dsi.com
-
-(Asia Sites) Daiichi Sankyo Contact for Clinical Trial Information - CONTACT
-Phone: +81-3-6225-1111 (M-F 9-5 JST), Email: dsclinicaltrial@daiichisankyo.co.jp
-
-2. **NCT05292742**: This randomized, open-label, multicenter study is comparing continuation of original targeted therapy with trastuzumab combined with pyrotinib and capecitabine as postoperative adjuvant therapy in non-pCR patients with HER2-positive early breast cancer. Although the patient has metastatic disease, the trial's focus on HER2-positive breast cancer and the combination of trastuzumab with other therapies might be relevant. The expected prognosis outcome is the 3-year invasive disease-free survival (iDFS) rate. Possible risks associated with this trial include cardiac toxicity, hematologic toxicity, and hypersensitivity reactions.
+1. **NCT03213041**: This trial investigates the combination of pembrolizumab and carboplatin in patients with circulating tumor cells (CTCs) positive, HER2-negative metastatic breast cancer (MBC). Although the patient's current cancer is HER2-positive, the trial's focus on CTCs and immunotherapy might be relevant. The patient's recent response to pembrolizumab and her HER2-positive status might make her a suitable candidate for this trial.
 
 Contact Information:
-Chuan Wang - CONTACT
-Phone: 13515020716, Email: chuanwang68@qq.com
-Silu Wang - CONTACT
-Phone: 18559171530, Email: wangsiluaaron@163.com
+Study Coordinator - CONTACT
+Phone: (312)695-1301, Email: cancertrials@northwestern.edu
 
-3. **NCT05891561**: This open-label, single-arm study is investigating short-course trastuzumab, pertuzumab combined with taxanes in the adjuvant treatment of early HER2-positive breast cancer. Although the patient has metastatic disease, the trial's focus on HER2-positive breast cancer and the combination of trastuzumab with other therapies might be relevant. The expected prognosis outcome is the disease-free survival (DFS) rate. Possible risks associated with this trial include cardiac toxicity, hematologic toxicity, and hypersensitivity reactions.
+Expected prognosis outcome: The trial aims to evaluate the progression-free survival (PFS) of patients with CTCs positive, HER2-negative MBC treated with the combination pembrolizumab - carboplatin. Possible risks associated with this trial include adverse events related to pembrolizumab and carboplatin, such as fatigue, nausea, and neutropenia.
+
+2. **NCT06099769**: This trial explores the efficacy of enzalutamide, enzalutamide with mifepristone, and treatment of physician's choice in patients with AR+ metastatic triple-negative or ER-low breast cancer. Although the patient's cancer is not triple-negative, her tumor is ER-positive, and the trial's focus on AR+ tumors might be relevant.
 
 Contact Information:
-Xiaosong Chen - CONTACT
-Phone: +8621-64370045*602102, Email: chenxiaosong0156@hotmail.com
-Yiwei Tong - CONTACT
-Phone: +8621-64370045*602107, Email: ash_yiwei@sjtu.edu.cn
+Tiffany Traina, MD - CONTACT
+Phone: 646-888-4558, Email: trainat@mskcc.org
 
-It's essential to note that these trials may have specific eligibility criteria, and the patient's medical history and current disease status should be carefully evaluated to determine the best course of treatment. The patient's oncology team should discuss the potential benefits and risks of each trial and determine the most suitable option.
+Expected prognosis outcome: The trial aims to evaluate the progression-free survival (PFS) of patients with AR+ metastatic triple-negative or ER-low breast cancer. Possible risks associated with this trial include adverse events related to enzalutamide and mifepristone, such as fatigue, nausea, and hot flashes.
+
+3. **NCT05810870**: This trial investigates the combination of MEN1611 and eribulin in patients with advanced triple-negative or metaplastic HR-positive/HER2-negative, PIK3CA/PTEN-altered breast cancer. Although the patient's cancer is HER2-positive, the trial's focus on PIK3CA/PTEN alterations might be relevant, given the patient's BRCA1 mutation.
+
+Contact Information:
+Olalla Ballesteros - CONTACT
+Phone: +34 607 306 065, Email: olalla.ballesteros@medsir.org
+
+Expected prognosis outcome: The trial aims to evaluate the clinical benefit rate (CBR) of patients with advanced triple-negative or metaplastic HR-positive/HER2-negative, PIK3CA/PTEN-altered breast cancer treated with MEN1611 in combination with eribulin. Possible risks associated with this trial include adverse events related to MEN1611 and eribulin, such as fatigue, nausea, and neutropenia.
+
+In conclusion, while these trials may be suitable for the patient, it's essential to carefully evaluate her specific condition and treatment history to determine the best fit. The patient's recent response to pembrolizumab and her HER2-positive status might make her a suitable candidate for trials focusing on immunotherapy and HER2-positive tumors. However, the patient's BRCA1 mutation and PIK3CA/PTEN alterations might also be relevant for trials investigating targeted therapies. The patient should discuss these options with her healthcare provider to determine the most suitable trial and potential risks associated with each trial.

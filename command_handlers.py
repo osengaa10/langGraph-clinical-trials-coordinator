@@ -161,7 +161,7 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
 async def handle_evaluate_trials(websocket: WebSocket, state):
     research_info = state['research_info']
     evaluation_result = evaluate_trials_chain.invoke({"research_info": research_info})
-    print(f"evaluation_result:: {evaluation_result}")
+    state['follow_up'] = evaluation_result
     if "A suitable clinical trial was found:" in evaluation_result:
         await websocket.send_json({
             'type': 'trials_found',
@@ -224,7 +224,6 @@ async def continue_workflow(websocket: WebSocket, state):
                 break
             else:
                 state.update(trials_search_result)
-                print(f"trials_search_result:: {trials_search_result}")
                 await websocket.send_json({
                     'type': 'studies_found',
                     'content': 'Clinical trials search completed',
@@ -235,7 +234,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 })
                 await asyncio.sleep(0.1)
                 await websocket.send_json({
-                    'type': 'studies_found',
+                    'type': 'embedding_studies',
                     'content': 'Clinical trials search completed',
                     'current_node': current_node,
                     'current_step': 'embed_trials',

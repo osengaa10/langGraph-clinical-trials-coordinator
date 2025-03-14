@@ -149,6 +149,7 @@ export const WebSocketProvider = ({ children }) => {
       numStudiesFound,
       setNumStudiesFound,
       currentNode,
+      setCurrentNode,
       setShowTrialButtons,
       setChatHistory,
       showTrialButtons

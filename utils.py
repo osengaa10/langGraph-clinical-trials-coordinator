@@ -9,7 +9,6 @@ def write_markdown_file(content, filename):
     content: The string content to write to the file.
     filename: The filename to save the file as.
   """
-  print(f"content:: {content}")
   if type(content) == dict:
     content = '\n'.join(f"{key}: {value}" for key, value in content.items())
   if type(content) == list:
@@ -43,6 +42,7 @@ def clinical_trials_search(condition, uid):
     print("====RESONSE====")
 
     study_details_list = []
+    nctId_list = []
     counter = 0
     while True:
         # Make the GET request
@@ -67,6 +67,7 @@ def clinical_trials_search(condition, uid):
                 "designModule": protocol_section.get("designModule"),
                 "briefSummary": protocol_section.get("descriptionModule", {}).get("briefSummary") 
             })
+            nctId_list.append(protocol_section.get("identificationModule").get("nctId"))
 
         # Update the pageToken to the next page token from the response, if any
         nextPageToken = raw_trials.get("nextPageToken")
@@ -85,13 +86,13 @@ def clinical_trials_search(condition, uid):
             report_content = create_trial_report(trial)
             directory = f'./studies/{uid}'
             os.makedirs(directory, exist_ok=True)
-            with open(f'./studies/{uid}/{condition.replace(" ", "_")}_{index + 1}.txt', "w+") as file:
+            with open(f'./studies/{uid}/{nctId_list[index]}.txt', "w+") as file:
                 file.write(report_content)
         
         new_studies = []
         for index, trial in enumerate(study_details_list):
             report_content = create_trial_report(trial)
-            file_name = f'{condition.replace(" ", "_")}_{index + 1}.txt'
+            file_name = f'{nctId_list[index]}.txt'
             file_path = os.path.join(f'./studies/{uid}', file_name)
             with open(file_path, "w") as file:
                 file.write(report_content)
@@ -136,8 +137,9 @@ def create_trial_report(trial):
         report += f"{intervention_type} - {intervention_name}: {description}\n"
     
     report += "\nPrimary Outcomes:\n"
+    outcomes_module = trial.get('outcomesModule') or {} 
     # Ensure primaryOutcomes is iterable, default to empty list if None
-    for outcome in trial['outcomesModule'].get('primaryOutcomes', []) or []:
+    for outcome in outcomes_module.get('primaryOutcomes', []) or []:
         measure = outcome.get('measure', 'Not available')
         description = outcome.get('description', 'Not available')
         time_frame = outcome.get('timeFrame', 'Not available')

@@ -19,9 +19,3 @@ Provide a comprehensive list of clinical trials that are relevant to this search
 )
 
 trials_search_chain = trials_search_prompt | GROQ_LLM | StrOutputParser()
-
-# Example usage
-search_term = 'sarcoma'
-print(":::trials_search_chain invoked:::")
-print(trials_search_chain.invoke({"search_term": search_term}))
-print(":::trials_search_chain invoked:::")

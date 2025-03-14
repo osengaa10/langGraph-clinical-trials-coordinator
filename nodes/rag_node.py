@@ -24,8 +24,8 @@ def research_info_search(state):
     Retrieved Clinical Trials:
     {context}
 
-    Find the most relevant clinical trials for this patient based on their medical report.
-    State the expected prognosis outcome and possible risks associated.
+    Find the most best clinical trials for this patient based on their medical report for improving their prognosis.
+    State the expected prognosis outcome for the patient described in the Medical Report and possible risks associated with each trial.
     Ensure that you always include the NCT ID for each trial you mention as well as the contact info
     <|eot_id|>
     <|start_header_id|>assistant<|end_header_id|>
