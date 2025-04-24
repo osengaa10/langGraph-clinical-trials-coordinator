@@ -160,8 +160,24 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
 
 async def handle_evaluate_trials(websocket: WebSocket, state):
     research_info = state['research_info']
-    evaluation_result = evaluate_trials_chain.invoke({"research_info": research_info})
+
+    # Start the long-running trial evaluation as a background task
+    async def run_chain():
+        return evaluate_trials_chain.invoke({"research_info": research_info})
+
+    task = asyncio.create_task(run_chain())
+
+    # While it’s running, send a ping/status every 30s to keep the connection alive
+    while not task.done():
+        await websocket.send_json({
+            "type": "status",
+            "message": "Evaluating trials... please wait."
+        })
+        await asyncio.sleep(30)
+
+    evaluation_result = await task
     state['follow_up'] = evaluation_result
+
     if "A suitable clinical trial was found:" in evaluation_result:
         await websocket.send_json({
             'type': 'trials_found',
@@ -184,7 +200,6 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
         })
         await asyncio.sleep(0.1)
         state['next_step'] = 'consultant'
-
 
 async def handle_continue_search(websocket: WebSocket, state, decision):
     if decision == 'yes':
