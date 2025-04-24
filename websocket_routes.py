@@ -16,6 +16,14 @@ import asyncio
 
 active_connections: List[WebSocket] = []
 
+async def heartbeat(websocket: WebSocket, interval: int = 30):
+    try:
+        while True:
+            await asyncio.sleep(interval)
+            await websocket.send_json({"type": "ping"})
+    except:
+        pass  # Connection was closed or errored
+
 async def handle_command(websocket: WebSocket, state, command, data):
     try:
         if command == 'start':
@@ -43,29 +51,31 @@ async def handle_command(websocket: WebSocket, state, command, data):
 
 async def websocket_endpoint(websocket: WebSocket):
     await websocket.accept()
-    
-    uid = websocket.query_params.get("uid")  
-    user_directory = f"./user_data/{uid}"
-
-    active_connections.append(websocket)
+    uid = websocket.query_params.get("uid")
     state = initialize_state(uid)
+    active_connections.append(websocket)
 
-    # try:
-    await websocket.send_json({"type": "connected", "uid": uid}) 
-    
-    while True:
-        message = await websocket.receive_text()
-        data = json.loads(message)
-        command = data.get('command')
+    await websocket.send_json({"type": "connected", "uid": uid})
 
-        if command == 'retry':
-            # Handle retry after rate limit
-            retry_command = data.get('retry_command')
-            retry_data = data.get('retry_data')
-            await handle_command(websocket, state, retry_command, retry_data)
-        else:
-            await handle_command(websocket, state, command, data)
+    # Start heartbeat task
+    heartbeat_task = asyncio.create_task(heartbeat(websocket))
 
+    try:
+        while True:
+            message = await websocket.receive_text()
+            data = json.loads(message)
+            command = data.get('command')
+
+            if command == 'retry':
+                await handle_command(websocket, state, data.get('retry_command'), data.get('retry_data'))
+            else:
+                await handle_command(websocket, state, command, data)
+    except WebSocketDisconnect:
+        print("Client disconnected.")
+    finally:
+        heartbeat_task.cancel()
+        if websocket in active_connections:
+            active_connections.remove(websocket)
     # except WebSocketDisconnect:
         # print("Connection closed")
         # active_connections.remove(websocket)

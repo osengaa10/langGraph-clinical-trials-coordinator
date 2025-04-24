@@ -44,7 +44,12 @@ export const WebSocketProvider = ({ children }) => {
       if (data.current_step) {
         setCurrentNode(data.current_step);
       }
-      
+
+
+      if (data.type === 'ping') {
+        ws.send(JSON.stringify({ type: 'pong' })); 
+        return;
+      }
       switch (data.type) {
         case 'connected':
           message.success('WebSocket connection established');
