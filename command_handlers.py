@@ -11,6 +11,8 @@ import os
 import shutil
 from PyPDF2 import PdfReader
 from io import BytesIO
+from fastapi.concurrency import run_in_threadpool
+
 import base64
 
 async def start_conversation(websocket: WebSocket, state):
@@ -215,6 +217,18 @@ async def handle_continue_search(websocket: WebSocket, state, decision):
                 'next_node': None
             })            
 
+async def monitor_embed(websocket: WebSocket, studies_found, uid):
+    embed_task = asyncio.create_task(run_in_threadpool(chunk_and_embed, studies_found, uid))
+    
+    while not embed_task.done():
+        await websocket.send_json({
+            'type': 'status',
+            'message': 'Embedding studies... please wait.'
+        })
+        await asyncio.sleep(30)  # Keep Cloudflare happy
+
+    await embed_task
+
 
 async def continue_workflow(websocket: WebSocket, state):
     state['next_step'] = 'trials_search'
@@ -258,7 +272,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 })
                 await asyncio.sleep(0.1)
                 print("beginning to embed!!")
-                chunk_and_embed(studies_found, uid)
+                await monitor_embed(websocket, studies_found, uid)
                 print(f"embedded {studies_found_count} trials!")
 
                 state['next_step'] = 'research_info_search'
