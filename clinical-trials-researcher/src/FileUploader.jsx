@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Upload, Button, Divider, Spin } from 'antd';
 import { InboxOutlined } from '@ant-design/icons';
 import { WebSocketContext } from './WebSocketContext';
@@ -6,9 +6,16 @@ import { WebSocketContext } from './WebSocketContext';
 const { Dragger } = Upload;
 
 const FileUploader = ({ connected }) => {
-    const { showSearchTermSection, showFinalResults, conversationStarted, socket } = useContext(WebSocketContext);
+    const { showSearchTermSection, showFinalResults, conversationStarted, socket, addActivity } = useContext(WebSocketContext);
     const [isUploading, setIsUploading] = useState(false);
     const [showUploader, setShowUploader] = useState(false);
+
+    // Clear uploading state when medical report is generated
+    useEffect(() => {
+        if (showSearchTermSection || showFinalResults || conversationStarted) {
+            setIsUploading(false);
+        }
+    }, [showSearchTermSection, showFinalResults, conversationStarted]);
 
     const handleStart = () => {
         if (socket) {
@@ -18,6 +25,8 @@ const FileUploader = ({ connected }) => {
 
     const handleFileUpload = async (file) => {
         setIsUploading(true);
+        addActivity('File Upload Started', `Processing ${file.name}...`, 'active');
+        
         const reader = new FileReader();
         reader.onload = async (e) => {
             const base64Data = e.target.result.split(',')[1];
@@ -69,11 +78,14 @@ const FileUploader = ({ connected }) => {
                 </div>
             )}
 
-            {/* {isUploading && (
+            {isUploading && (
                 <div style={{ marginTop: '20px', textAlign: 'center' }}>
                     <Spin tip="Processing clinical notes..." />
+                    <div style={{ marginTop: '10px', fontSize: '14px', color: '#666' }}>
+                        This may take a few moments while we extract and analyze your medical information...
+                    </div>
                 </div>
-            )} */}
+            )}
         </>
     );
 };

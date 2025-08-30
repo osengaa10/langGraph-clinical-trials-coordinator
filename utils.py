@@ -55,6 +55,11 @@ def clinical_trials_search(condition, uid):
         raw_trials = response.json()
         # Extract studies and append details to the list
         for study in raw_trials["studies"]:
+            # Stop adding if we've reached the 500 trial limit
+            if len(study_details_list) >= 500:
+                print(f"Reached maximum limit of 500 trials. Stopping fetch.")
+                break
+                
             protocol_section = study.get("protocolSection", {})
             study_details_list.append({
                 "nctId": protocol_section.get("identificationModule").get("nctId"),
@@ -68,6 +73,10 @@ def clinical_trials_search(condition, uid):
                 "briefSummary": protocol_section.get("descriptionModule", {}).get("briefSummary") 
             })
             nctId_list.append(protocol_section.get("identificationModule").get("nctId"))
+
+        # Stop fetching more pages if we've reached 500 trials
+        if len(study_details_list) >= 500:
+            break
 
         # Update the pageToken to the next page token from the response, if any
         nextPageToken = raw_trials.get("nextPageToken")

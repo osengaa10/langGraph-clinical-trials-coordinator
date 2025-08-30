@@ -8,6 +8,7 @@ db/
 rag_data/*
 scratch*
 lg_env/
+sessions/*
 scratch.txt
 scratch.txt
 scratch.json

@@ -17,36 +17,57 @@ def prompt_distiller(state):
     elif current_search_terms is None:
         current_search_terms = []
 
-    # Generate a new search term and check for duplicates
-    max_attempts = 3  # Limit the number of attempts to avoid infinite loops
-    for _ in range(max_attempts):
-        new_search_term = prompt_distiller_chain.invoke({
-            "medical_report": medical_report,
-            "existing_terms": ", ".join(current_search_terms)
-        })
-        print("___NEW SEARCH TERM___ ", new_search_term)
-        
-        # Ask user if they want to use this search term or input their own
-        user_choice = input("Do you want to use this search term? (yes/no): ").lower().strip()
-        
-        if user_choice == 'yes':
+    # Check if this is a retry attempt (search_attempt_count > 1)
+    search_attempt_count = state.get('search_attempt_count', 1)
+    is_retry = search_attempt_count > 1
+    
+    if is_retry:
+        print(f"___RETRY ATTEMPT {search_attempt_count}: Generating new search term automatically___")
+        # In retry mode, automatically generate and use new search terms
+        max_generation_attempts = 3
+        for _ in range(max_generation_attempts):
+            new_search_term = prompt_distiller_chain.invoke({
+                "medical_report": medical_report,
+                "existing_terms": ", ".join(current_search_terms)
+            })
+            print("___NEW SEARCH TERM___ ", new_search_term)
+            
             if new_search_term not in current_search_terms:
                 current_search_terms.append(new_search_term)
                 break
             else:
                 print(f"Search term '{new_search_term}' already exists. Generating a new one...")
-        elif user_choice == 'no':
-            user_search_term = input("Please enter your own search term: ").strip()
-            if user_search_term and user_search_term not in current_search_terms:
-                current_search_terms.append(user_search_term)
-                print(f"Added user-provided search term: {user_search_term}")
-                break
-            elif user_search_term in current_search_terms:
-                print(f"Search term '{user_search_term}' already exists. Please try again.")
+    else:
+        # Original interactive mode for first attempt
+        max_attempts = 3  # Limit the number of attempts to avoid infinite loops
+        for _ in range(max_attempts):
+            new_search_term = prompt_distiller_chain.invoke({
+                "medical_report": medical_report,
+                "existing_terms": ", ".join(current_search_terms)
+            })
+            print("___NEW SEARCH TERM___ ", new_search_term)
+            
+            # Ask user if they want to use this search term or input their own
+            user_choice = input("Do you want to use this search term? (yes/no): ").lower().strip()
+            
+            if user_choice == 'yes':
+                if new_search_term not in current_search_terms:
+                    current_search_terms.append(new_search_term)
+                    break
+                else:
+                    print(f"Search term '{new_search_term}' already exists. Generating a new one...")
+            elif user_choice == 'no':
+                user_search_term = input("Please enter your own search term: ").strip()
+                if user_search_term and user_search_term not in current_search_terms:
+                    current_search_terms.append(user_search_term)
+                    print(f"Added user-provided search term: {user_search_term}")
+                    break
+                elif user_search_term in current_search_terms:
+                    print(f"Search term '{user_search_term}' already exists. Please try again.")
+                else:
+                    print("Invalid input. Please try again.")
             else:
-                print("Invalid input. Please try again.")
-        else:
-            print("Invalid input. Please answer 'yes' or 'no'.")
+                print("Invalid input. Please answer 'yes' or 'no'.")
     
     # Update the state with the new list of search terms
     updated_state = dict(state)  # Create a new copy of the state

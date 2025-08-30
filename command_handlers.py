@@ -66,17 +66,68 @@ async def handle_user_input(websocket, state, user_input):
 
 async def handle_file_upload(websocket, state, data):
     try:
+        filename = data.get('filename', 'clinical_notes.pdf')
+        
+        # Send initial upload status
+        await websocket.send_json({
+            'type': 'status',
+            'message': f'Processing {filename}...',
+            'activity': {
+                'title': 'File Processing',
+                'description': f'Reading and extracting text from {filename}',
+                'status': 'active'
+            },
+            'current_step': 'file_upload'
+        })
+        
         # Extract and decode PDF
         pdf_data = data.get('data', '')
-        filename = data.get('filename', 'clinical_notes.pdf')
         pdf_bytes = base64.b64decode(pdf_data)
+        
+        # Send PDF extraction status
+        await websocket.send_json({
+            'type': 'status',
+            'message': 'Extracting text from PDF...',
+            'activity': {
+                'title': 'PDF Text Extraction',
+                'description': 'Converting PDF pages to readable text format',
+                'status': 'active'
+            },
+            'current_step': 'extract_text'
+        })
         
         # Extract text from PDF
         text = ""
         with BytesIO(pdf_bytes) as pdf_file:
             reader = PdfReader(pdf_file)
-            for page in reader.pages:
+            total_pages = len(reader.pages)
+            for page_num, page in enumerate(reader.pages, 1):
                 text += page.extract_text() + "\n"
+                # Send progress update for longer PDFs
+                if total_pages > 3 and page_num % 2 == 0:
+                    await websocket.send_json({
+                        'type': 'status',
+                        'message': f'Processing page {page_num} of {total_pages}...',
+                        'activity': {
+                            'title': 'PDF Text Extraction',
+                            'description': f'Processing page {page_num} of {total_pages}',
+                            'status': 'active'
+                        },
+                        'progress': min(10 + (page_num / total_pages * 20), 30),
+                        'current_step': 'extract_text'
+                    })
+        
+        # Send completion status for text extraction
+        await websocket.send_json({
+            'type': 'status',
+            'message': 'Text extraction complete. Generating medical summary...',
+            'activity': {
+                'title': 'Text Extraction Complete',
+                'description': f'Successfully extracted text from {total_pages} pages',
+                'status': 'completed'
+            },
+            'current_step': 'extract_complete'
+        })
         
         # Store in state and update chat history
         state['clinical_notes'] = text
@@ -86,11 +137,28 @@ async def handle_file_upload(websocket, state, data):
     except Exception as e:
         await websocket.send_json({
             'type': 'error',
-            'content': f'Failed to process PDF: {str(e)}'
+            'content': f'Failed to process PDF: {str(e)}',
+            'activity': {
+                'title': 'File Processing Error',
+                'description': f'Error processing {filename}: {str(e)}',
+                'status': 'error'
+            }
         })
         raise e
 
 async def generate_report(websocket, state):
+    # Send status update for report generation
+    await websocket.send_json({
+        'type': 'status',
+        'message': 'Analyzing medical information and generating comprehensive report...',
+        'activity': {
+            'title': 'Medical Report Generation',
+            'description': 'AI is creating a comprehensive medical summary from your information',
+            'status': 'active'
+        },
+        'current_step': 'generate_report'
+    })
+    
     if 'clinical_notes' in state:
         report_content = state['clinical_notes']
         summary = clinical_notes_chain["report"].invoke({
@@ -309,6 +377,11 @@ async def continue_workflow(websocket: WebSocket, state):
             studies_found_count = trials_search_result['studies_found_count']
             studies_found = trials_search_result['studies_found']
             uid = trials_search_result['uid']
+            next_step = trials_search_result['next_step']
+            search_attempt_count = trials_search_result['search_attempt_count']
+            
+            # Update state with all results
+            state.update(trials_search_result)
             
             if studies_found_count == 0:
                 print("none found")
@@ -325,8 +398,29 @@ async def continue_workflow(websocket: WebSocket, state):
                 })
                 await asyncio.sleep(0.1)
                 break
+            elif next_step == "prompt_distiller":
+                # Retry scenario: less than 100 trials found, need new search term
+                await websocket.send_json({
+                    'type': 'retry_search',
+                    'content': f'Found {studies_found_count} trials (< 100). Generating new search term...',
+                    'current_node': current_node,
+                    'current_step': 'retry_search_term',
+                    'next_node': 'prompt_distiller',
+                    'progress': 15,
+                    'activity': {
+                        'title': f'Retry Search (Attempt {search_attempt_count})',
+                        'description': f'Found {studies_found_count} trials. Generating new search term...',
+                        'status': 'active',
+                        'stats': {'Trials Found': studies_found_count, 'Attempt': search_attempt_count}
+                    },
+                    'state': state
+                })
+                await asyncio.sleep(0.5)
+                
+                # Continue to prompt_distiller node
+                state['next_step'] = 'prompt_distiller'
             else:
-                state.update(trials_search_result)
+                # Sufficient trials found (>= 100), continue to research
                 await websocket.send_json({
                     'type': 'studies_found',
                     'content': 'Clinical trials search completed',
@@ -377,6 +471,41 @@ async def continue_workflow(websocket: WebSocket, state):
                 })
 
                 state['next_step'] = 'research_info_search'
+
+        elif current_node == 'prompt_distiller':
+            # Handle retry search term generation
+            await websocket.send_json({
+                'type': 'status',
+                'activity': {
+                    'title': f'Generating New Search Term (Attempt {state.get("search_attempt_count", 1)})',
+                    'description': 'AI is creating alternative search terms to find more trials...',
+                    'status': 'active'
+                },
+                'current_step': 'generate_search_term',
+                'progress': 10,
+                'custom_message': f'Generating new search term (attempt {state.get("search_attempt_count", 1)})...'
+            })
+            
+            from nodes.prompt_distiller_node import prompt_distiller
+            prompt_distiller_result = prompt_distiller(state)
+            state.update(prompt_distiller_result)
+            
+            await websocket.send_json({
+                'type': 'new_search_term',
+                'content': f'Generated new search term: {state["search_term"][-1]}',
+                'current_node': current_node,
+                'current_step': 'generate_search_term',
+                'next_node': 'trials_search',
+                'progress': 12,
+                'activity': {
+                    'title': 'New Search Term Ready',
+                    'description': f'Generated: "{state["search_term"][-1]}"',
+                    'status': 'completed'
+                },
+                'state': state
+            })
+            
+            state['next_step'] = 'trials_search'
 
         elif current_node == 'research_info_search':
             await websocket.send_json({

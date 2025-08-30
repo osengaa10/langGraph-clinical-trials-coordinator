@@ -15,6 +15,8 @@ def initialize_state(uid):
         rag_questions=[],
         keep_searching = "",
         studies_found=0,
-        uid = str(uid)
+        uid = str(uid),
+        search_attempt_count=1,
+        studies_found_count=0
     )
     return state

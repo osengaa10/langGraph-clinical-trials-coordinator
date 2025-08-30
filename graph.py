@@ -27,6 +27,8 @@ class GraphState(TypedDict):
         num_steps: number of steps
         next_step: str 
         did_find_trials: back to consultant with more context
+        search_attempt_count: number of search term retry attempts
+        studies_found_count: number of trials found in current search
     """
     medical_report : str
     search_term : List[str]
@@ -38,6 +40,8 @@ class GraphState(TypedDict):
     next_step: str 
     did_find_trials : str
     rag_questions : List[str]
+    search_attempt_count : int
+    studies_found_count : int
 
 
 # Define the nodes
@@ -57,7 +61,17 @@ def create_workflow(llm):
 
     workflow.add_edge("consultant", "prompt_distiller")
     workflow.add_edge("prompt_distiller", "trials_search")
-    workflow.add_edge("trials_search", "research_info_search")
+    
+    # Add conditional edge from trials_search for retry logic
+    workflow.add_conditional_edges(
+        "trials_search",
+        lambda x: x["next_step"],
+        {
+            "prompt_distiller": "prompt_distiller",
+            "research_info_search": "research_info_search"
+        }
+    )
+    
     workflow.add_edge("research_info_search", "evaluate_research_info")
 
     workflow.add_conditional_edges(
