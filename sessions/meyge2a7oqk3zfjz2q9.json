@@ -1,0 +1,21 @@
+{
+  "session_id": "meyge2a7oqk3zfjz2q9",
+  "state": {
+    "medical_report": "",
+    "search_term": [],
+    "chat_history": [],
+    "final_medical_report": "",
+    "research_info": [],
+    "follow_up": "",
+    "num_steps": 0,
+    "next_step": "consultant",
+    "did_find_trials": "",
+    "rag_questions": [],
+    "keep_searching": "",
+    "studies_found": 0,
+    "uid": "meyge2a7oqk3zfjz2q9"
+  },
+  "created_at": 1756569972.8244767,
+  "last_updated": 1756569972.824477,
+  "last_activity": 1756569972.824477
+}

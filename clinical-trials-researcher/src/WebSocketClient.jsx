@@ -7,6 +7,9 @@ import InputSection from './InputSection';
 import SearchTermSection from './SearchTermSection';
 import ReportCard from './ReportCard';
 import RetrySection from './RetrySection';
+import ActivityLog from './ActivityLog';
+import StatusMessage from './StatusMessage';
+import SessionRecovery from './SessionRecovery';
 
 const { Title, Text } = Typography;
 const { Step } = Steps;
@@ -51,7 +54,14 @@ const WebSocketClient = () => {
         currentNode,
         setCurrentNode,
         showTrialButtons,
-        setShowTrialButtons
+        setShowTrialButtons,
+        activities,
+        statusMessage,
+        progress,
+        customMessage,
+        sessionRecovery,
+        recoverSession,
+        startFreshSession
       } = useContext(WebSocketContext);
 
 
@@ -69,7 +79,8 @@ const WebSocketClient = () => {
         showFinalResults,
         showSearchTermSection,
         showTrialButtons,
-        showRetryButton
+        showRetryButton,
+        activities
     ]);
 
 
@@ -111,25 +122,56 @@ const WebSocketClient = () => {
                 </Text>
                 <div style={{ marginTop: '15px' }}>
                     {connected ? (
-                        <Text type="success" strong>Connected to server</Text>
+                        <div className="connection-pulse" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <div style={{ 
+                                width: '8px', 
+                                height: '8px', 
+                                borderRadius: '50%', 
+                                backgroundColor: '#52c41a' 
+                            }} />
+                            <Text type="success" strong>Connected to server</Text>
+                        </div>
                     ) : (
-                        <Text type="danger" strong>Not connected to server</Text>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                            <div className="activity-pulse" style={{ 
+                                width: '8px', 
+                                height: '8px', 
+                                borderRadius: '50%', 
+                                backgroundColor: '#ff4d4f' 
+                            }} />
+                            <Text type="danger" strong>Not connected to server</Text>
+                        </div>
                     )}
                 </div>
                 <Steps current={activeStep} style={{ marginTop: '20px' }} size="small">
-                    {steps.map((step, index) => (
+                    {steps.map((step, index) => {
+                      const isCompleted = index < activeStep;
+                      const isActive = index === activeStep && !workflowEnded;
+                      return (
                         <Step
-                        key={step.key}
-                        title={step.title}
-                        icon={index === activeStep && !workflowEnded ? <Spin size="small" /> : null}
+                          key={step.key}
+                          title={<span className={isActive ? 'step-breathing' : ''}>{step.title}</span>}
+                          status={isCompleted ? 'finish' : (isActive ? 'process' : 'wait')}
+                          icon={isActive ? <Spin size="small" className="activity-pulse" /> : null}
                         />
-                    ))}
+                      );
+                    })}
                 </Steps>
 
             </div>
 
 
       <ChatList chatHistory={chatHistory} chatEndRef={chatEndRef} />
+      
+      <StatusMessage 
+        currentNode={currentNode} 
+        loading={loading} 
+        numStudiesFound={numStudiesFound}
+        customMessage={customMessage}
+        progress={progress}
+      />
+      
+      <ActivityLog activities={activities} currentNode={currentNode} />
 
       {!conversationStarted && (
         <FileUploader
@@ -184,6 +226,16 @@ const WebSocketClient = () => {
           }}
         />
       )}
+      
+      <SessionRecovery
+        visible={sessionRecovery.showRecovery}
+        recoveryInfo={sessionRecovery.recoveryInfo}
+        onRecover={recoverSession}
+        onStartFresh={startFreshSession}
+        onCancel={() => startFreshSession()} // For now, treat cancel as start fresh
+        loading={sessionRecovery.loading}
+      />
+      
       <div ref={bottomRef} />
     </div>
   );

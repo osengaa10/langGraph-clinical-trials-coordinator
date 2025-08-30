@@ -168,14 +168,34 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
         return evaluate_trials_chain.invoke({"research_info": research_info})
 
     task = asyncio.create_task(run_chain())
+    start_time = asyncio.get_event_loop().time()
 
-    # While it’s running, send a ping/status every 30s to keep the connection alive
+    # While it's running, send more detailed status updates
+    status_count = 0
     while not task.done():
+        status_count += 1
+        elapsed_time = int(asyncio.get_event_loop().time() - start_time)
+        
+        if status_count == 1:
+            message = "Deep-analyzing trial eligibility criteria..."
+        elif status_count == 2:
+            message = "Cross-referencing your medical profile with trial requirements..."
+        elif status_count == 3:
+            message = "AI is performing comprehensive eligibility assessment..."
+        else:
+            message = f"Still evaluating trials (elapsed: {elapsed_time}s)..."
+            
         await websocket.send_json({
             "type": "status",
-            "message": "Evaluating trials... please wait."
+            "activity": {
+                "title": "Eligibility Analysis in Progress",
+                "description": message,
+                "status": "active"
+            },
+            "custom_message": message,
+            "progress": min(85 + (elapsed_time / 10), 95)
         })
-        await asyncio.sleep(30)
+        await asyncio.sleep(15)  # More frequent updates
 
     evaluation_result = await task
     state['follow_up'] = evaluation_result
@@ -187,6 +207,13 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
             'current_node': 'evaluate_trials',
             'current_step': 'verify_eligibility',
             'next_node': 'user_decision',
+            'progress': 100,
+            'activity': {
+                'title': 'Suitable Trials Found!',
+                'description': 'AI has identified clinical trials that match your eligibility criteria',
+                'status': 'completed'
+            },
+            'custom_message': 'Great news! We found suitable clinical trials for you.',
             'state': state
         })
         await asyncio.sleep(0.1)
@@ -198,6 +225,13 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
             'current_node': 'evaluate_trials',
             'current_step': 'verify_eligibility',
             'next_node': 'consultant',
+            'progress': 100,
+            'activity': {
+                'title': 'Analysis Complete',
+                'description': 'No fully matching trials found. Consider expanding search criteria.',
+                'status': 'completed'
+            },
+            'custom_message': 'Analysis complete. Let\'s explore other options for you.',
             'state': state
         })
         await asyncio.sleep(0.1)
@@ -219,13 +253,35 @@ async def handle_continue_search(websocket: WebSocket, state, decision):
 
 async def monitor_embed(websocket: WebSocket, studies_found, uid):
     embed_task = asyncio.create_task(run_in_threadpool(chunk_and_embed, studies_found, uid))
+    start_time = asyncio.get_event_loop().time()
+    update_count = 0
     
     while not embed_task.done():
+        update_count += 1
+        elapsed_time = int(asyncio.get_event_loop().time() - start_time)
+        estimated_progress = min(35 + (elapsed_time / 8), 48)  # Progress from 35% to 48%
+        
+        if update_count == 1:
+            message = f"Processing {len(studies_found)} trial documents..."
+        elif update_count == 2:
+            message = "Creating searchable vectors from trial data..."
+        elif update_count == 3:
+            message = "Building AI knowledge base from clinical trials..."
+        else:
+            message = f"Still processing documents (elapsed: {elapsed_time}s)..."
+            
         await websocket.send_json({
             'type': 'status',
-            'message': 'Embedding studies... please wait.'
+            'activity': {
+                'title': 'Document Processing',
+                'description': message,
+                'status': 'active'
+            },
+            'custom_message': message,
+            'progress': estimated_progress,
+            'current_step': 'embed_trials'
         })
-        await asyncio.sleep(30)  # Keep Cloudflare happy
+        await asyncio.sleep(20)  # More frequent updates
 
     await embed_task
 
@@ -237,16 +293,34 @@ async def continue_workflow(websocket: WebSocket, state):
         current_node = state['next_step']
         
         if current_node == 'trials_search':
+            # Send initial search activity
+            await websocket.send_json({
+                'type': 'status',
+                'activity': {
+                    'title': 'Searching Clinical Trials Database',
+                    'description': 'Querying ClinicalTrials.gov for matching studies...',
+                    'status': 'active'
+                },
+                'current_step': 'fetch_trials',
+                'custom_message': 'Searching ClinicalTrials.gov database...'
+            })
+            
             trials_search_result = trials_search(state)
             studies_found_count = trials_search_result['studies_found_count']
             studies_found = trials_search_result['studies_found']
             uid = trials_search_result['uid']
+            
             if studies_found_count == 0:
                 print("none found")
                 await websocket.send_json({
                     'type': 'need_new_term',
                     'content': 'no studies found',
                     'current_node': current_node,
+                    'activity': {
+                        'title': 'No Trials Found',
+                        'description': 'No trials found with current search terms. Please try different terms.',
+                        'status': 'completed'
+                    },
                     'state': state
                 })
                 await asyncio.sleep(0.1)
@@ -259,39 +333,97 @@ async def continue_workflow(websocket: WebSocket, state):
                     'current_node': current_node,
                     'current_step': 'fetch_trials',
                     'next_node': 'research_info_search',
+                    'progress': 25,
+                    'activity': {
+                        'title': f'Found {studies_found_count} Clinical Trials',
+                        'description': f'Retrieved {studies_found_count} potential trials from the database',
+                        'status': 'completed',
+                        'stats': {'Trials Found': studies_found_count}
+                    },
                     'state': state
                 })
                 await asyncio.sleep(0.1)
+                
                 await websocket.send_json({
                     'type': 'embedding_studies',
-                    'content': 'Clinical trials search completed',
+                    'content': 'Processing trial documents for AI analysis',
                     'current_node': current_node,
                     'current_step': 'embed_trials',
                     'next_node': 'research_info_search',
+                    'progress': 35,
+                    'activity': {
+                        'title': 'Processing Trial Documents',
+                        'description': 'Converting trial documents into AI-searchable format...',
+                        'status': 'active'
+                    },
+                    'custom_message': f'Processing {studies_found_count} trial documents for AI analysis...',
                     'state': state
                 })
                 await asyncio.sleep(0.1)
+                
                 print("beginning to embed!!")
                 await monitor_embed(websocket, studies_found, uid)
                 print(f"embedded {studies_found_count} trials!")
 
+                await websocket.send_json({
+                    'type': 'status',
+                    'activity': {
+                        'title': 'Document Processing Complete',
+                        'description': f'Successfully processed {studies_found_count} trial documents',
+                        'status': 'completed'
+                    },
+                    'progress': 50,
+                    'current_step': 'embed_trials'
+                })
+
                 state['next_step'] = 'research_info_search'
 
         elif current_node == 'research_info_search':
+            await websocket.send_json({
+                'type': 'status',
+                'activity': {
+                    'title': 'Analyzing Trial Relevance',
+                    'description': 'AI is analyzing trials to find the best matches for your profile...',
+                    'status': 'active'
+                },
+                'current_step': 'matching_trials',
+                'progress': 60,
+                'custom_message': 'AI is analyzing trial relevance to your medical profile...'
+            })
+            
             research_info_result = research_info_search(state)
             state.update(research_info_result)
+            
             await websocket.send_json({
                 'type': 'research_info',
                 'content': 'Research info search completed',
                 'current_node': current_node,
                 'current_step': 'matching_trials',
                 'next_node': 'evaluate_research_info',
+                'progress': 75,
+                'activity': {
+                    'title': 'Trial Matching Complete',
+                    'description': 'AI has identified the most relevant trials for your condition',
+                    'status': 'completed'
+                },
                 'state': state
             })
             await asyncio.sleep(0.1)
             state['next_step'] = 'evaluate_research_info'
 
         elif current_node == 'evaluate_research_info':
+            await websocket.send_json({
+                'type': 'status',
+                'activity': {
+                    'title': 'Verifying Eligibility',
+                    'description': 'Performing final eligibility checks and preparing recommendations...',
+                    'status': 'active'
+                },
+                'current_step': 'verify_eligibility',
+                'progress': 85,
+                'custom_message': 'Verifying trial eligibility and preparing personalized recommendations...'
+            })
+            
             await handle_evaluate_trials(websocket, state)
 
         elif current_node == 'consultant':
@@ -309,37 +441,97 @@ async def continue_workflow(websocket: WebSocket, state):
 
 
 async def cleanup_workflow(websocket: WebSocket, state):
+    from session_store import session_store
+    
     uid = state['uid']
-    base_path = './rag_data/data'
-    user_path = os.path.join(base_path, uid)
-    db_base_path = './db'
-    db_path = os.path.join(db_base_path, uid)
+    cleanup_results = []
+    cleanup_errors = []
+    
+    try:
+        # Send initial cleanup status
+        await websocket.send_json({
+            'type': 'status',
+            'message': 'Starting session cleanup...',
+            'current_step': 'cleanup'
+        })
+        
+        # 1. Clean up RAG data directory
+        rag_path = os.path.join('./rag_data/data', uid)
+        if os.path.exists(rag_path) and os.path.isdir(rag_path):
+            try:
+                shutil.rmtree(rag_path)
+                cleanup_results.append(f"Cleaned RAG data: {rag_path}")
+                print(f"Successfully deleted RAG directory: {rag_path}")
+            except Exception as e:
+                cleanup_errors.append(f"Failed to clean RAG data: {e}")
+                print(f"Error deleting RAG directory {rag_path}: {e}")
 
-    if (os.path.exists(user_path) and os.path.isdir(user_path)) or (os.path.exists(db_path) and os.path.isdir(db_path)):
-        try:
-            if os.path.exists(user_path) and os.path.isdir(user_path):
-                shutil.rmtree(user_path)
-                print(f"Successfully deleted the directory: {user_path}")
-            else:
-                print(f"The directory {user_path} does not exist.")
-
-            if os.path.exists(db_path) and os.path.isdir(db_path):
+        # 2. Clean up database directory
+        db_path = os.path.join('./db', uid)
+        if os.path.exists(db_path) and os.path.isdir(db_path):
+            try:
                 shutil.rmtree(db_path)
-                print(f"Successfully deleted the directory: {db_path}")
-            else:
-                print(f"The directory {db_path} does not exist.")
+                cleanup_results.append(f"Cleaned database: {db_path}")
+                print(f"Successfully deleted DB directory: {db_path}")
+            except Exception as e:
+                cleanup_errors.append(f"Failed to clean database: {e}")
+                print(f"Error deleting DB directory {db_path}: {e}")
 
-            await websocket.send_json({
-                'type': 'cleanup',
-                'content': f'deleted {user_path} and {db_path}',
-                'state': state
-            })
-            await asyncio.sleep(0.1) 
+        # 3. Clean up studies directory
+        studies_path = os.path.join('./studies', uid)
+        if os.path.exists(studies_path) and os.path.isdir(studies_path):
+            try:
+                shutil.rmtree(studies_path)
+                cleanup_results.append(f"Cleaned studies: {studies_path}")
+                print(f"Successfully deleted studies directory: {studies_path}")
+            except Exception as e:
+                cleanup_errors.append(f"Failed to clean studies: {e}")
+                print(f"Error deleting studies directory {studies_path}: {e}")
+
+        # 4. Remove session from session store
+        try:
+            success = session_store.remove_session(uid)
+            if success:
+                cleanup_results.append("Removed session from store")
+                print(f"Successfully removed session {uid} from session store")
+            else:
+                cleanup_errors.append("Failed to remove session from store")
         except Exception as e:
-            print(f"An error occurred while deleting the directories: {e}")
+            cleanup_errors.append(f"Error removing session from store: {e}")
+            print(f"Error removing session {uid} from store: {e}")
+
+        # Send cleanup completion status
+        if cleanup_errors:
             await websocket.send_json({
-                'type': 'cleanup',
-                'content': f'error occurred: {e}',
+                'type': 'cleanup_complete',
+                'success': False,
+                'content': f'Cleanup completed with errors. Success: {len(cleanup_results)}, Errors: {len(cleanup_errors)}',
+                'results': cleanup_results,
+                'errors': cleanup_errors,
                 'state': state
             })
+        else:
+            await websocket.send_json({
+                'type': 'cleanup_complete',
+                'success': True,
+                'content': f'Session cleanup completed successfully. Cleaned {len(cleanup_results)} resources.',
+                'results': cleanup_results,
+                'state': state
+            })
+
+        # Send final workflow complete message
+        await websocket.send_json({
+            'type': 'workflow_complete',
+            'content': 'Session ended and cleaned up successfully',
+            'current_node': 'state_printer',
+            'next_node': None
+        })
+
+    except Exception as e:
+        print(f"Critical error during cleanup for session {uid}: {e}")
+        await websocket.send_json({
+            'type': 'cleanup_error',
+            'content': f'Critical cleanup error: {str(e)}',
+            'state': state
+        })
     

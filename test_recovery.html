@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Session Recovery Test</title>
+</head>
+<body>
+    <h1>Session Recovery Test</h1>
+    <button onclick="createTestSession()">Create Test Session</button>
+    <button onclick="checkSession()">Check Session Status</button>
+    <button onclick="clearSession()">Clear Session</button>
+    <div id="output"></div>
+
+    <script>
+        // Copy SessionManager logic for testing
+        const SessionManager = {
+            SESSION_KEY: 'clinexus_session',
+            SESSION_STATE_KEY: 'clinexus_session_state',
+            SESSION_TIMEOUT: 48 * 60 * 60 * 1000,
+
+            generateSessionId() {
+                return Date.now().toString(36) + Math.random().toString(36).substr(2);
+            },
+
+            createSession(sessionId) {
+                const sessionData = {
+                    sessionId,
+                    createdAt: Date.now(),
+                    lastActivity: Date.now()
+                };
+                localStorage.setItem(this.SESSION_KEY, JSON.stringify(sessionData));
+                return sessionData;
+            },
+
+            getSessionData() {
+                try {
+                    const data = localStorage.getItem(this.SESSION_KEY);
+                    return data ? JSON.parse(data) : null;
+                } catch (error) {
+                    console.error('Error parsing session data:', error);
+                    return null;
+                }
+            },
+
+            saveSessionState(state) {
+                try {
+                    localStorage.setItem(this.SESSION_STATE_KEY, JSON.stringify(state));
+                } catch (error) {
+                    console.error('Error saving session state:', error);
+                }
+            },
+
+            getSessionState() {
+                try {
+                    const data = localStorage.getItem(this.SESSION_STATE_KEY);
+                    return data ? JSON.parse(data) : null;
+                } catch (error) {
+                    console.error('Error parsing session state:', error);
+                    return null;
+                }
+            },
+
+            hasActiveSession() {
+                const sessionData = this.getSessionData();
+                const state = this.getSessionState();
+                return sessionData && state && Object.keys(state).length > 0;
+            },
+
+            isRecoverableState(state) {
+                if (!state) return false;
+                if (!state.uid) return false;
+                
+                const hasProgress = (
+                    state.conversationStarted ||
+                    state.medicalReport ||
+                    (state.chatHistory && state.chatHistory.length > 0) ||
+                    state.numStudiesFound > 0
+                );
+                
+                return hasProgress;
+            },
+
+            clearSession() {
+                localStorage.removeItem(this.SESSION_KEY);
+                localStorage.removeItem(this.SESSION_STATE_KEY);
+            }
+        };
+
+        function createTestSession() {
+            const testSessionId = 'recovery_test_' + Date.now();
+            
+            // Create session metadata
+            SessionManager.createSession(testSessionId);
+            
+            // Create session state
+            const testState = {
+                uid: testSessionId,
+                chatHistory: [
+                    {role: 'user', content: 'I have been diagnosed with stage 2 breast cancer'},
+                    {role: 'assistant', content: 'I understand you have stage 2 breast cancer. Can you tell me more about your treatment history?'}
+                ],
+                medicalReport: 'Patient has stage 2 breast cancer, ER positive, diagnosed in 2024',
+                searchTerm: ['breast cancer', 'stage 2'],
+                conversationStarted: true,
+                showSearchTermSection: false,
+                showFinalResults: false,
+                numStudiesFound: 5,
+                currentNode: 'trials_search',
+                activities: [
+                    {id: '1', title: 'Consultation Started', description: 'AI consultation in progress', status: 'completed'},
+                    {id: '2', title: 'Medical Report Generated', description: 'Comprehensive medical summary created', status: 'completed'}
+                ],
+                loading: false,
+                showTrialButtons: false,
+                lastSavedAt: Date.now()
+            };
+            
+            SessionManager.saveSessionState(testState);
+            
+            document.getElementById('output').innerHTML = `
+                <h3>Test Session Created</h3>
+                <p><strong>Session ID:</strong> ${testSessionId}</p>
+                <p><strong>Chat Messages:</strong> ${testState.chatHistory.length}</p>
+                <p><strong>Has Medical Report:</strong> ${!!testState.medicalReport}</p>
+                <p><strong>Studies Found:</strong> ${testState.numStudiesFound}</p>
+                <p><strong>Should trigger recovery:</strong> Yes</p>
+                <p style="color: green;">Now refresh the page to test recovery modal!</p>
+            `;
+        }
+
+        function checkSession() {
+            const hasSession = SessionManager.hasActiveSession();
+            const sessionData = SessionManager.getSessionData();
+            const sessionState = SessionManager.getSessionState();
+            const isRecoverable = SessionManager.isRecoverableState(sessionState);
+            
+            document.getElementById('output').innerHTML = `
+                <h3>Session Status</h3>
+                <p><strong>Has Active Session:</strong> ${hasSession}</p>
+                <p><strong>Session Data:</strong> ${sessionData ? 'Yes' : 'No'}</p>
+                <p><strong>Session State:</strong> ${sessionState ? 'Yes' : 'No'}</p>
+                <p><strong>Is Recoverable:</strong> ${isRecoverable}</p>
+                ${sessionState ? `
+                    <p><strong>UID:</strong> ${sessionState.uid}</p>
+                    <p><strong>Chat History:</strong> ${sessionState.chatHistory?.length || 0} messages</p>
+                    <p><strong>Has Medical Report:</strong> ${!!sessionState.medicalReport}</p>
+                    <p><strong>Conversation Started:</strong> ${sessionState.conversationStarted}</p>
+                    <p><strong>Studies Found:</strong> ${sessionState.numStudiesFound || 0}</p>
+                ` : ''}
+            `;
+        }
+
+        function clearSession() {
+            SessionManager.clearSession();
+            document.getElementById('output').innerHTML = '<p style="color: red;">Session cleared</p>';
+        }
+
+        // Check session on load
+        window.onload = function() {
+            checkSession();
+        };
+    </script>
+</body>
+</html>

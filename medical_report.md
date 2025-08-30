@@ -1,46 +1,46 @@
 **Medical Report:**
 
-**Patient Profile:**
-The patient is a 35-year-old premenopausal female with a diagnosis of breast cancer. She has a germline pathogenic BRCA1 mutation, confirming a hereditary breast cancer predisposition syndrome.
+**Patient Information:**
+The patient is a 35-year-old premenopausal female with a recently diagnosed breast cancer.
 
 **Medical History:**
 The patient's oncologic history is as follows:
-- August 15, 2016: Noticing a palpable right breast mass after breastfeeding.
-- September 2, 2016: Diagnostic mammogram and axillary ultrasound revealed a 3.5 cm right breast mass and two suspicious axillary lymph nodes.
-- September 5, 2016: Breast MRI confirmed a 3.8 cm right breast mass and three pathological appearing lymph nodes.
-- September 6, 2016: Biopsy revealed invasive ductal carcinoma, Nottingham grade 3, ER positive (>75%), PR positive (1-10%), and HER2 positive (IHC 2+, FISH positive for amplification).
-- September 8, 2016: Initial visit with Medical Oncology, recommending neoadjuvant chemotherapy followed by surgery and adjuvant breast radiotherapy.
-- The patient underwent neoadjuvant chemotherapy with paclitaxel, trastuzumab, and pertuzumab, followed by dose-dense doxorubicin and cyclophosphamide.
-- February 2, 2017: A comprehensive hereditary breast cancer panel confirmed a germline pathogenic BRCA1 mutation.
-- April 20, 2017: Bilateral mastectomy with right axillary sentinel lymph node biopsy showed residual 0.5 cm right breast carcinoma with evidence of treatment effect and 1 out of 23 lymph nodes with metastatic disease.
-- May 15, 2017: Initiated adjuvant trastuzumab with plans for 12 months of therapy along with tamoxifen.
-- July 3, 2017: Underwent bilateral salpingo-oophorectomy for prophylactic purposes due to the BRCA mutation.
-- September 25, 2017: Brain MRI revealed two dominant brain metastases, treated with gamma knife surgery.
-- October 15, 2017: Systemic therapy changed to ado-trastuzumab emtansine due to brain metastases.
-- February 20, 2018: Evidence of liver metastasis led to the discontinuation of ado-trastuzumab emtansine and the initiation of capecitabine/lapatinib.
-- February 25, 2018: Liver biopsy confirmed metastatic breast cancer, positive for PDL-1.
-- March 1, 2018: Progressive disease in the liver and bones led to the discontinuation of capecitabine/lapatinib and the initiation of experimental pembrolizumab as part of a clinical trial.
+- August 15, 2016: The patient noticed a palpable right breast mass after breastfeeding.
+- September 2, 2016: A diagnostic mammogram revealed a 3.5 cm right breast mass, suspicious for malignancy, and axillary ultrasound revealed two suspicious axillary lymph nodes.
+- September 5, 2016: Breast MRI revealed a right breast mass measuring 3.8 cm, along with 3 pathological appearing lymph nodes.
+- September 6, 2016: Ultrasound-guided biopsy of the right breast revealed an invasive ductal carcinoma, Nottingham grade 3, estrogen receptor (ER) positive (>75%), progesterone receptor (PR) positive (1-10%), and human epidermal growth receptor 2 (HER2) positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) positive for amplification).
+- The patient has undergone neoadjuvant chemotherapy, surgery, and adjuvant breast radiotherapy.
+- The patient was found to have a germline pathogenic BRCA1 mutation, confirming a hereditary breast cancer predisposition syndrome.
+- The patient underwent bilateral mastectomy with right axillary sentinel lymph node biopsy, which revealed a residual 0.5 cm right breast carcinoma, 43% cellularity, with evidence of treatment effect, and 1 out of 23 lymph nodes with evidence of metastatic disease.
+- The patient has developed brain and liver metastases and has undergone gamma knife surgery and various systemic therapies, including paclitaxel, trastuzumab, pertuzumab, doxorubicin, cyclophosphamide, ado-trastuzumab emtansine, capecitabine, lapatinib, and pembrolizumab.
 
-**Current Status:**
-As of June 15, 2018, the patient has shown a complete radiographic response to pembrolizumab therapy.
+**Current Condition:**
+The patient is currently on experimental pembrolizumab, which has led to a complete radiographic response to therapy.
 
-**Clinical Trials Eligibility:**
-Given the patient's history and current status, she may be eligible for clinical trials focusing on:
-- HER2-positive breast cancer treatments
-- BRCA1 mutation-related therapies
-- PDL-1 positive breast cancer treatments
-- Brain and liver metastasis management in breast cancer
-- Immunotherapy trials, particularly those involving pembrolizumab or similar agents
+**Oncology History Snapshot:**
+35-year-old premenopausal female with a BRCA mutation, diagnosed with node-positive, ER+, HER2+ right breast cancer. Treated with neoadjuvant dual HER2-directed therapy, followed by AC, with residual disease class I. Metastatic disease to the brain noted 4 months after surgery, treated with gamma knife, followed by ado-trastuzumab emtansine. Liver metastasis noted, treatment changed to capecitabine/lapatinib, with subsequent progression, and biopsy revealing PDL-1 positive disease, currently on pembrolizumab leading to a complete response.
 
-**Key Details for Clinical Trials:**
-- Age: 35 years old
-- Premenopausal status
-- BRCA1 mutation
-- Node-positive, ER+, HER2+ right breast cancer
-- Prior therapies: THP-ddAC, T-DM1, pembrolizumab
-- Procedures: Gamma knife surgery for brain metastases
-- Current therapy: Pembrolizumab as part of a clinical trial
-- Sites of involvement: Brain, liver
-- Molecular features: ER+, PR+, HER2+, PD-L1+
+**Date of Diagnosis:**
+- Operable: August 2016
+- Metastatic: September 2017
 
-This medical report aims to provide a comprehensive overview of the patient's condition, treatment history, and current status to facilitate the identification of suitable clinical trials that may offer additional therapeutic options.
+**Sites of Involvement:**
+- Brain
+- Liver
+
+**Molecular Features:**
+- ER+
+- PR+
+- HER2+
+- PD-L1+
+
+**Prior Therapies:**
+- Early-stage: THP-ddAC (residual disease)
+- Metastatic: T-DM1, pembro (on trial)
+- Procedures: Gamma knife to brain mets
+
+**Current Medications:**
+- Pembrolizumab
+
+**Clinical Trial Eligibility:**
+Based on the patient's medical history, current condition, and molecular features, the patient may be eligible for clinical trials investigating new therapies for HER2+ and PD-L1+ breast cancer, particularly those with brain and liver metastases. The patient's response to pembrolizumab and prior therapies should be taken into consideration when evaluating potential clinical trials.
