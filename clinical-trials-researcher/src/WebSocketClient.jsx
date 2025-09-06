@@ -85,13 +85,12 @@ const WebSocketClient = () => {
 
 
     const steps = [
-    { title: "Consultant", key: "consultant" },
-    { title: "Medical Report", key: "medical_report" },
-    { title: "Search Term", key: "search_term" },
-    { title: "Finding Trials", key: "fetch_trials" },
-    { title: "Embedding Trials", key: "embed_trials" },
-    { title: "Matching Trials", key: "matching_trials" },
-    { title: "Verifying Eligibility", key: "verify_eligibility" },
+    { title: "Initial Consultation", key: "consultant" },
+    { title: "Generating Search Terms", key: "prompt_distiller" },
+    { title: "Finding Clinical Trials", key: "trials_search" },
+    { title: "Analyzing Trial Data", key: "research_info_search" },
+    { title: "Matching Trials to Profile", key: "evaluate_research_info" },
+    { title: "Finalizing Results", key: "state_printer" },
     ];
     const activeStep = steps.findIndex(step => step.key === currentNode);
 

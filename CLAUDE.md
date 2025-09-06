@@ -19,7 +19,7 @@ This is a clinical trials coordinator application built with LangGraph that help
 pip install -r requirements.txt
 
 # Run the server
-python server.py
+uvicorn server:app --host 0.0.0.0 --port 8000 --reload
 
 # Run the main workflow directly
 python main.py
@@ -149,3 +149,5 @@ The application requires environment variables for:
 - CORS origins for development
 
 Sessions are managed by UUID to maintain user isolation and data persistence.
+
+Try to keep code changes as small as reasonably possible.

@@ -1,5 +1,4 @@
 from chains.consultant_chain import consultant_chain
-from chains.clinical_notes_chain import clinical_notes_chain
 from utils import write_markdown_file
 import json
 
@@ -16,8 +15,8 @@ def consultant(state):
     # Check for clinical notes first
     if 'clinical_notes' in state and state['clinical_notes']:
         # Directly generate report from clinical notes
-        summary = clinical_notes_chain["report"].invoke({
-            "clinical_notes": state['clinical_notes']
+        summary = consultant_chain["report"].invoke({
+            "chat_history": [{"role": "user", "content": state['clinical_notes']}]
         })
         
         print(f"AI: Generated medical report from clinical notes:\n{summary}\n")

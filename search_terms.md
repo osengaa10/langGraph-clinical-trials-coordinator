@@ -1,1 +1,1 @@
-Tripple free breast cancer, triple free positive breast cancer, triple positive breast cancer, HER2 Positive
+Invasive ductal carcinoma, ER positive breast cancer

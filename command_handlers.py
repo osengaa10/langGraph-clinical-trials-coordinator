@@ -1,4 +1,4 @@
-from nodes.consultant_node import consultant_chain, format_chat_history, clinical_notes_chain
+from nodes.consultant_node import consultant_chain, format_chat_history
 from nodes.prompt_distiller_node import prompt_distiller_chain
 from utils import write_markdown_file
 from fastapi import WebSocket
@@ -73,27 +73,37 @@ async def handle_file_upload(websocket, state, data):
             'type': 'status',
             'message': f'Processing {filename}...',
             'activity': {
+                'id': 'file_processing',
                 'title': 'File Processing',
                 'description': f'Reading and extracting text from {filename}',
                 'status': 'active'
             },
-            'current_step': 'file_upload'
+            'current_step': 'consultant'
         })
         
         # Extract and decode PDF
         pdf_data = data.get('data', '')
         pdf_bytes = base64.b64decode(pdf_data)
         
-        # Send PDF extraction status
+        # Complete file processing and start text extraction
+        await websocket.send_json({
+            'type': 'activity_update',
+            'activity': {
+                'id': 'file_processing',
+                'status': 'completed'
+            }
+        })
+        
         await websocket.send_json({
             'type': 'status',
             'message': 'Extracting text from PDF...',
             'activity': {
+                'id': 'text_extraction',
                 'title': 'PDF Text Extraction',
                 'description': 'Converting PDF pages to readable text format',
                 'status': 'active'
             },
-            'current_step': 'extract_text'
+            'current_step': 'consultant'
         })
         
         # Extract text from PDF
@@ -114,19 +124,17 @@ async def handle_file_upload(websocket, state, data):
                             'status': 'active'
                         },
                         'progress': min(10 + (page_num / total_pages * 20), 30),
-                        'current_step': 'extract_text'
+                        'current_step': 'consultant'
                     })
         
-        # Send completion status for text extraction
+        # Complete text extraction
         await websocket.send_json({
-            'type': 'status',
-            'message': 'Text extraction complete. Generating medical summary...',
+            'type': 'activity_update',
             'activity': {
-                'title': 'Text Extraction Complete',
-                'description': f'Successfully extracted text from {total_pages} pages',
-                'status': 'completed'
-            },
-            'current_step': 'extract_complete'
+                'id': 'text_extraction',
+                'status': 'completed',
+                'description': f'Successfully extracted text from {total_pages} pages'
+            }
         })
         
         # Store in state and update chat history
@@ -156,13 +164,13 @@ async def generate_report(websocket, state):
             'description': 'AI is creating a comprehensive medical summary from your information',
             'status': 'active'
         },
-        'current_step': 'generate_report'
+        'current_step': 'consultant'
     })
     
     if 'clinical_notes' in state:
         report_content = state['clinical_notes']
-        summary = clinical_notes_chain["report"].invoke({
-            "clinical_notes": report_content
+        summary = consultant_chain["report"].invoke({
+            "chat_history": [{"role": "user", "content": report_content}]
         })
         write_markdown_file(str(report_content), "clinical_notes")
 
@@ -180,7 +188,7 @@ async def generate_report(websocket, state):
         'type': 'report',
         'content': summary,
         'current_node': 'consultant',
-        'current_step': 'medical_report',
+        'current_step': 'consultant',
         'next_node': 'prompt_distiller',
         'state': state
     })
@@ -189,16 +197,23 @@ async def generate_report(websocket, state):
 
 
 async def handle_prompt_distiller(websocket, state):
-    new_search_term = prompt_distiller_chain.invoke({
+    distiller_response = prompt_distiller_chain.invoke({
         "medical_report": state['medical_report'],
         "existing_terms": ", ".join(state['search_term'])
     })
+    
+    # Extract the first search term as the new_search_term for compatibility
+    new_search_term = distiller_response.search_terms[0].term if distiller_response.search_terms else "clinical trial"
+    
+    # Store the full response for potential future use
+    state['distiller_response'] = distiller_response.dict()
     state['new_search_term'] = new_search_term
+    
     await websocket.send_json({
         'type': 'new_search_term',
         'content': new_search_term,
         'current_node': 'prompt_distiller',
-        'current_step': 'search_term',
+        'current_step': 'prompt_distiller',
         'state': state
     })
 
@@ -210,7 +225,7 @@ async def handle_user_search_term(websocket: WebSocket, state, user_search_term)
         await websocket.send_json({
             'type': 'search_term_added',
             'content': user_search_term,
-            'current_step': 'fetch_trials',
+            'current_step': 'trials_search',
             'state': state
         })
         await asyncio.sleep(0.1)
@@ -272,8 +287,8 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
         await websocket.send_json({
             'type': 'trials_found',
             'content': state['research_info'][0],
-            'current_node': 'evaluate_trials',
-            'current_step': 'verify_eligibility',
+            'current_node': 'evaluate_research_info',
+            'current_step': 'evaluate_research_info',
             'next_node': 'user_decision',
             'progress': 100,
             'activity': {
@@ -290,8 +305,8 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
         await websocket.send_json({
             'type': 'no_trial_found',
             'content': state['follow_up'],
-            'current_node': 'evaluate_trials',
-            'current_step': 'verify_eligibility',
+            'current_node': 'evaluate_research_info',
+            'current_step': 'evaluate_research_info',
             'next_node': 'consultant',
             'progress': 100,
             'activity': {
@@ -347,7 +362,7 @@ async def monitor_embed(websocket: WebSocket, studies_found, uid):
             },
             'custom_message': message,
             'progress': estimated_progress,
-            'current_step': 'embed_trials'
+            'current_step': 'trials_search'
         })
         await asyncio.sleep(20)  # More frequent updates
 
@@ -369,7 +384,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'description': 'Querying ClinicalTrials.gov for matching studies...',
                     'status': 'active'
                 },
-                'current_step': 'fetch_trials',
+                'current_step': 'trials_search',
                 'custom_message': 'Searching ClinicalTrials.gov database...'
             })
             
@@ -404,7 +419,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'type': 'retry_search',
                     'content': f'Found {studies_found_count} trials (< 100). Generating new search term...',
                     'current_node': current_node,
-                    'current_step': 'retry_search_term',
+                    'current_step': 'prompt_distiller',
                     'next_node': 'prompt_distiller',
                     'progress': 15,
                     'activity': {
@@ -425,7 +440,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'type': 'studies_found',
                     'content': 'Clinical trials search completed',
                     'current_node': current_node,
-                    'current_step': 'fetch_trials',
+                    'current_step': 'trials_search',
                     'next_node': 'research_info_search',
                     'progress': 25,
                     'activity': {
@@ -442,7 +457,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'type': 'embedding_studies',
                     'content': 'Processing trial documents for AI analysis',
                     'current_node': current_node,
-                    'current_step': 'embed_trials',
+                    'current_step': 'trials_search',
                     'next_node': 'research_info_search',
                     'progress': 35,
                     'activity': {
@@ -467,7 +482,7 @@ async def continue_workflow(websocket: WebSocket, state):
                         'status': 'completed'
                     },
                     'progress': 50,
-                    'current_step': 'embed_trials'
+                    'current_step': 'trials_search'
                 })
 
                 state['next_step'] = 'research_info_search'
@@ -481,7 +496,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'description': 'AI is creating alternative search terms to find more trials...',
                     'status': 'active'
                 },
-                'current_step': 'generate_search_term',
+                'current_step': 'prompt_distiller',
                 'progress': 10,
                 'custom_message': f'Generating new search term (attempt {state.get("search_attempt_count", 1)})...'
             })
@@ -494,7 +509,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 'type': 'new_search_term',
                 'content': f'Generated new search term: {state["search_term"][-1]}',
                 'current_node': current_node,
-                'current_step': 'generate_search_term',
+                'current_step': 'prompt_distiller',
                 'next_node': 'trials_search',
                 'progress': 12,
                 'activity': {
@@ -515,7 +530,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'description': 'AI is analyzing trials to find the best matches for your profile...',
                     'status': 'active'
                 },
-                'current_step': 'matching_trials',
+                'current_step': 'research_info_search',
                 'progress': 60,
                 'custom_message': 'AI is analyzing trial relevance to your medical profile...'
             })
@@ -527,7 +542,7 @@ async def continue_workflow(websocket: WebSocket, state):
                 'type': 'research_info',
                 'content': 'Research info search completed',
                 'current_node': current_node,
-                'current_step': 'matching_trials',
+                'current_step': 'research_info_search',
                 'next_node': 'evaluate_research_info',
                 'progress': 75,
                 'activity': {
@@ -548,7 +563,7 @@ async def continue_workflow(websocket: WebSocket, state):
                     'description': 'Performing final eligibility checks and preparing recommendations...',
                     'status': 'active'
                 },
-                'current_step': 'verify_eligibility',
+                'current_step': 'evaluate_research_info',
                 'progress': 85,
                 'custom_message': 'Verifying trial eligibility and preparing personalized recommendations...'
             })
@@ -581,7 +596,7 @@ async def cleanup_workflow(websocket: WebSocket, state):
         await websocket.send_json({
             'type': 'status',
             'message': 'Starting session cleanup...',
-            'current_step': 'cleanup'
+            'current_step': 'state_printer'
         })
         
         # 1. Clean up RAG data directory

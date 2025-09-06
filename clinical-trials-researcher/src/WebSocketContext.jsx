@@ -41,9 +41,9 @@ export const WebSocketProvider = ({ children }) => {
   const websocketBaseUrl = import.meta.env.VITE_WEBSOCKET_URL;
 
   // Helper function to add activity
-  const addActivity = (title, description, status = 'active', stats = null) => {
+  const addActivity = (title, description, status = 'active', stats = null, id = null) => {
     const newActivity = {
-      id: uuidv4(),
+      id: id || uuidv4(),
       title,
       description,
       status,
@@ -232,7 +232,7 @@ export const WebSocketProvider = ({ children }) => {
           }
           
           // Check for status-only recovery completion (when no other data to restore)
-          if (connectionReceived && data.type === 'status' && !state.get('medical_report') && !state.get('studies_found')) {
+          if (connectionReceived && data.type === 'status' && !data.medical_report && !data.studies_found) {
             recoveryComplete = true;
             clearTimeout(timeout);
             ws.onmessage = originalOnMessage;
@@ -281,7 +281,9 @@ export const WebSocketProvider = ({ children }) => {
 
   const handleRecoveryMessage = (data) => {
     // Process WebSocket messages during recovery to update UI state
-    if (data.current_step) {
+    if (data.current_node) {
+      setCurrentNode(data.current_node);
+    } else if (data.current_step) {
       setCurrentNode(data.current_step);
     }
 
@@ -315,7 +317,34 @@ export const WebSocketProvider = ({ children }) => {
       case 'status':
         if (data.message) {
           setCustomMessage(data.message);
-          addActivity('Status Update', data.message, 'active');
+          // Use specific activity info from backend if available
+          if (data.activity) {
+            addActivity(
+              data.activity.title || 'Status Update',
+              data.activity.description || data.message,
+              data.activity.status || 'active',
+              data.activity.stats || null,
+              data.activity.id || null
+            );
+          } else {
+            addActivity('Status Update', data.message, 'active');
+          }
+        }
+        break;
+      case 'activity_update':
+        if (data.activity && data.activity.id) {
+          const { id, status, description, progress } = data.activity;
+          setActivities(prev => prev.map(activity => 
+            activity.id === id 
+              ? { 
+                  ...activity, 
+                  status, 
+                  description: description || activity.description,
+                  progress: progress !== undefined ? progress : (status === 'completed' ? 100 : activity.progress),
+                  timestamp: Date.now() 
+                }
+              : activity
+          ));
         }
         break;
       default:
@@ -360,7 +389,9 @@ export const WebSocketProvider = ({ children }) => {
 
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
-      if (data.current_step) {
+      if (data.current_node) {
+        setCurrentNode(data.current_node);
+      } else if (data.current_step) {
         setCurrentNode(data.current_step);
       }
 
@@ -490,7 +521,34 @@ export const WebSocketProvider = ({ children }) => {
         case 'status':
           if (data.message) {
             setCustomMessage(data.message);
-            addActivity('Status Update', data.message, 'active');
+            // Use specific activity info from backend if available
+            if (data.activity) {
+              addActivity(
+                data.activity.title || 'Status Update',
+                data.activity.description || data.message,
+                data.activity.status || 'active',
+                data.activity.stats || null,
+                data.activity.id || null
+              );
+            } else {
+              addActivity('Status Update', data.message, 'active');
+            }
+          }
+          break;
+        case 'activity_update':
+          if (data.activity && data.activity.id) {
+            const { id, status, description, progress } = data.activity;
+            setActivities(prev => prev.map(activity => 
+              activity.id === id 
+                ? { 
+                    ...activity, 
+                    status, 
+                    description: description || activity.description,
+                    progress: progress !== undefined ? progress : (status === 'completed' ? 100 : activity.progress),
+                    timestamp: Date.now() 
+                  }
+                : activity
+            ));
           }
           break;
         case 'embedding_studies':

@@ -26,11 +26,14 @@ def prompt_distiller(state):
         # In retry mode, automatically generate and use new search terms
         max_generation_attempts = 3
         for _ in range(max_generation_attempts):
-            new_search_term = prompt_distiller_chain.invoke({
+            distiller_response = prompt_distiller_chain.invoke({
                 "medical_report": medical_report,
                 "existing_terms": ", ".join(current_search_terms)
             })
+            # Extract the first search term for compatibility
+            new_search_term = distiller_response.search_terms[0].term if distiller_response.search_terms else "clinical trial"
             print("___NEW SEARCH TERM___ ", new_search_term)
+            print("___FULL RESPONSE___ ", distiller_response.dict())
             
             if new_search_term not in current_search_terms:
                 current_search_terms.append(new_search_term)
@@ -41,11 +44,14 @@ def prompt_distiller(state):
         # Original interactive mode for first attempt
         max_attempts = 3  # Limit the number of attempts to avoid infinite loops
         for _ in range(max_attempts):
-            new_search_term = prompt_distiller_chain.invoke({
+            distiller_response = prompt_distiller_chain.invoke({
                 "medical_report": medical_report,
                 "existing_terms": ", ".join(current_search_terms)
             })
+            # Extract the first search term for compatibility
+            new_search_term = distiller_response.search_terms[0].term if distiller_response.search_terms else "clinical trial"
             print("___NEW SEARCH TERM___ ", new_search_term)
+            print("___FULL RESPONSE___ ", distiller_response.dict())
             
             # Ask user if they want to use this search term or input their own
             user_choice = input("Do you want to use this search term? (yes/no): ").lower().strip()
