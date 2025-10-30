@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { List, Typography } from 'antd';
 
 const { Text } = Typography;
 
 const ChatList = ({ chatHistory, chatEndRef }) => {
+  useEffect(() => {
+    if (chatEndRef?.current) {
+      chatEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  }, [chatHistory, chatEndRef]);
+
   return (
     <div style={{ marginTop: '20px' }}>
       <List

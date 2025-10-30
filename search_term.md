@@ -1,1 +1,1 @@
-Urothelial carcinoma of the bladder
+muscle-invasive bladder cancer

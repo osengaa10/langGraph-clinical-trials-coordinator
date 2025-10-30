@@ -1,1 +1,1 @@
-Muscle-invasive urothelial carcinoma, Urothelial carcinoma of the bladder
+metastatic urothelial carcinoma, muscle-invasive bladder cancer

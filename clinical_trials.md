@@ -1,25 +1,29 @@
-Based on the patient's medical report, I have identified a few clinical trials that may be suitable for improving their prognosis. The patient has muscle-invasive urothelial carcinoma of the bladder with a primary diagnosis of T2aN0M0, and they have undergone neoadjuvant chemotherapy and radical cystectomy. They also have a good performance status (ECOG 0) and no significant comorbidities.
+Based on the patient's medical report, I have identified a few clinical trials that may be suitable for improving their prognosis. The patient has metastatic urothelial carcinoma of the bladder with a FGFR3 S249C activating mutation, PD-L1 expression, and a tumor mutational burden (TMB) of 11 mut/Mb.
 
-One of the most promising clinical trials for this patient is NCT06809140, a Phase 2 trial of Enfortumab Vedotin Plus Pembrolizumab with selective bladder sparing for treatment of muscle-invasive urothelial cancer of the bladder. This trial is suitable for the patient because it targets muscle-invasive urothelial cancer, and the patient's tumor has a PD-L1 expression of 15, which may benefit from checkpoint inhibitors like Pembrolizumab.
+1. **NCT06571708**: This Phase 1/2 study is investigating the use of Erdafitinib Intravesical Delivery System (TAR-210) in patients with non-muscle-invasive or muscle-invasive bladder cancer. The patient's FGFR3 mutation makes them a potential candidate for this trial. The expected prognosis outcome for this trial is the assessment of adverse events and overall complete response in patients with intermediate-risk non-muscle-invasive bladder cancer.
 
-The expected prognosis outcome for this patient in this trial is a complete response rate with enfortumab vedotin plus pembrolizumab for MIBC, which will be defined as cT0 or cTa (low-grade) disease at the time of restaging after 3 cycles of induction enfortumab vedotin plus pembrolizumab.
+Contact Information:
+Study Contact - CONTACT
+Phone: 844-434-4210, Email: Participate-In-This-Study1@its.jnj.com
 
-Possible risks associated with this trial include pre-existing sensory or motor neuropathy, ongoing clinically significant toxicity, and prior systemic chemotherapy for muscle-invasive urothelial cancer of the bladder.
+Possible risks associated with this trial include adverse events related to the Erdafitinib Intravesical Delivery System, such as urinary tract infections, hematuria, and bladder spasms.
 
-Contact information for this trial is:
-Matthew Galsky, MD - CONTACT
-Phone: 212-659-5452, Email: matthew.galsky@mssm.edu
-Ahran Lee - CONTACT
-Phone: 317-634-5842, Email: alee@hoosiercancer.org
+2. **NCT03609216**: This Phase II study is investigating the use of Gemcitabine Plus Cisplatin Chemotherapy in patients with muscle-invasive bladder cancer with bladder preservation for those patients whose tumors harbor deleterious DNA damage response (DDR) gene alterations. Although the patient's tumor does not have DDR gene alterations, the trial's focus on muscle-invasive bladder cancer makes it worth considering.
 
-Another trial that may be suitable for this patient is NCT03609216, a Phase II study of Gemcitabine Plus Cisplatin Chemotherapy in Patients With Muscle-invasive Bladder Cancer With Bladder Preservation for Those Patients Whose Tumors Harbor Deleterious DNA Damage Response (DDR) Gene Alterations. This trial is suitable for the patient because it targets muscle-invasive bladder cancer, and the patient's tumor has a TSC1 mutation, which may benefit from chemotherapy.
-
-The expected prognosis outcome for this patient in this trial is the proportion of patients who are recurrence-free within the DDR-mutated group who undergo the bladder-sparing approach, which will be estimated using Kaplan-Meier survival analysis.
-
-Possible risks associated with this trial include prior anti-PD-1 or anti-PD-L1 therapies, prior radiation therapy to the bladder or prostate, and major surgery or radiation therapy within 4 weeks of registration.
-
-Contact information for this trial is:
+Contact Information:
 Gopa Iyer, MD - CONTACT
 Phone: 646-888-4737, Email: iyerg@mskcc.org
 
-In conclusion, both NCT06809140 and NCT03609216 may be suitable clinical trials for this patient, and the expected prognosis outcome and possible risks associated with each trial should be carefully considered before making a decision. It is essential to consult with the patient's healthcare provider and the trial investigators to determine the best course of treatment.
+Possible risks associated with this trial include adverse events related to chemotherapy, such as neutropenia, anemia, and thrombocytopenia, as well as potential long-term effects on fertility and cardiac function.
+
+3. **NCT06009848**: This Phase II study is investigating the use of Cadonilimab (AK104) Plus Nab-Paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's PD-L1 expression and metastatic disease make them a potential candidate for this trial. The expected prognosis outcome for this trial is the assessment of objective response rate.
+
+Contact Information:
+HaiTao Wang, Ph.D - CONTACT
+Phone: +86-022-88326385, Email: peterrock2000@126.com
+Lili Wang, Ph.D - CONTACT
+Phone: +86-022-88326610, Email: wangliliaigang@163.com
+
+Possible risks associated with this trial include adverse events related to immunotherapy, such as immune-related adverse events (irAEs), and potential long-term effects on the immune system.
+
+It is essential to note that each trial has its own set of eligibility criteria, and the patient's suitability for each trial should be carefully evaluated by their healthcare provider. Additionally, the patient should be aware of the potential risks and benefits associated with each trial and discuss any concerns with their healthcare provider before making a decision.

@@ -37,8 +37,8 @@ const ActivityLog = ({ activities, currentNode }) => {
     <Card 
       title={
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <LoadingOutlined style={{ color: '#1890ff' }} />
-          <Title level={4} style={{ margin: 0 }}>Processing Activity</Title>
+          {/* <LoadingOutlined style={{ color: '#1890ff' }} /> */}
+          <Title level={4} style={{ margin: 0 }}>Status</Title>
         </div>
       }
       size="small" 

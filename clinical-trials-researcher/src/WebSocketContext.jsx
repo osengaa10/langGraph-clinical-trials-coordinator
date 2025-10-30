@@ -411,7 +411,21 @@ export const WebSocketProvider = ({ children }) => {
           setTimeout(() => saveCurrentState(), 1000);
           break;
         case 'question':
-          addActivity('Consultation Started', 'AI consultant is asking follow-up questions', 'active');
+          setActivities((prev) => {
+            const hasConsultationStarted = prev.some(activity => activity.title === 'Consultation Started');
+            if (!hasConsultationStarted) {
+              return [...prev, {
+                id: uuidv4(),
+                title: 'Consultation Started',
+                description: 'AI consultant is asking follow-up questions',
+                status: 'active',
+                stats: null,
+                timestamp: Date.now(),
+                progress: undefined
+              }];
+            }
+            return prev;
+          });
           setChatHistory((prev) => [...prev, { role: 'assistant', content: data.content }]);
           setConversationStarted(true);
           break;
