@@ -1,41 +1,25 @@
-Based on the medical report provided, the patient is a 35-year-old premenopausal female with a primary diagnosis of invasive ductal carcinoma of the right breast, Nottingham grade 3, and HER2 positive. The patient has a germline pathogenic BRCA1 mutation and has undergone various treatments, including neoadjuvant chemotherapy, bilateral mastectomy, and adjuvant trastuzumab. The patient has also developed brain metastases and has been treated with gamma knife surgery and ado-trastuzumab emtansine.
+Based on the patient's medical report, I have identified a few clinical trials that may be suitable for improving their prognosis. The patient has muscle-invasive urothelial carcinoma of the bladder with a primary diagnosis of T2aN0M0, and they have undergone neoadjuvant chemotherapy and radical cystectomy. They also have a good performance status (ECOG 0) and no significant comorbidities.
 
-Given the patient's medical history and current disease status, I have reviewed the provided clinical trials and found that none of them are a good fit for the patient. The patient's HER2 positive status and history of brain metastases make it challenging to find a suitable trial.
+One of the most promising clinical trials for this patient is NCT06809140, a Phase 2 trial of Enfortumab Vedotin Plus Pembrolizumab with selective bladder sparing for treatment of muscle-invasive urothelial cancer of the bladder. This trial is suitable for the patient because it targets muscle-invasive urothelial cancer, and the patient's tumor has a PD-L1 expression of 15, which may benefit from checkpoint inhibitors like Pembrolizumab.
 
-However, I would like to highlight a few trials that may be worth exploring further, although they may not be a perfect match:
+The expected prognosis outcome for this patient in this trial is a complete response rate with enfortumab vedotin plus pembrolizumab for MIBC, which will be defined as cT0 or cTa (low-grade) disease at the time of restaging after 3 cycles of induction enfortumab vedotin plus pembrolizumab.
 
-1. **NCT04886531**: This trial is for patients with ER-positive, HER2-positive breast cancer, which matches the patient's diagnosis. However, the trial is for pre-operative treatment, and the patient has already undergone surgery. The trial involves neratinib, letrozole or anastrozole, and trastuzumab. 
+Possible risks associated with this trial include pre-existing sensory or motor neuropathy, ongoing clinically significant toxicity, and prior systemic chemotherapy for muscle-invasive urothelial cancer of the bladder.
 
-Contact Information:
-Ruth O'Regan, MD - CONTACT
-Phone: 608-265-9701, Email: ruth_oregan@urmc.rochester.edu
-Amber Ryba - CONTACT
-Phone: 317-634-5842, Email: aryba@hoosiercancer.org
+Contact information for this trial is:
+Matthew Galsky, MD - CONTACT
+Phone: 212-659-5452, Email: matthew.galsky@mssm.edu
+Ahran Lee - CONTACT
+Phone: 317-634-5842, Email: alee@hoosiercancer.org
 
-2. **NCT04567420**: This trial is for patients with high-risk, ER-positive, HER2-negative breast cancer, which does not match the patient's HER2 positive status. However, the trial involves circulating tumor DNA-guided second-line adjuvant therapy, which may be of interest to the patient.
+Another trial that may be suitable for this patient is NCT03609216, a Phase II study of Gemcitabine Plus Cisplatin Chemotherapy in Patients With Muscle-invasive Bladder Cancer With Bladder Preservation for Those Patients Whose Tumors Harbor Deleterious DNA Damage Response (DDR) Gene Alterations. This trial is suitable for the patient because it targets muscle-invasive bladder cancer, and the patient's tumor has a TSC1 mutation, which may benefit from chemotherapy.
 
-Contact Information:
-Bebi Yassin-Rajkumar, MSc - CONTACT
-Phone: 6138511370, Email: byassin-rajkumar@criteriuminc.com
-Julee Hartwell - CONTACT
-Phone: 607-651-6273, Email: jhartwell@criteriuminc.com
+The expected prognosis outcome for this patient in this trial is the proportion of patients who are recurrence-free within the DDR-mutated group who undergo the bladder-sparing approach, which will be estimated using Kaplan-Meier survival analysis.
 
-3. **NCT03213041**: This trial is for patients with CTC-positive, HER2-negative metastatic breast cancer, which does not match the patient's HER2 positive status. However, the trial involves pembrolizumab and carboplatin, which may be of interest to the patient.
+Possible risks associated with this trial include prior anti-PD-1 or anti-PD-L1 therapies, prior radiation therapy to the bladder or prostate, and major surgery or radiation therapy within 4 weeks of registration.
 
-Contact Information:
-Study Coordinator - CONTACT
-Phone: (312)695-1301, Email: cancertrials@northwestern.edu
+Contact information for this trial is:
+Gopa Iyer, MD - CONTACT
+Phone: 646-888-4737, Email: iyerg@mskcc.org
 
-Expected prognosis outcome for the patient:
-The patient's prognosis is uncertain, given the complexity of their medical history and the challenges of treating HER2-positive breast cancer with brain metastases. However, with ongoing treatment and careful monitoring, the patient may be able to achieve a stable disease state or even experience a complete response to treatment.
-
-Possible risks associated with each trial:
-Each trial has its own set of potential risks and side effects, which should be carefully reviewed and discussed with the patient's healthcare provider. Some common risks associated with cancer clinical trials include:
-
-* Adverse reactions to the investigational therapy
-* Increased risk of infections or other complications
-* Fatigue, nausea, and vomiting
-* Hair loss, skin rashes, or other cosmetic changes
-* Increased risk of secondary cancers or other long-term health effects
-
-It is essential to carefully weigh the potential benefits and risks of each trial and discuss them with the patient's healthcare provider to determine the best course of treatment.
+In conclusion, both NCT06809140 and NCT03609216 may be suitable clinical trials for this patient, and the expected prognosis outcome and possible risks associated with each trial should be carefully considered before making a decision. It is essential to consult with the patient's healthcare provider and the trial investigators to determine the best course of treatment.

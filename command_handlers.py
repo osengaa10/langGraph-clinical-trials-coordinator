@@ -35,10 +35,10 @@ async def start_conversation(websocket: WebSocket, state):
         "chat_history": state['chat_history'],
         "initial_prompt": initial_prompt
     })
-    state['chat_history'].append({"role": "assistant", "content": response['content']})
+    state['chat_history'].append({"role": "assistant", "content": response.content})
     await websocket.send_json({
         'type': 'question',
-        'content': response['content'],
+        'content': response.content,
         'state': state
     })
 
@@ -49,17 +49,17 @@ async def handle_user_input(websocket, state, user_input):
         "chat_history": state['chat_history'],
         "initial_prompt": "Continue the conversation based on the patient's response."
     })
-    if response.get('action') == 'ask_question':
-        state['chat_history'].append({"role": "assistant", "content": response['content']})
+    if response.action == 'ask_question':
+        state['chat_history'].append({"role": "assistant", "content": response.content})
         await websocket.send_json({
             'type': 'question',
-            'content': response['content'],
+            'content': response.content,
             'current_node': 'consultant',
             'current_step': 'consultant',
             'next_node': 'user_input',
             'state': state
         })
-    elif response.get('action') == 'generate_report':
+    elif response.action == 'generate_report':
         await generate_report(websocket, state)
 
 

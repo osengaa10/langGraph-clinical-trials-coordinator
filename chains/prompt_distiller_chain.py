@@ -25,12 +25,13 @@ SEARCH TERM EXTRACTION STRATEGY:
 9. TRIAL PHASE: Phase I, II, III, IV trial specifications
 
 OUTPUT REQUIREMENTS:
-- Generate 3-15 precise medical search terms/phrases to ensure comprehensive coverage
+- Generate between 3 and 15 search terms (MAXIMUM 15 - DO NOT EXCEED THIS LIMIT)
 - Each term should be 2-8 words for optimal database searching
 - Include both broad and specific terms for comprehensive coverage
 - Consider phase-appropriate terms (early-stage, advanced, metastatic)
 - Avoid overly generic terms that would return too many irrelevant results
 - Prioritize high-value terms that capture different aspects of the patient's condition
+- Focus on quality over quantity - select only the most relevant terms
 
 EXISTING SEARCH TERMS: {existing_terms}
 Ensure new terms complement existing ones without exact duplication.
@@ -38,11 +39,26 @@ Ensure new terms complement existing ones without exact duplication.
 
 Analyze the medical report and extract comprehensive search terms for clinical trial databases. Generate multiple complementary search terms that cover different aspects of the patient's condition.
 
-Return your response as a JSON array of search terms:
+Return your response as a JSON object with search terms.
+
+IMPORTANT: For each search term, the "category" field must be EXACTLY ONE of these values:
+- "diagnosis"
+- "biomarker"
+- "treatment"
+- "staging"
+- "disease characteristics"
+- "symptoms"
+- "comorbidities"
+- "clinical trial"
+- "trial phase"
+
+The "specificity" field must be either "broad" or "specific".
+
+JSON format:
 {{
     "search_terms": [
-        {{"term": "specific medical term/phrase", "category": "diagnosis/biomarker/treatment/staging/disease characteristics/symptoms/comorbidities/clinical trial/trial phase", "specificity": "broad/specific"}},
-        {{"term": "another medical term/phrase", "category": "diagnosis/biomarker/treatment/staging/disease characteristics/symptoms/comorbidities/clinical trial/trial phase", "specificity": "broad/specific"}}
+        {{"term": "specific medical term/phrase", "category": "diagnosis", "specificity": "broad"}},
+        {{"term": "another medical term/phrase", "category": "biomarker", "specificity": "specific"}}
     ],
     "primary_condition": "most important condition for trial matching",
     "key_biomarkers": ["list", "of", "relevant", "biomarkers"],

@@ -94,7 +94,12 @@ class ValidatedPromptDistillerParser(PydanticOutputParser):
                 for term in data['search_terms']:
                     if 'category' in term:
                         term['category'] = self._clean_search_term_category(term['category'])
-            
+
+                # Truncate to max 15 terms (model constraint from models.py:50)
+                if len(data['search_terms']) > 15:
+                    logger.warning(f"Truncating {len(data['search_terms'])} search terms to maximum of 15")
+                    data['search_terms'] = data['search_terms'][:15]
+
             # Now try to create the Pydantic object with cleaned data
             return PromptDistillerResponse(**data)
             
