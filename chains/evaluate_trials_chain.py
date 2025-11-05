@@ -1,5 +1,5 @@
 from langchain.prompts import PromptTemplate
-from LLMs.llm import GROQ_LLM  # You might need to change this import depending on the LLM you're using
+from LLMs.llm import REASONING_LLM
 from langchain_core.runnables import RunnablePassthrough
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
 from .custom_parsers import evaluate_trials_parser
@@ -112,8 +112,9 @@ RESEARCH INFORMATION AND TRIAL DATA:
     input_variables=["research_info"],
 )
 
+# Using REASONING_LLM for complex trial eligibility analysis and scoring
 evaluate_trials_chain = (
     evaluation_prompt
-    | GROQ_LLM
+    | REASONING_LLM
     | evaluate_trials_parser
 )

@@ -215,7 +215,7 @@ class ValidatedEvaluateTrialsParser(PydanticOutputParser):
         try:
             # First, try to parse and clean the JSON data before Pydantic validation
             data = json.loads(text)
-            
+
             # Clean up trial evaluations if they exist
             if 'trial_evaluations' in data and data['trial_evaluations']:
                 for trial in data['trial_evaluations']:
@@ -223,7 +223,21 @@ class ValidatedEvaluateTrialsParser(PydanticOutputParser):
                         trial['urgency_level'] = self._clean_urgency_level(trial['urgency_level'])
                     if 'category' in trial:
                         trial['category'] = self._clean_category(trial['category'])
-            
+
+            # Fill in missing next_steps fields (common with DeepSeek)
+            if 'next_steps' in data:
+                next_steps = data['next_steps']
+                if 'timeline_recommendations' not in next_steps:
+                    next_steps['timeline_recommendations'] = ['Follow up in 2-4 weeks with healthcare provider']
+                if 'additional_consultations' not in next_steps:
+                    next_steps['additional_consultations'] = ['Oncology specialist', 'Clinical research coordinator']
+            else:
+                data['next_steps'] = {
+                    'immediate_actions': ['Consult with healthcare provider'],
+                    'timeline_recommendations': ['Follow up in 2-4 weeks'],
+                    'additional_consultations': ['Oncologist or specialist consultation']
+                }
+
             # Now try to create the Pydantic object with cleaned data
             return EvaluateTrialsResponse(**data)
             

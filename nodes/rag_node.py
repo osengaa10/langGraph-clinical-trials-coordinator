@@ -4,11 +4,12 @@ from langchain_core.runnables import RunnablePassthrough
 from langchain.prompts import PromptTemplate
 from rag import create_vector_db
 from langchain_core.output_parsers import StrOutputParser
-from LLMs.llm import GROQ_LLM
+from LLMs.llm import CONVERSATIONAL_LLM  # Using Llama for larger context window
 
 
 def research_info_search(state):
     vectordb = create_vector_db(state['uid'])
+    # Using k=5 documents - Llama-3.3-70B has sufficient context window
     retriever = vectordb.as_retriever(search_kwargs={"k": 5})
 
 # Updated RAG Chain
@@ -33,13 +34,15 @@ def research_info_search(state):
     input_variables=["medical_report", "context"],
     )
 
+    # Using CONVERSATIONAL_LLM (Llama-3.3-70B) for RAG due to larger context window
+    # DeepSeek's 8K limit is too small for retrieving multiple trial documents
     rag_chain = (
         {
             "context": lambda x: retriever.get_relevant_documents(x["medical_report"]),
             "medical_report": RunnablePassthrough()
         }
         | rag_prompt
-        | GROQ_LLM
+        | CONVERSATIONAL_LLM
         | StrOutputParser()
     )
 

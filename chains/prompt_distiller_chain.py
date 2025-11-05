@@ -1,5 +1,5 @@
 from langchain_core.output_parsers import StrOutputParser, JsonOutputParser
-from LLMs.llm import GROQ_LLM  # You might need to change this import depending on the LLM you're using
+from LLMs.llm import CONVERSATIONAL_LLM
 from langchain.prompts import PromptTemplate
 from .custom_parsers import prompt_distiller_parser
 
@@ -75,4 +75,5 @@ EXISTING TERMS TO AVOID DUPLICATION:
     input_variables=["medical_report", "existing_terms"],
 )
 
-prompt_distiller_chain = prompt | GROQ_LLM | prompt_distiller_parser
+# Using CONVERSATIONAL_LLM for medical term extraction and structured output
+prompt_distiller_chain = prompt | CONVERSATIONAL_LLM | prompt_distiller_parser

@@ -1,29 +1,42 @@
-Based on the patient's medical report, I have identified a few clinical trials that may be suitable for improving their prognosis. The patient has metastatic urothelial carcinoma of the bladder with a FGFR3 S249C activating mutation, PD-L1 expression, and a tumor mutational burden (TMB) of 11 mut/Mb.
+Based on the medical report provided, the patient has a primary diagnosis of undifferentiated pleomorphic sarcoma (UPS) with metastatic disease in the lungs. The patient has undergone previous treatments, including doxorubicin and gemcitabine + docetaxel, and has a good performance status (ECOG 1) and adequate organ function.
 
-1. **NCT06571708**: This Phase 1/2 study is investigating the use of Erdafitinib Intravesical Delivery System (TAR-210) in patients with non-muscle-invasive or muscle-invasive bladder cancer. The patient's FGFR3 mutation makes them a potential candidate for this trial. The expected prognosis outcome for this trial is the assessment of adverse events and overall complete response in patients with intermediate-risk non-muscle-invasive bladder cancer.
+After reviewing the retrieved clinical trials, I have identified two potential trials that may be suitable for this patient:
 
-Contact Information:
-Study Contact - CONTACT
-Phone: 844-434-4210, Email: Participate-In-This-Study1@its.jnj.com
+1. **NCT06422806**: A Randomized Phase III Trial of Doxorubicin + Pembrolizumab Versus Doxorubicin Alone for the Treatment of Dedifferentiated Liposarcoma (DDLPS), Undifferentiated Pleomorphic Sarcoma (UPS) and Related Poorly Differentiated Sarcomas.
 
-Possible risks associated with this trial include adverse events related to the Erdafitinib Intravesical Delivery System, such as urinary tract infections, hematuria, and bladder spasms.
-
-2. **NCT03609216**: This Phase II study is investigating the use of Gemcitabine Plus Cisplatin Chemotherapy in patients with muscle-invasive bladder cancer with bladder preservation for those patients whose tumors harbor deleterious DNA damage response (DDR) gene alterations. Although the patient's tumor does not have DDR gene alterations, the trial's focus on muscle-invasive bladder cancer makes it worth considering.
+This trial may be a good fit for the patient as it includes UPS as a eligible diagnosis, and the patient has not received prior treatment with an anthracycline at the maximum cumulative dose. However, the patient has received doxorubicin previously, which may be a limitation. The trial contact information is:
 
 Contact Information:
-Gopa Iyer, MD - CONTACT
-Phone: 646-888-4737, Email: iyerg@mskcc.org
+Conditions:
+Metastatic Dedifferentiated Liposarcoma, Metastatic Undifferentiated Pleomorphic Sarcoma, Stage III Soft Tissue Sarcoma of the Trunk and Extremities AJCC v8, Stage IV Soft Tissue Sarcoma of the Trunk and Extremities AJCC v8, Unresectable Dedifferentiated Liposarcoma, Unresectable Undifferentiated Pleomorphic Sarcoma
 
-Possible risks associated with this trial include adverse events related to chemotherapy, such as neutropenia, anemia, and thrombocytopenia, as well as potential long-term effects on fertility and cardiac function.
+Interventions:
+PROCEDURE - Biospecimen Collection: Undergo blood sample collection
+PROCEDURE - Diagnostic Imaging Testing: Undergo standard imaging scans
+DRUG - Doxorubicin: Given IV
+PROCEDURE - Echocardiography Test: Undergo ECHO
+PROCEDURE - Multigated Acquisition Scan: Undergo MUGA scan
+BIOLOGICAL - Pembrolizumab: Given IV
 
-3. **NCT06009848**: This Phase II study is investigating the use of Cadonilimab (AK104) Plus Nab-Paclitaxel in patients with recurrent or metastatic muscle-invasive bladder cancer. The patient's PD-L1 expression and metastatic disease make them a potential candidate for this trial. The expected prognosis outcome for this trial is the assessment of objective response rate.
+The expected prognosis outcome for this trial is to compare the progression-free survival (PFS) between the treatment arms (doxorubicin + pembrolizumab versus doxorubicin alone). The possible risks associated with this trial include cardiac toxicity, immune-related adverse events, and increased risk of infections.
+
+2. **NCT05597917**: Phase III Study Comparing Trabectedin (T) Versus T Plus tTF-NGR to Entrap T Inside the Tumor in Patients With Metastatic and/or Refractory Soft Tissue Sarcoma (STS)
+
+This trial may be a good fit for the patient as it includes metastatic STS as an eligible diagnosis, and the patient has not received prior treatment with trabectedin. The trial contact information is:
 
 Contact Information:
-HaiTao Wang, Ph.D - CONTACT
-Phone: +86-022-88326385, Email: peterrock2000@126.com
-Lili Wang, Ph.D - CONTACT
-Phone: +86-022-88326610, Email: wangliliaigang@163.com
+Christoph Schliemann, Prof. Dr. - CONTACT
+Phone: +49 251 83 45363, Email: Christoph.Schliemann@ukmuenster.de
+Torsten Kessler, PD Dr. - CONTACT
+Phone: +49 251 83 45363, Email: Torsten.Kessler@ukmuenster.de
 
-Possible risks associated with this trial include adverse events related to immunotherapy, such as immune-related adverse events (irAEs), and potential long-term effects on the immune system.
+Conditions:
+Soft Tissue Sarcoma
 
-It is essential to note that each trial has its own set of eligibility criteria, and the patient's suitability for each trial should be carefully evaluated by their healthcare provider. Additionally, the patient should be aware of the potential risks and benefits associated with each trial and discuss any concerns with their healthcare provider before making a decision.
+Interventions:
+DRUG - Trabectedin: Patients will receive standard trabectedin 1.5 mg/m2 as a 24-hour central intravenous (IV) infusion on day 1, q d 22 x until disease progression or contraindications against further application.
+BIOLOGICAL - tTF-NGR: Patients will receive standard trabectedin according to arm 1 plus 0.5 mg/m2 of tTF-NGR (1-hour ratecontrolled infusion, port central venous access, 0.9 % NaCl ad 100 mL) on days 2 and 3 following each trabectedin cycle (within 1 hour interval between end of trabectedin infusion and tTF-NGR: e.g.: trabectedin on monday 8 am to tuesday 8 am followed by tTF-NGR on tuesday 9 am and on the following day, q d 22 x until disease progression or contraindications against further application.
+
+The expected prognosis outcome for this trial is to evaluate the progression-free survival (PFS) according to iRECIST as judged by central radiology in a blinded fashion after end of trial. The possible risks associated with this trial include myelosuppression, liver toxicity, and increased risk of infections.
+
+In conclusion, both trials may be suitable for the patient, but it is essential to carefully review the inclusion and exclusion criteria, as well as the potential risks and benefits, before making a decision. The patient's doctor or a qualified medical professional should be consulted to determine the best course of treatment.

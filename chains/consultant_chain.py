@@ -1,5 +1,5 @@
 from langchain_core.output_parsers import StrOutputParser
-from LLMs.llm import GROQ_LLM 
+from LLMs.llm import CONVERSATIONAL_LLM
 from langchain_core.prompts import PromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
@@ -148,10 +148,11 @@ CONVERSATION HISTORY:
 
 # conversation_chain = conversation_prompt | CHAT_LLM | JsonOutputParser()
 
-conversation_chain = conversation_prompt | GROQ_LLM | consultant_parser
+# Using CONVERSATIONAL_LLM for empathetic patient interaction
+conversation_chain = conversation_prompt | CONVERSATIONAL_LLM | consultant_parser
 
-
-report_chain = report_prompt | GROQ_LLM | StrOutputParser()
+# Using CONVERSATIONAL_LLM for comprehensive report generation
+report_chain = report_prompt | CONVERSATIONAL_LLM | StrOutputParser()
 
 # Export both chains
 consultant_chain = {

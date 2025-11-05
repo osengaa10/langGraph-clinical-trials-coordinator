@@ -13,19 +13,22 @@ os.environ['GROQ_API_KEY']
 os.environ['TOGETHER_API_KEY']
 deepseek_api_key = os.environ['OPENROUTER_API_KEY']
 
-# GROQ_LLM = ChatGroq(
-#             # model="llama-3.1-70b-versatile",
-#             model="llama3-8b-8192",
-#         )
+# Multi-LLM Architecture for Clinical Trials Coordinator
+# - CONVERSATIONAL_LLM: Patient interaction and general tasks (Llama-3.3-70B)
+# - REASONING_LLM: Complex medical reasoning and trial evaluation (DeepSeek-R1)
 
-GROQ_LLM = ChatTogether(model="meta-llama/Llama-3.3-70B-Instruct-Turbo")
-# GROQ_LLM = ChatTogether(model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free")
+# Conversational LLM for patient interaction, report generation, and term extraction
+CONVERSATIONAL_LLM = ChatTogether(model="meta-llama/Llama-3.3-70B-Instruct-Turbo")
 
-# GROQ_LLM = ChatOpenAI(
-#     base_url="https://openrouter.ai/api/v1",  
-#     api_key=deepseek_api_key,
-#     model="deepseek/deepseek-r1:free"
-# )
+# Reasoning LLM for complex medical analysis and trial evaluation
+# max_tokens set to 1500 to ensure inputs + outputs stay within 8K context limit
+REASONING_LLM = ChatTogether(
+    model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
+    max_tokens=1500
+)
+
+# Backward compatibility - points to reasoning model
+GROQ_LLM = REASONING_LLM
 
 model_name = "BAAI/bge-small-en-v1.5"
 encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
