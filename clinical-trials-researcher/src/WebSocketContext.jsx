@@ -510,6 +510,12 @@ export const WebSocketProvider = ({ children }) => {
             setShowTrialButtons(true);
             addActivity('Trial Search Complete', 'Search completed - consider expanding criteria or consulting with AI for alternatives', 'completed');
             break;
+        case 'workflow_finalizing':
+            setCurrentNode('state_printer');
+            setShowFinalResults(true);
+            setLoading(false);
+            addActivity('Finalizing Results', 'Preparing your personalized clinical trial matching report', 'completed');
+            break;
         case 'need_new_term':
             console.log("no studies found")
             alert(`no studies found for search term '${searchTerm}'. Please try another`)

@@ -281,9 +281,28 @@ async def handle_evaluate_trials(websocket: WebSocket, state):
         await asyncio.sleep(15)  # More frequent updates
 
     evaluation_result = await task
-    state['follow_up'] = evaluation_result
 
-    if "A suitable clinical trial was found:" in evaluation_result:
+    # Convert EvaluateTrialsResponse to dict for JSON serialization
+    if hasattr(evaluation_result, 'model_dump'):
+        evaluation_dict = evaluation_result.model_dump()
+    else:
+        evaluation_dict = evaluation_result.dict() if hasattr(evaluation_result, 'dict') else str(evaluation_result)
+
+    state['follow_up'] = evaluation_dict
+
+    # Check if suitable trials were found by looking at the evaluation summary
+    # A suitable trial is found if there are any highly_suitable trials
+    trials_found = False
+    if isinstance(evaluation_dict, dict):
+        eval_summary = evaluation_dict.get('evaluation_summary', {})
+        trials_found = eval_summary.get('highly_suitable_count', 0) > 0
+        print(f"DEBUG handle_evaluate_trials: eval_summary = {eval_summary}")
+        print(f"DEBUG handle_evaluate_trials: highly_suitable_count = {eval_summary.get('highly_suitable_count', 0)}")
+        print(f"DEBUG handle_evaluate_trials: trials_found = {trials_found}")
+    else:
+        print(f"DEBUG handle_evaluate_trials: evaluation_dict is not a dict: {type(evaluation_dict)}")
+
+    if trials_found:
         await websocket.send_json({
             'type': 'trials_found',
             'content': state['research_info'][0],
@@ -569,6 +588,26 @@ async def continue_workflow(websocket: WebSocket, state):
             })
             
             await handle_evaluate_trials(websocket, state)
+
+            # If trials were found, send finalization message before ending workflow
+            if state['next_step'] == 'state_printer':
+                await asyncio.sleep(0.5)
+                print(f"DEBUG: Sending workflow_finalizing message. state['next_step'] = {state['next_step']}")
+                await websocket.send_json({
+                    'type': 'workflow_finalizing',
+                    'content': 'Finalizing results and preparing comprehensive report...',
+                    'current_node': 'state_printer',
+                    'current_step': 'state_printer',
+                    'progress': 100,
+                    'activity': {
+                        'title': 'Finalizing Results',
+                        'description': 'Preparing your personalized clinical trial matching report',
+                        'status': 'completed'
+                    },
+                    'state': state
+                })
+                await asyncio.sleep(0.5)
+                break  # Exit the loop after sending finalization message
 
         elif current_node == 'consultant':
             await websocket.send_json({
