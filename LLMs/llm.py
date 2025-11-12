@@ -21,10 +21,10 @@ deepseek_api_key = os.environ['OPENROUTER_API_KEY']
 CONVERSATIONAL_LLM = ChatTogether(model="meta-llama/Llama-3.3-70B-Instruct-Turbo")
 
 # Reasoning LLM for complex medical analysis and trial evaluation
-# max_tokens set to 1500 to ensure inputs + outputs stay within 8K context limit
+# max_tokens increased to 4000 to allow complete trial evaluation responses
 REASONING_LLM = ChatTogether(
     model="deepseek-ai/DeepSeek-R1-Distill-Llama-70B-free",
-    max_tokens=1500
+    max_tokens=4000
 )
 
 # Backward compatibility - points to reasoning model

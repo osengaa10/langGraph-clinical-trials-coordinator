@@ -1,42 +1,25 @@
-Based on the medical report provided, the patient has a primary diagnosis of undifferentiated pleomorphic sarcoma (UPS) with metastatic disease in the lungs. The patient has undergone previous treatments, including doxorubicin and gemcitabine + docetaxel, and has a good performance status (ECOG 1) and adequate organ function.
+Based on the provided medical report, the patient has metastatic breast cancer with involvement of the brain and liver, and has achieved a complete response to pembrolizumab. Considering the patient's ER+, PR+, HER2+, and PD-L1 positive status, I have reviewed the retrieved clinical trials to find the most suitable options.
 
-After reviewing the retrieved clinical trials, I have identified two potential trials that may be suitable for this patient:
+1. **NCT05759572**: This trial investigates apatinib in combination with CDK4/6 inhibitor and endocrine therapy as the first-line therapy for HR+/HER2- advanced breast cancer. Although the patient's cancer is HER2+, this trial might not be the best fit due to the HR+/HER2- specification. However, it's worth noting that the patient's HER2 positivity could be considered in other trials.
 
-1. **NCT06422806**: A Randomized Phase III Trial of Doxorubicin + Pembrolizumab Versus Doxorubicin Alone for the Treatment of Dedifferentiated Liposarcoma (DDLPS), Undifferentiated Pleomorphic Sarcoma (UPS) and Related Poorly Differentiated Sarcomas.
+Contact Information: Zhimin Shao - CONTACT, Phone: 86-021-64175590, Email: zhimingshao@yahoo.com
 
-This trial may be a good fit for the patient as it includes UPS as a eligible diagnosis, and the patient has not received prior treatment with an anthracycline at the maximum cumulative dose. However, the patient has received doxorubicin previously, which may be a limitation. The trial contact information is:
+2. **NCT05022342**: This descriptive study focuses on PIK3CA mutations and outcomes with alpelisib in patients with HR-positive and HER2-negative advanced breast cancer. Similar to the previous trial, this study might not be the best fit due to the HER2-negative specification.
 
-Contact Information:
-Conditions:
-Metastatic Dedifferentiated Liposarcoma, Metastatic Undifferentiated Pleomorphic Sarcoma, Stage III Soft Tissue Sarcoma of the Trunk and Extremities AJCC v8, Stage IV Soft Tissue Sarcoma of the Trunk and Extremities AJCC v8, Unresectable Dedifferentiated Liposarcoma, Unresectable Undifferentiated Pleomorphic Sarcoma
+Contact Information: Novartis Pharmaceuticals - CONTACT, Phone: +41613241111, Email: novartis.email@novartis.com
 
-Interventions:
-PROCEDURE - Biospecimen Collection: Undergo blood sample collection
-PROCEDURE - Diagnostic Imaging Testing: Undergo standard imaging scans
-DRUG - Doxorubicin: Given IV
-PROCEDURE - Echocardiography Test: Undergo ECHO
-PROCEDURE - Multigated Acquisition Scan: Undergo MUGA scan
-BIOLOGICAL - Pembrolizumab: Given IV
+3. **NCT06260033**: This Phase II trial explores stereotactic body radiation therapy and fluoroestradiol positron emission tomography in patients with oligoprogressive estrogen receptor-positive metastatic breast cancer. Given the patient's ER positivity and oligoprogressive disease, this trial could be a suitable option.
 
-The expected prognosis outcome for this trial is to compare the progression-free survival (PFS) between the treatment arms (doxorubicin + pembrolizumab versus doxorubicin alone). The possible risks associated with this trial include cardiac toxicity, immune-related adverse events, and increased risk of infections.
+Contact Information: Not provided
 
-2. **NCT05597917**: Phase III Study Comparing Trabectedin (T) Versus T Plus tTF-NGR to Entrap T Inside the Tumor in Patients With Metastatic and/or Refractory Soft Tissue Sarcoma (STS)
+Expected prognosis outcome for the patient:
+The patient has already achieved a complete response to pembrolizumab, which is a positive sign. However, the prognosis for metastatic breast cancer remains uncertain, and the patient's disease can progress at any time. Participating in a clinical trial like NCT06260033 could potentially improve the patient's prognosis by providing an additional treatment option.
 
-This trial may be a good fit for the patient as it includes metastatic STS as an eligible diagnosis, and the patient has not received prior treatment with trabectedin. The trial contact information is:
+Possible risks associated with each trial:
+- NCT05759572: Apatinib can cause hypertension, proteinuria, and thrombocytopenia. CDK4/6 inhibitors can cause neutropenia, fatigue, and diarrhea.
+- NCT05022342: Alpelisib can cause hyperglycemia, rash, and fatigue.
+- NCT06260033: Stereotactic body radiation therapy can cause fatigue, skin reactions, and radiation pneumonitis. Fluoroestradiol positron emission tomography is generally well-tolerated but can cause allergic reactions.
 
-Contact Information:
-Christoph Schliemann, Prof. Dr. - CONTACT
-Phone: +49 251 83 45363, Email: Christoph.Schliemann@ukmuenster.de
-Torsten Kessler, PD Dr. - CONTACT
-Phone: +49 251 83 45363, Email: Torsten.Kessler@ukmuenster.de
+It is essential to note that these trials may have additional risks and side effects not mentioned here. The patient should discuss the potential benefits and risks with their healthcare provider before making any decisions.
 
-Conditions:
-Soft Tissue Sarcoma
-
-Interventions:
-DRUG - Trabectedin: Patients will receive standard trabectedin 1.5 mg/m2 as a 24-hour central intravenous (IV) infusion on day 1, q d 22 x until disease progression or contraindications against further application.
-BIOLOGICAL - tTF-NGR: Patients will receive standard trabectedin according to arm 1 plus 0.5 mg/m2 of tTF-NGR (1-hour ratecontrolled infusion, port central venous access, 0.9 % NaCl ad 100 mL) on days 2 and 3 following each trabectedin cycle (within 1 hour interval between end of trabectedin infusion and tTF-NGR: e.g.: trabectedin on monday 8 am to tuesday 8 am followed by tTF-NGR on tuesday 9 am and on the following day, q d 22 x until disease progression or contraindications against further application.
-
-The expected prognosis outcome for this trial is to evaluate the progression-free survival (PFS) according to iRECIST as judged by central radiology in a blinded fashion after end of trial. The possible risks associated with this trial include myelosuppression, liver toxicity, and increased risk of infections.
-
-In conclusion, both trials may be suitable for the patient, but it is essential to carefully review the inclusion and exclusion criteria, as well as the potential risks and benefits, before making a decision. The patient's doctor or a qualified medical professional should be consulted to determine the best course of treatment.
+In conclusion, while none of the provided trials perfectly match the patient's profile, **NCT06260033** might be the most suitable option due to the patient's ER positivity and oligoprogressive disease. However, it is crucial to carefully review the trial's eligibility criteria and discuss the potential benefits and risks with the patient's healthcare provider.

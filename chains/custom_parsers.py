@@ -212,21 +212,57 @@ class ValidatedEvaluateTrialsParser(PydanticOutputParser):
             return 'Moderate'  # Default fallback
     
     def parse(self, text: str) -> EvaluateTrialsResponse:
+        data = {}  # Initialize to prevent NameError in except block
         try:
             # First, try to parse and clean the JSON data before Pydantic validation
             data = json.loads(text)
 
             # Clean up trial evaluations if they exist
             if 'trial_evaluations' in data and data['trial_evaluations']:
+                # Filter out incomplete trial evaluations (must have all required fields)
+                complete_trials = []
+                incomplete_count = 0
+                required_fields = ['trial_id', 'trial_title', 'overall_compatibility_score',
+                                 'category', 'scoring_breakdown', 'strengths', 'concerns',
+                                 'eligibility_assessment', 'recommendation', 'urgency_level']
+
                 for trial in data['trial_evaluations']:
-                    if 'urgency_level' in trial:
-                        trial['urgency_level'] = self._clean_urgency_level(trial['urgency_level'])
-                    if 'category' in trial:
-                        trial['category'] = self._clean_category(trial['category'])
+                    # Check if trial has all required fields
+                    if all(field in trial for field in required_fields):
+                        if 'urgency_level' in trial:
+                            trial['urgency_level'] = self._clean_urgency_level(trial['urgency_level'])
+                        if 'category' in trial:
+                            trial['category'] = self._clean_category(trial['category'])
+                        complete_trials.append(trial)
+                    else:
+                        incomplete_count += 1
+                        missing_fields = [f for f in required_fields if f not in trial]
+                        logger.warning(f"Filtering out incomplete trial evaluation {trial.get('trial_id', 'unknown')}, missing fields: {missing_fields}")
+
+                # Log if we had to filter trials (indicates token limit issue)
+                if incomplete_count > 0:
+                    logger.warning(f"Filtered {incomplete_count} incomplete trial(s) - likely due to LLM token limit. Consider increasing max_tokens.")
+
+                data['trial_evaluations'] = complete_trials
+
+                # Update evaluation summary to reflect filtered trials
+                if 'evaluation_summary' in data:
+                    data['evaluation_summary']['total_trials_evaluated'] = len(complete_trials)
+
+            # Fill in missing patient_considerations (common with incomplete responses)
+            if 'patient_considerations' not in data:
+                data['patient_considerations'] = {
+                    'optimal_trial_characteristics': ['Trials matching diagnosis and disease stage'],
+                    'significant_barriers': ['Limited trial availability or eligibility restrictions'],
+                    'alternative_strategies': ['Standard of care treatment', 'Consult with oncology team'],
+                    'additional_information_needed': ['Complete medical history and test results']
+                }
 
             # Fill in missing next_steps fields (common with DeepSeek)
             if 'next_steps' in data:
                 next_steps = data['next_steps']
+                if 'immediate_actions' not in next_steps:
+                    next_steps['immediate_actions'] = ['Consult with healthcare provider']
                 if 'timeline_recommendations' not in next_steps:
                     next_steps['timeline_recommendations'] = ['Follow up in 2-4 weeks with healthcare provider']
                 if 'additional_consultations' not in next_steps:
@@ -243,23 +279,38 @@ class ValidatedEvaluateTrialsParser(PydanticOutputParser):
             
         except (json.JSONDecodeError, Exception) as e:
             logger.warning(f"Failed to parse evaluate trials response: {e}")
-            # Fallback parsing 
+            # Fallback parsing - filter incomplete trials if data was partially parsed
             try:
+                # Try to salvage what we can from the incomplete response
+                trial_evals = []
+                if 'trial_evaluations' in data and data['trial_evaluations']:
+                    required_fields = ['trial_id', 'trial_title', 'overall_compatibility_score',
+                                     'category', 'scoring_breakdown', 'strengths', 'concerns',
+                                     'eligibility_assessment', 'recommendation', 'urgency_level']
+                    for trial in data['trial_evaluations']:
+                        if all(field in trial for field in required_fields):
+                            trial_evals.append(trial)
+                        else:
+                            logger.info(f"Filtering out incomplete trial {trial.get('trial_id', 'unknown')} in fallback")
+
                 return EvaluateTrialsResponse(
                     evaluation_summary=data.get('evaluation_summary', {
-                        'total_trials_evaluated': 0,
+                        'total_trials_evaluated': len(trial_evals),
                         'highly_suitable_count': 0,
                         'moderately_suitable_count': 0,
                         'unsuitable_count': 0,
                         'average_compatibility_score': 0.0,
-                        'primary_recommendation': 'No suitable trials found'
-                    }),
-                    trial_evaluations=data.get('trial_evaluations', []),
+                        'primary_recommendation': 'Partial evaluation completed'
+                    }) if 'evaluation_summary' not in data else {
+                        **data['evaluation_summary'],
+                        'total_trials_evaluated': len(trial_evals)
+                    },
+                    trial_evaluations=trial_evals,
                     patient_considerations=data.get('patient_considerations', {
-                        'optimal_trial_characteristics': [],
-                        'significant_barriers': [],
-                        'alternative_strategies': [],
-                        'additional_information_needed': []
+                        'optimal_trial_characteristics': ['Trials matching primary diagnosis'],
+                        'significant_barriers': ['Incomplete evaluation due to response truncation'],
+                        'alternative_strategies': ['Standard of care', 'Consult with specialist'],
+                        'additional_information_needed': ['Complete trial evaluation recommended']
                     }),
                     next_steps=data.get('next_steps', {
                         'immediate_actions': ['Consult with healthcare provider'],
