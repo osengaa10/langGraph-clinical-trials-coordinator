@@ -1,60 +1,137 @@
-A 35-year-old premenopausal female  with recently diagnosed  breast cancer presents today for 
-recommendations regarding treatment. Her oncologic history is as follows:
-1.August 15, 2016: patient noticed a palpable right breast mass after breastfeeding.
-2.September 2, 2016: patient sought medical attention for the breast mass. Diagnostic 
-mammogram revealed a  3.5 cm right breast mass, suspicious for malignancy. Axillary 
-ultrasound revealed two suspicious axillary lymph nodes, concerning for metastatic 
-involvement.
-3.September 5, 2016: breast MRI revealed a right breast mass measuring 3.8 cm, along with  3 
-pathological appearing lymph nodes.
-4.September 6, 2016: Ultrasound-guided  biopsy of the right breast  reveals an invasive 
-ductal carcinoma, Nothingam grade 3 (of 3), estrogen receptor (ER) positive ( ER >75%), 
-progesterone receptor (PR) positive ( PR 1-10%), human epidermal growth receptor 
-2 (HER-2) positive (immunohistochemistry 2+, fluorescence in situ hybridization (FISH) 
-positive for amplification.  Biopsy of right axillary lymph node  reveals evidence 
-for metastatic adenocarcinoma, consistent with breast primary.
-5.September 8, 2016: initial visit with Medical Oncology. Neoadjuvant chemotherapy 
-followed by surgery and adjuvant breast radiotherapy is recommended.
-6.September 15, 2016: patient  starts neoadjuvant chemotherapy with paclitaxel, 
-trastuzumab, and pertuzumab .
-7.January 30, 2017: patient starts  dose-dense doxorubicin, cyclophosphamide  with neulasta 
-support.
-8.February 2, 2017: comprehensive hereditary breast cancer panel reveals a  germline 
-pathogenic BRCA1 mutation, confirming a hereditary breast cancer predisposition 
-syndrome.
-9.April 20, 2017: patient undergoes  bilateral mastectomy  with right axillary sentinel lymph 
-node biopsy. Breast pathology specimen reveals a  residual 0.5 cm right breast 
-carcinoma, 43% cellularity, with evidence of treatment effect, and  1 out of 23 lymph 
-nodes with evidence of metastatic disease . Left breast shows only benign parenchyma.
-10.May 15, 2017: patient initiates  adjuvant trastuzumab  with plans to continue 12 months  of 
-therapy along with  tamoxifen.
-11.July 3, 2017: bilateral salpingo-oophorectomy  for prophylactic purposes, given BRCA 
-mutation.
-12.September 23, 2017: patient develops severe headaches and nausea. MRI brain ordered.
-13.September 25, 2017:  Brain MRI reveals 2 dominant brain metastases .
-14.September 26, 2017: Neurosurgery consultation. Recommendation is for gamma knife 
-surgery of two major lesions.
-15.September 30, 2017: patient undergoes  gamma knife surgery .
-16.October 15, 2017: systemic therapy changed to  ado-trastuzumab emtansine , with 
-discontinuation of the previous plan of completing 12 months of adjuvant trastuzumab.
-17.February 20, 2018: evidence of  liver metastasis. Ado-trastuzumab emtansine discontinued, 
-and systemic treatment changed to  capecitabine/lapatinib . Request for liver biopsy.
-18.February 25, 2018: liver biopsy reveals metastatic breast cancer,  positive for PDL-1.
-19.March 1, 2018: progressive disease in the liver and bones. Capecitabine/lapatinib stopped. 
-Patient starts experimental pembrolizumab , as part of a clinical trial.
-20.June 15, 2018: PET/CT scan after 3 months on pembrolizumab reveal a  complete 
-radiographic response  to therapy.
-35 yo premenopausal female with a BRCA mutation, diagnosed with node-positive, ER+, 
-HER2+ right breast cancer. Treated with neoadjuvant dual HER2-directed therapy, followed 
-by AC, with residual disease class I. Metastatic disease to the brain noted 4 months after 
-surgery, treated with gamma knife, followed by ado-trastuzumab emtansine. Liver metastasis 
-noted, treatment changed to capecitabine/lapatinib, with subsequent progression, and biopsy 
-revealing PDL-1 positive disease, currently on pembrolizumab leading to a complete response.
-Oncology history snapshot:  [bolded paragraph above]
-Date of diagnosis:  Aug 2016 (operable); Sep 2017 (metastatic)
-Sites of involvement:  brain, liver
-Molecular features:  ER+, PR+, HER2+, PD-L1+
-Prior therapies:
-•early-stage: THP-ddAC (residual disease)
-•metastatic: T-DM1, pembro (on trial)
-•procedures: gamma knife to brain mets  
+TRIAL-MATCHING–OPTIMIZED MEDICAL CHART
+1. Patient Demographics
+- Patient ID: JW-00384729
+- Age: 67
+- Sex: Male
+- DOB: 1958-02-14
+- Height: 178 cm
+- Weight: 84.5 kg
+- BMI: 26.7 kg/m²
+2. Performance Status & Functional
+- ECOG Performance Status: 1
+- Karnofsky (approximate): 80–90%
+- ADLs/IADLs: Independent
+3. Primary Cancer Diagnosis
+- Primary cancer type: Urothelial carcinoma of the bladder
+- Histology: High-grade urothelial (transitional cell) carcinoma
+- Disease setting: Muscle-invasive, non-metastatic
+- Initial diagnosis date (bladder cancer): 2025-08-15
+- Clinical stage (AJCC 8th): cT2N0M0
+- Pathologic stage from TURBT: pT2 NX MX
+- Tumor location in bladder: Left posterior lateral wall
+- Multifocality: Single dominant lesion
+- Tumor size: 2.5 cm
+- Muscularis propria invasion: Yes
+- Lymphovascular invasion: Not identified
+- Concomitant CIS: Not definitively identified
+- Variant histology: None reported
+- Upper tract involvement: Not identified
+4. Disease Status / Imaging Summary
+- Current disease status: Muscle-invasive bladder tumor, no radiographic metastases
+- Latest staging imaging: CT chest/abdomen/pelvis with contrast
+- Date of latest staging imaging: 2025-08-25
+- Metastatic disease: None detected
+- Lymph nodes: No enlarged pelvic or retroperitoneal lymph nodes
+- Distant organs: No liver, bone, adrenal, or other visceral metastases
+- Pulmonary nodules: Scattered noncalcified nodules <4 mm, indeterminate
+- Hydronephrosis: Absent
+5. Prior Cancer-Directed Therapy (Bladder Cancer)
+- Prior intravesical therapy: None
+- Prior systemic chemotherapy: None
+- Prior immunotherapy: None
+- Prior targeted therapy: None
+- Prior radiation therapy to pelvis/bladder: None
+- Prior surgery for bladder cancer: TURBT on 2025-08-05
+
+- Prior bladder cancer clinical trials: None
+6. Key Biomarkers / Molecular Data
+- PD-L1 expression (22C3): CPS 5
+- FGFR3 mutation: Negative
+- MSI status: Microsatellite stable (MSS)
+- Other biomarkers: Not tested / not reported
+7. Organ Function & Key Labs (Most Recent Pre-Treatment)
+- Date of labs: 2025-10-30
+7.1 Hematologic
+- WBC: 7.2 x10^3/µL
+- Hemoglobin: 13.5 g/dL
+- Hematocrit: 40.2%
+- Platelets: 265 x10^3/µL
+- ANC: Not specifically reported (assumed normal; needs explicit value for strict criteria)
+7.2 Renal
+- Serum creatinine: 0.98 mg/dL
+- Estimated eGFR: ~78 mL/min/1.73 m²
+- Hydronephrosis: None on imaging
+7.3 Hepatic
+- AST: 21 U/L
+- ALT: 24 U/L
+- Alkaline phosphatase: 88 U/L
+- Total bilirubin: 0.7 mg/dL
+- Albumin: 4.0 g/dL
+7.4 Metabolic
+- Glucose (random): 132 mg/dL
+- Na: 138 mmol/L
+- K: 4.3 mmol/L
+- BUN: 16 mg/dL
+- Calcium: 9.1 mg/dL
+7.5 Urinalysis (post-TURBT, most recent)
+- Protein: Trace
+- Blood: Small
+- Nitrite & leukocyte esterase: Negative
+7.6 Common missing trial-required labs (not in chart)
+- Absolute lymphocyte count
+- Coagulation: PT/INR, aPTT
+- Quantified proteinuria (UPC or 24-hour protein)
+- Hepatitis B surface antigen, Hep B core antibody, Hep C antibody, HIV testing
+- Baseline EKG with QTc
+- Baseline LVEF (echo or MUGA) if required
+
+8. Comorbidities (Trial-Relevant)
+- Hypertension: Controlled on lisinopril
+- Hyperlipidemia: On atorvastatin
+- Type 2 diabetes mellitus: Well-controlled (A1c 6.9% in 09/2025), on metformin
+- COPD: Mild, GOLD I, on tiotropium; no home oxygen
+- GERD: Controlled on omeprazole
+- History of other cancers: None
+- Cardiovascular disease: No known MI, CHF, stroke, or unstable angina
+- Thromboembolism: None
+- Baseline neuropathy: None reported
+- Baseline hearing loss: None clinically significant
+9. Autoimmune / Infection / Immunosuppression History
+- Autoimmune disease: None known
+- Chronic systemic steroids or immunosuppressants: None
+- Organ transplant history: None
+- Hepatitis B/C status: Not documented
+- HIV status: Not documented
+- Active infection: None clinically evident
+10. Concomitant Medications (Eligibility-Relevant)
+- Lisinopril 20 mg PO daily
+- Atorvastatin 40 mg PO nightly
+- Metformin 1000 mg PO BID
+- Omeprazole 20 mg PO daily
+- Tiotropium inhaler 18 mcg daily
+- Albuterol inhaler PRN
+- Multivitamin daily
+Not on:
+- Chronic anticoagulation
+- Chronic systemic steroids
+- Other immunosuppressants or biologics
+11. Reproductive / Consent-Related
+- Biologic sex: Male
+- Age: 67
+- Contraception willingness: Not explicitly documented; presumed able to comply
+- Cognitive status: Intact; able to understand and sign informed consent
+12. Social / Behavioral
+- Tobacco history: 40 pack-years; quit 5 years ago
+- Alcohol use: ~2–3 beers/week, no heavy use
+- Illicit drug use: Denies
+- Support system: Lives with spouse; good support
+13. Overall Trial Fit Summary
+- Disease category: Muscle-invasive bladder cancer (MIBC), non-metastatic
+- Line of systemic therapy for urothelial carcinoma: 0
+- Cisplatin eligibility: Likely yes
+
+- Immunotherapy eligibility: Likely yes (pending viral serologies)
+- Radical surgery history: None (candidate for neoadjuvant or perioperative trials)
+- Organ function: Adequate hematologic, hepatic, and renal function based on available labs
+- Major exclusion flags from available data: None obvious; pending viral serologies and detailed labs per protocol
+

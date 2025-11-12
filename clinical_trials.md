@@ -1,25 +1,31 @@
-Based on the provided medical report, the patient has metastatic breast cancer with involvement of the brain and liver, and has achieved a complete response to pembrolizumab. Considering the patient's ER+, PR+, HER2+, and PD-L1 positive status, I have reviewed the retrieved clinical trials to find the most suitable options.
+Based on the medical report provided, the patient has a primary diagnosis of urothelial carcinoma of the bladder, which is high-grade and muscle-invasive, non-metastatic. The patient's clinical stage is cT2N0M0 according to the AJCC 8th edition, with a pathologic stage from TURBT being pT2 NX MX.
 
-1. **NCT05759572**: This trial investigates apatinib in combination with CDK4/6 inhibitor and endocrine therapy as the first-line therapy for HR+/HER2- advanced breast cancer. Although the patient's cancer is HER2+, this trial might not be the best fit due to the HR+/HER2- specification. However, it's worth noting that the patient's HER2 positivity could be considered in other trials.
+Considering the patient's disease category, line of systemic therapy, and likely eligibility for cisplatin and immunotherapy, the patient may be a candidate for neoadjuvant or perioperative trials.
 
-Contact Information: Zhimin Shao - CONTACT, Phone: 86-021-64175590, Email: zhimingshao@yahoo.com
-
-2. **NCT05022342**: This descriptive study focuses on PIK3CA mutations and outcomes with alpelisib in patients with HR-positive and HER2-negative advanced breast cancer. Similar to the previous trial, this study might not be the best fit due to the HER2-negative specification.
-
-Contact Information: Novartis Pharmaceuticals - CONTACT, Phone: +41613241111, Email: novartis.email@novartis.com
-
-3. **NCT06260033**: This Phase II trial explores stereotactic body radiation therapy and fluoroestradiol positron emission tomography in patients with oligoprogressive estrogen receptor-positive metastatic breast cancer. Given the patient's ER positivity and oligoprogressive disease, this trial could be a suitable option.
-
-Contact Information: Not provided
+One potential clinical trial for this patient is NCT03609216, which is a Phase II study of gemcitabine plus cisplatin chemotherapy in patients with muscle-invasive bladder cancer. The trial's inclusion criteria match the patient's disease characteristics, and the patient's ECOG performance status of 1 and adequate organ function also meet the trial's requirements.
 
 Expected prognosis outcome for the patient:
-The patient has already achieved a complete response to pembrolizumab, which is a positive sign. However, the prognosis for metastatic breast cancer remains uncertain, and the patient's disease can progress at any time. Participating in a clinical trial like NCT06260033 could potentially improve the patient's prognosis by providing an additional treatment option.
+The primary outcome of this trial is the proportion of patients who are recurrence-free within the DDR mutated group who undergo the bladder-sparing approach. The patient's participation in this trial may improve their prognosis by reducing the risk of recurrence and potentially avoiding radical cystectomy.
 
-Possible risks associated with each trial:
-- NCT05759572: Apatinib can cause hypertension, proteinuria, and thrombocytopenia. CDK4/6 inhibitors can cause neutropenia, fatigue, and diarrhea.
-- NCT05022342: Alpelisib can cause hyperglycemia, rash, and fatigue.
-- NCT06260033: Stereotactic body radiation therapy can cause fatigue, skin reactions, and radiation pneumonitis. Fluoroestradiol positron emission tomography is generally well-tolerated but can cause allergic reactions.
+Possible risks associated with this trial:
+The trial involves chemotherapy, which can have side effects such as nausea, fatigue, and increased risk of infections. The patient should be aware of these potential risks and discuss them with their healthcare provider.
 
-It is essential to note that these trials may have additional risks and side effects not mentioned here. The patient should discuss the potential benefits and risks with their healthcare provider before making any decisions.
+Contact information for NCT03609216:
+Gopa Iyer, MD - CONTACT
+Phone: 646-888-4737, Email: iyerg@mskcc.org
 
-In conclusion, while none of the provided trials perfectly match the patient's profile, **NCT06260033** might be the most suitable option due to the patient's ER positivity and oligoprogressive disease. However, it is crucial to carefully review the trial's eligibility criteria and discuss the potential benefits and risks with the patient's healthcare provider.
+Another potential clinical trial for this patient is NCT06809140, which is a Phase 2 trial of enfortumab vedotin plus pembrolizumab with selective bladder sparing for treatment of muscle-invasive urothelial cancer of the bladder. The trial's inclusion criteria match the patient's disease characteristics, and the patient's ECOG performance status of 1 and adequate organ function also meet the trial's requirements.
+
+Expected prognosis outcome for the patient:
+The primary outcome of this trial is the complete response rate with enfortumab vedotin plus pembrolizumab for MIBC. The patient's participation in this trial may improve their prognosis by achieving a complete response to treatment and potentially avoiding radical cystectomy.
+
+Possible risks associated with this trial:
+The trial involves immunotherapy, which can have side effects such as fatigue, rash, and increased risk of infections. The patient should be aware of these potential risks and discuss them with their healthcare provider.
+
+Contact information for NCT06809140:
+Matthew Galsky, MD - CONTACT
+Phone: 212-659-5452, Email: matthew.galsky@mssm.edu
+Ahran Lee - CONTACT
+Phone: 317-634-5842, Email: alee@hoosiercancer.org
+
+It is essential to note that the patient's individual characteristics, medical history, and current health status should be carefully evaluated to determine the most suitable clinical trial for their specific needs. The patient should discuss the potential benefits and risks of each trial with their healthcare provider to make an informed decision.

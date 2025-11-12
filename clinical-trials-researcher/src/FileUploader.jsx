@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Upload, Button, Divider, Spin } from 'antd';
-import { InboxOutlined } from '@ant-design/icons';
+import { Upload, Button, Divider, Spin, Space, Row, Col } from 'antd';
+import { InboxOutlined, DownloadOutlined } from '@ant-design/icons';
 import { WebSocketContext } from './WebSocketContext';
 
 const { Dragger } = Upload;
@@ -55,6 +55,35 @@ const FileUploader = ({ connected }) => {
                             <Button type="default" onClick={() => setShowUploader(true)}>
                                 Upload Clinical Notes
                             </Button>
+
+                            {/* Sample data download section */}
+                            <Divider style={{ margin: '20px 0' }}>Or try with sample data</Divider>
+                            <Space wrap>
+                                <a href="/samples/breast_cancer_chart.pdf" download="breast_cancer_chart.pdf">
+                                    <Button
+                                        icon={<DownloadOutlined />}
+                                        size="small"
+                                    >
+                                        Breast Cancer (35F)
+                                    </Button>
+                                </a>
+                                <a href="/samples/sarcoma_cancer_chart.pdf" download="sarcoma_cancer_chart.pdf">
+                                    <Button
+                                        icon={<DownloadOutlined />}
+                                        size="small"
+                                    >
+                                        Soft Tissue Sarcoma (52F)
+                                    </Button>
+                                </a>
+                                <a href="/samples/bladder_cancer_chart.pdf" download="bladder_cancer_chart.pdf">
+                                    <Button
+                                        icon={<DownloadOutlined />}
+                                        size="small"
+                                    >
+                                        Bladder Cancer (67M)
+                                    </Button>
+                                </a>
+                            </Space>
                         </>
                     ) : (
                         <>
